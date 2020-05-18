@@ -3,7 +3,9 @@ from .models import Post
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the dailyAnalysis index.")
+    post_list = Post.objects.order_by('date_analysis')
+    context = {'post_list': post_list}
+    return render(request, 'dailyAnalysis/index.html', context)
 
 
 def detail(request, post_id):
