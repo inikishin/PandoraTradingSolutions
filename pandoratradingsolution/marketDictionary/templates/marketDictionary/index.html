@@ -1,0 +1,9 @@
+{% if ticker_list %}
+    <ul>
+    {% for ticker in ticker_list %}
+        <li><a href="{% url 'detail' ticker.id %}">{{ ticker.short_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tickers are available.</p>
+{% endif %}

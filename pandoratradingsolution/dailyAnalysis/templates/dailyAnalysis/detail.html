@@ -1,0 +1,10 @@
+{% load blog_tags %}
+
+<h1>{{ post.title }}</h1>
+<ul>
+    {{ post.content|media_url:"media_url/"|markdown }} <br>
+
+    <br><br>
+
+    <a href="{% url 'dailyAnalysis' %}">Назад к списку</a>
+</ul>

@@ -1,0 +1,11 @@
+<h1>{{ ticker.full_name }}</h1>
+<ul>
+    Рынок {{ ticker.market }} <br>
+    Тикер {{ ticker.short_name }} <br>
+    Сайт организации {{ ticker.site|linebreaks }} <br>
+    Тут будет список анализов по этому тикеру <br>
+
+    <br><br>
+
+    <a href="{% url 'marketDictionaryIndex' %}">Назад к списку</a>
+</ul>
