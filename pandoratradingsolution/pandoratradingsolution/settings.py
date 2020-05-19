@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'marketDictionary',
     'dailyAnalysis',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

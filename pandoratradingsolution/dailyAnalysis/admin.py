@@ -1,14 +1,12 @@
 from django.contrib import admin
-
-from .models import AnalysisType, Post, Image
+from .models import AnalysisType, Post
 
 admin.site.register(AnalysisType)
-admin.site.register(Post)
 
 
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'image', 'created']
-    list_filter = ['created']
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['header', 'slug', 'ticker', 'created']
+    list_filter = ['created', 'ticker']
 
 
-admin.site.register(Image, ImageAdmin)
+admin.site.register(Post, PostAdmin)

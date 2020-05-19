@@ -25,15 +25,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.ticker.short_name + '_' + str(self.date_analysis)
-
-
-class Image(models.Model):
-    post = models.ForeignKey(Post, related_name='post_images', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, blank=True)
-    url = models.URLField(blank=True)
-    image = models.ImageField(upload_to='dailyAnalysis')
-    description = models.TextField(blank=True)
-    created = models.DateField(auto_now_add=True, db_index=True)
-    def __str__(self):
-        return self.title
