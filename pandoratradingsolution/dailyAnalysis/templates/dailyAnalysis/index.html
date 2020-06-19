@@ -1,9 +1,66 @@
+{% extends "pandoratradingsolution/base.html" %}
+
+{% load blog_tags %}
+{% load static %}
+
+{% block title %} Список статей {% endblock %}
+
+{% block content %}
+
+<div>
+    Фильтр: <br>
+    <form action="/dailyanalysis/" method="get">
+        <table>
+            <tr>
+                <td width="25%">
+                    <label for="post_date">Дата: </label>
+                    <input id="post_date" type="date" name="post_date" value="{{ post_date }}" size="10">
+                </td>
+                <td width="25%">
+                    <label for="post_ticker">Тикер: </label>
+                    <input id="post_ticker" type="text" name="post_ticker" value="{{ post_ticker }}" size="10">
+                </td>
+                <td width="25%">
+                    <label for="post_sig_only">Есть сигнал: </label>
+                    <input id="post_sig_only" type="checkbox" name="post_sig_only" value="True">
+                </td>
+                <td width="25%">
+                    <input class="button" type="submit" value="Find">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
 {% if post_list %}
-    <ul>
-    {% for post in post_list %}
-        <li><a href="{% url 'detail' post.id %}">{{ post.header }}</a></li>
-    {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <td>Тикер</td>
+                <td>Дата</td>
+                <td width="100px">Три экрана Элдера</td>
+                <td width="100px">Канальная стратегия</td>
+                <td width="100px">Дивергентный бар</td>
+                <td width="100px">NR4ID</td>
+                <td width="100px">Прорыв волатильности</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in post_list %}
+            <tr>
+                <td><a href="{% url 'detail' post.id %}">{{ post.ticker }}</a></td>
+                <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
+                <td>{{ post.sig_elder|buysell_signal }}</td>
+                <td>{{ post.sig_channel|buysell_signal }}</td>
+                <td>{{ post.sig_DivBar|buysell_signal }}</td>
+                <td>{{ post.sig_NR4ID|signal }}</td>
+                <td>{{ post.sig_breakVolatility|signal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% else %}
-    <p>No posts are available.</p>
+    <p>Нет публикаций, удовлетворяющих условиям отбора</p>
 {% endif %}
+
+{% endblock %}

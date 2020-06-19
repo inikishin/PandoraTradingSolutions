@@ -1,6 +1,12 @@
-{% load blog_tags %}
+{% extends "pandoratradingsolution/base.html" %}
 
-<h1>{{ post.title }}</h1>
+{% load blog_tags %}
+{% load static %}
+
+{% block title %} {{ post.header }} {% endblock %}
+{% block content %}
+
+<h2>{{ post.header }}</h2>
 <ul>
     {{ post.content|media_url:"media_url/"|markdown }} <br>
 
@@ -8,3 +14,5 @@
 
     <a href="{% url 'dailyAnalysis' %}">Назад к списку</a>
 </ul>
+
+{% endblock %}

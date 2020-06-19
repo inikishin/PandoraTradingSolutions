@@ -10,6 +10,11 @@ class PostSerializer(serializers.Serializer):
     content = serializers.CharField()
     slug = serializers.SlugField()
     created = serializers.DateTimeField()
+    sig_elder = serializers.IntegerField()
+    sig_channel = serializers.IntegerField()
+    sig_DivBar = serializers.IntegerField()
+    sig_NR4ID = serializers.IntegerField()
+    sig_breakVolatility = serializers.IntegerField()
 
     def create(self, validated_data):
         return Post.objects.create(**validated_data)

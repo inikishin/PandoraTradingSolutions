@@ -22,6 +22,11 @@ class Post(models.Model):
     content = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='date_analysis')
     created = models.DateTimeField(auto_now_add=True)
+    sig_elder = models.IntegerField(default=0)
+    sig_channel = models.IntegerField(default=0)
+    sig_DivBar = models.IntegerField(default=0)
+    sig_NR4ID = models.IntegerField(default=0)
+    sig_breakVolatility = models.IntegerField(default=0)
 
     def __str__(self):
         return self.ticker.short_name + '_' + str(self.date_analysis)

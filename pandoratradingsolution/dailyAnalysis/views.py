@@ -1,10 +1,30 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import Post
-
+import marketDictionary.models as md
+from datetime import datetime
 
 def index(request):
-    post_list = Post.objects.order_by('date_analysis')
-    context = {'post_list': post_list}
+    filter_post_date = request.GET.get('post_date', '')
+    filter_post_ticker = request.GET.get('post_ticker', '')
+    filter_post_sig_only = request.GET.get('post_sig_only', '')
+    print('GET: post_date: ' + filter_post_date + ' / filter_post_ticker: ' + filter_post_ticker)
+
+    post_list = Post.objects.order_by('-date_analysis')
+    if filter_post_sig_only != '':
+        post_list = post_list.filter(sig_elder__in=[-1, 1]) | post_list.filter(sig_channel__in=[-1, 1]) | post_list.filter(sig_DivBar__in=[-1, 1]) | post_list.filter(sig_NR4ID__in=[-1, 1]) | post_list.filter(sig_breakVolatility__in=[-1, 1])
+    if filter_post_date != '':
+        post_list = post_list.filter(date_analysis__range=(datetime.strptime(filter_post_date, '%Y-%m-%d'), datetime.strptime(filter_post_date, '%Y-%m-%d')))
+    if filter_post_ticker != '':
+        ticker_obj = md.Ticker.objects.filter(short_name=filter_post_ticker).first()
+        if ticker_obj != None:
+            post_list = post_list.filter(ticker__exact=ticker_obj.id)
+        else:
+            post_list = post_list.filter(ticker__exact=-1)
+
+    context = {'post_date': filter_post_date,
+               'post_ticker': filter_post_ticker,
+               'post_list': post_list}
+
     return render(request, 'dailyAnalysis/index.html', context)
 
 

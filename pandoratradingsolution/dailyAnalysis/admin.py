@@ -5,8 +5,7 @@ admin.site.register(AnalysisType)
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['header', 'slug', 'ticker', 'created']
+    list_display = ['header', 'slug', 'ticker', 'created', 'sig_elder', 'sig_channel', 'sig_DivBar', 'sig_NR4ID', 'sig_breakVolatility']
     list_filter = ['created', 'ticker']
-
 
 admin.site.register(Post, PostAdmin)
