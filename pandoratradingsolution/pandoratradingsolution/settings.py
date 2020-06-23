@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'pandoratradingsolution',
     'marketDictionary',
     'dailyAnalysis',
+    'predictions',
     'rest_framework',
     'django.contrib.sites',
     'django.contrib.flatpages',

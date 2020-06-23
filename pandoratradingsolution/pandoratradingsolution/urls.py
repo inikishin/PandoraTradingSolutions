@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.mainpage, name='mainpage'),
     path('marketdictionary/', include('marketDictionary.urls')),
     path('dailyanalysis/', include('dailyAnalysis.urls')),
+    path('predictions/', include('predictions.urls')),
     path('admin/', admin.site.urls, name='admin'),
 ]
 

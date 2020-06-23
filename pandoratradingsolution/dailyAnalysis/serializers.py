@@ -15,6 +15,11 @@ class PostSerializer(serializers.Serializer):
     sig_DivBar = serializers.IntegerField()
     sig_NR4ID = serializers.IntegerField()
     sig_breakVolatility = serializers.IntegerField()
+    sig_elder_proba = serializers.FloatField()
+    sig_channel_proba = serializers.FloatField()
+    sig_DivBar_proba = serializers.FloatField()
+    sig_NR4ID_proba = serializers.FloatField()
+    sig_breakVolatility_proba = serializers.FloatField()
 
     def create(self, validated_data):
         return Post.objects.create(**validated_data)

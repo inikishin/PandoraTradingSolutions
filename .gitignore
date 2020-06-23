@@ -1,2 +1,5 @@
 /pandoratradingsolution/media/dailyAnalysis/
 /venv/
+/pandoratradingsolution/predictions/migrations/
+/pandoratradingsolution/dailyAnalysis/migrations/
+/pandoratradingsolution/marketDictionary/migrations/

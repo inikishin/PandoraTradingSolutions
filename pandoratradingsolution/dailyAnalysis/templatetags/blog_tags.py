@@ -16,17 +16,17 @@ def cut(value, arg):
     return value.replace(arg, settings.MEDIA_URL)
 
 @register.filter(name='signal')
-def signal(value):
+def signal(value, arg):
     if value == 1:
-        return 'Сигнал'
+        return 'Сигнал (' + str(arg*100) + '%)'
     else:
         return '-'
 
 @register.filter(name='buysell_signal')
-def buysell_signal(value):
+def buysell_signal(value, arg):
     if value == 1:
-        return 'Buy'
+        return 'Buy (' + str(arg*100) + '%)'
     elif value == -1:
-        return 'Sell'
+        return 'Sell (' + str(arg*100) + '%)'
     else:
         return '-'

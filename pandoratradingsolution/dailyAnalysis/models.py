@@ -27,6 +27,11 @@ class Post(models.Model):
     sig_DivBar = models.IntegerField(default=0)
     sig_NR4ID = models.IntegerField(default=0)
     sig_breakVolatility = models.IntegerField(default=0)
+    sig_elder_proba = models.FloatField(default=0)
+    sig_channel_proba = models.FloatField(default=0)
+    sig_DivBar_proba = models.FloatField(default=0)
+    sig_NR4ID_proba = models.FloatField(default=0)
+    sig_breakVolatility_proba = models.FloatField(default=0)
 
     def __str__(self):
         return self.ticker.short_name + '_' + str(self.date_analysis)
