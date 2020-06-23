@@ -9,7 +9,7 @@ def index(request):
     ticker_list = md.Ticker.objects.order_by('short_name')
     prediction_list = []
     for t in ticker_list:
-        prediction_ticker_list = Prediction.objects.filter(ticker__exact=t.id)
+        prediction_ticker_list = Prediction.objects.filter(ticker__exact=t.id).order_by('created')
         ticker_prediction = {"ticker": t}
         for p in prediction_ticker_list:
             ticker_prediction.update({p.horizon.horizon_name: {
