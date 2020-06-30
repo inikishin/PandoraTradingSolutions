@@ -8,8 +8,12 @@
 {% block content %}
 
 <div>
-    Дисклеймер: Администрация сайта pandoratradingsolutions.ru не несет никакой ответственности за утрату ваших денег в результате того, что вы положились на информацию, содержащуюся на этом сайте, включая данные, котировки, графики и сигналы. Операции на международных рынках содержат в себе высокий уровень риска. Торговля на рынках может не подходить для всех инвесторов. Спекулируйте только теми деньгами, которые Вы можете позволить себе потерять.<br>
-    Администрация сайта pandoratradingsolutions.ru напоминает вам, что данные, предоставленные на данном сайте, не обязательно даны в режиме реального времени и могут не являться точными. Все цены на акции, индексы, фьючерсы носят ориентировочный характер и на них нельзя полагаться при торговле. Таким образом, администрация сайта pandoratradingsolutions.ru не несет никакой ответственности за любые убытки, которые вы можете понести в результате использования этих данных.<br><br>
+    <h6>ПРЕДУПРЕЖДЕНИЕ: Операции на российских и международных рынках содержат в себе высокий уровень риска. Администрация сайта
+    pandoratradingsolutions.ru напоминает вам, что данные, предоставленные на данном сайте, не
+    обязательно даны в режиме реального времени и могут не являться точными. Все цены на акции, индексы, фьючерсы носят
+    ориентировочный характер и на них нельзя полагаться при торговле. Таким образом, администрация сайта
+    pandoratradingsolutions.ru не несет никакой ответственности за любые убытки, которые вы можете понести в результате
+    использования информации, содержащейся на этом сайте, котировок, графиков и сигналов.<br><br></h6>
 </div>
 
 <div>
@@ -55,11 +59,11 @@
             <tr>
                 <td><a href="{% url 'detail' post.id %}">{{ post.ticker }}</a></td>
                 <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
-                <td>{{ post.sig_elder|buysell_signal:post.sig_elder_proba }}</td>
-                <td>{{ post.sig_channel|buysell_signal:post.sig_channel_proba }}</td>
-                <td>{{ post.sig_DivBar|buysell_signal:post.sig_DivBar_proba }}</td>
-                <td>{{ post.sig_NR4ID|signal:post.sig_NR4ID_proba }}</td>
-                <td>{{ post.sig_breakVolatility|signal:post.sig_breakVolatility_proba }}</td>
+                <td><a href="{% url 'detail' post.id %}">{{ post.sig_elder|buysell_signal:post.sig_elder_proba }}</a></td>
+                <td><a href="{% url 'detail' post.id %}">{{ post.sig_channel|buysell_signal:post.sig_channel_proba }}</a></td>
+                <td><a href="{% url 'detail' post.id %}">{{ post.sig_DivBar|buysell_signal:post.sig_DivBar_proba }}</a></td>
+                <td><a href="{% url 'detail' post.id %}">{{ post.sig_NR4ID|signal:post.sig_NR4ID_proba }}</a></td>
+                <td><a href="{% url 'detail' post.id %}">{{ post.sig_breakVolatility|signal:post.sig_breakVolatility_proba }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
