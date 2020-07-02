@@ -18,15 +18,15 @@ def cut(value, arg):
 @register.filter(name='signal')
 def signal(value, arg):
     if value == 1:
-        return 'Сигнал (' + str(arg*100) + '%)'
+        return 'Сигнал (' + str(round(arg*100, 2)) + '%)'
     else:
         return '-'
 
 @register.filter(name='buysell_signal')
 def buysell_signal(value, arg):
     if value == 1:
-        return 'Buy (' + str(arg*100) + '%)'
+        return 'Buy (' + str(round(arg*100, 2)) + '%)'
     elif value == -1:
-        return 'Sell (' + str(arg*100) + '%)'
+        return 'Sell (' + str(round(arg*100, 2)) + '%)'
     else:
         return '-'

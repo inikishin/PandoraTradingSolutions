@@ -4,5 +4,7 @@
 {% block title %} {{ flatpage.title }} {% endblock %}
 
 {% block content %}
-{{ flatpage.content|markdown }}
+<ul>
+    {{ flatpage.content|markdown }}
+</ul>
 {% endblock %}

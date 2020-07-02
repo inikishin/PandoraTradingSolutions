@@ -16,9 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-#from .views import e_handler404
 
-#handler404 = e_handler404
 handler404 = 'pandoratradingsolution.views.handler404'
 
 urlpatterns = [
