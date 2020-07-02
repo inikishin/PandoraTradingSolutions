@@ -1,7 +1,10 @@
+from datetime import datetime
+
 from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .models import Post
 import marketDictionary.models as md
-from datetime import datetime
 
 def index(request):
     filter_post_date = request.GET.get('post_date', '')
@@ -21,9 +24,13 @@ def index(request):
         else:
             post_list = post_list.filter(ticker__exact=-1)
 
+    paginator = Paginator(post_list, 25)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {'post_date': filter_post_date,
                'post_ticker': filter_post_ticker,
-               'post_list': post_list}
+               'page_obj': page_obj}
 
     return render(request, 'dailyAnalysis/index.html', context)
 
