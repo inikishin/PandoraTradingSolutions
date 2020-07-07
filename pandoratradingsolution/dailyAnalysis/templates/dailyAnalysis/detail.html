@@ -8,6 +8,14 @@
 
 <h2>{{ post.header }}</h2>
 
+<ul>
+    {{ post.content|media_url:"media_url/"|markdown }} <br>
+
+    <br><br>
+
+    <a href="{% url 'dailyAnalysis' %}">Назад к списку</a>
+</ul>
+
 <div>
     <h6>ПРЕДУПРЕЖДЕНИЕ: Операции на российских и международных рынках содержат в себе высокий уровень риска. Администрация сайта
     pandoratradingsolutions.ru напоминает вам, что данные, предоставленные на данном сайте, не
@@ -16,13 +24,5 @@
     pandoratradingsolutions.ru не несет никакой ответственности за любые убытки, которые вы можете понести в результате
     использования информации, содержащейся на этом сайте, котировок, графиков и сигналов.<br><br></h6>
 </div>
-
-<ul>
-    {{ post.content|media_url:"media_url/"|markdown }} <br>
-
-    <br><br>
-
-    <a href="{% url 'dailyAnalysis' %}">Назад к списку</a>
-</ul>
 
 {% endblock %}
