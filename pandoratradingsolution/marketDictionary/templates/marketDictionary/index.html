@@ -1,9 +1,45 @@
+{% extends "pandoratradingsolution/base.html" %}
+
+{% load blog_tags %}
+{% load static %}
+
+{% block title %} Список доступных тикеров {% endblock %}
+
+{% block content %}
+<h4>Список доступных тикеров</h4>
+
 {% if ticker_list %}
-    <ul>
-    {% for ticker in ticker_list %}
-        <li><a href="{% url 'detail' ticker.id %}">{{ ticker.short_name }}</a></li>
-    {% endfor %}
-    </ul>
+<table>
+    <thead>
+        <tr>
+            <td width="600px">Полное наименование</td>
+            <td>Тикер</td>
+            <td>Сайт</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ticker in ticker_list %}
+            <tr>
+                <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.full_name }}</a></td>
+                <td>{{ ticker.short_name }}</td>
+                <td>{{ ticker.site }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% else %}
-    <p>No tickers are available.</p>
+    <div>Нет доступных тикеров</div>
 {% endif %}
+
+
+    {% if ticker_list %}
+        <ul>
+        {% for ticker in ticker_list %}
+            #<li><a href="{% url 'detail' ticker.id %}">{{ ticker.short_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tickers are available.</p>
+    {% endif %}
+
+{% endblock %}

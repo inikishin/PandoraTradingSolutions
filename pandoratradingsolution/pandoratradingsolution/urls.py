@@ -21,7 +21,7 @@ handler404 = 'pandoratradingsolution.views.handler404'
 
 urlpatterns = [
     path('', views.mainpage, name='mainpage'),
-    path('marketdictionary/', include('marketDictionary.urls')),
+    path('marketdictionary/', include('marketDictionary.urls', namespace='marketDictionary')),
     path('dailyanalysis/', include('dailyAnalysis.urls')),
     path('predictions/', include('predictions.urls')),
     path('admin/', admin.site.urls, name='admin'),

@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from .models import Ticker, Market
+from dailyAnalysis.models import Post
+from predictions.models import Prediction
 
 
 def index(request):
@@ -11,7 +13,11 @@ def index(request):
 
 def detail(request, ticker_id):
     ticker = get_object_or_404(Ticker, pk=ticker_id)
-    return render(request, 'marketDictionary/detail.html', {'ticker': ticker})
+
+    post_list = Post.objects.order_by('-date_analysis').filter(ticker__exact=ticker_id)
+    prediction_ticker_list = Prediction.objects.filter(ticker__exact=ticker_id).order_by('-created')
+
+    return render(request, 'marketDictionary/detail.html', {'ticker': ticker, 'post_list': post_list, 'prediction_ticker_list': prediction_ticker_list})
 
 # API
 

@@ -1,11 +1,45 @@
-<h1>{{ ticker.full_name }}</h1>
+{% extends "pandoratradingsolution/base.html" %}
+
+{% load marketdict_tags %}
+{% load static %}
+
+{% block title %} {{ ticker.full_name }} ({{ ticker.short_name }}) {% endblock %}
+
+{% block content %}
+
 <ul>
-    Рынок {{ ticker.market }} <br>
-    Тикер {{ ticker.short_name }} <br>
-    Сайт организации {{ ticker.site|linebreaks }} <br>
-    Тут будет список анализов по этому тикеру <br>
+    <h1>{{ ticker.full_name }} ({{ ticker.short_name }})</h1>
+
+    <h3>Основная информация по тикеру</h3>
+    Рынок: {{ ticker.market }} <br>
+    Тикер: {{ ticker.short_name }} <br>
+    Организация: {{ ticker.full_name }} <br>
+    Сайт организации: {{ ticker.site }} <br>
 
     <br><br>
 
-    <a href="{% url 'marketDictionaryIndex' %}">Назад к списку</a>
+    <h3>Список публикаций ежедневного технического анализа</h3>
+    {% if post_list %}
+        {% for post in post_list %}
+            <a href="{% url 'detail' post.id %}">{{ post.header }}</a><br>
+        {% endfor %}
+    {% else %}
+        <div>Нет информации по аналитике, удовлетворяющих условиям отбора</div>
+    {% endif %}
+
+    <br><br>
+    <h3>Актуальные прогнозы</h3>
+    {% if prediction_ticker_list %}
+        {% for prediction in prediction_ticker_list %}
+            Прогноз на {{ prediction.created|predictiondate:prediction.horizon.lag|date:"d-m-Y" }}: {{ prediction.prctChange|round_num:2 }}% ({{ prediction.predictprice|round_num:2 }}) с вероятностью {{ prediction.probability|round_num:2 }}<br>
+        {% endfor %}
+    {% else %}
+        <div>Нет прогнозов, удовлетворяющих условиям отбора</div>
+    {% endif %}
+
+    <br><br>
+
+    <a href="{% url 'marketDictionary:marketDictionary' %}">Назад к списку</a>
 </ul>
+
+{% endblock %}
