@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from .models import Ticker, Market
 from dailyAnalysis.models import Post
@@ -7,7 +8,12 @@ from predictions.models import Prediction
 
 def index(request):
     ticker_list = Ticker.objects.order_by('short_name')
-    context = {'ticker_list': ticker_list}
+
+    paginator = Paginator(ticker_list, 25)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj': page_obj}
     return render(request, 'marketDictionary/index.html', context)
 
 

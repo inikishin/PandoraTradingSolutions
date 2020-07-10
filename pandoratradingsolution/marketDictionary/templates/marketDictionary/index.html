@@ -8,7 +8,7 @@
 {% block content %}
 <h4>Список доступных тикеров</h4>
 
-{% if ticker_list %}
+{% if page_obj %}
 <table>
     <thead>
         <tr>
@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for ticker in ticker_list %}
+        {% for ticker in page_obj %}
             <tr>
                 <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.full_name }}</a></td>
                 <td>{{ ticker.short_name }}</td>
@@ -31,15 +31,24 @@
     <div>Нет доступных тикеров</div>
 {% endif %}
 
+    <br>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+            {% endif %}
 
-    {% if ticker_list %}
-        <ul>
-        {% for ticker in ticker_list %}
-            #<li><a href="{% url 'detail' ticker.id %}">{{ ticker.short_name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No tickers are available.</p>
-    {% endif %}
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <br>
 
 {% endblock %}

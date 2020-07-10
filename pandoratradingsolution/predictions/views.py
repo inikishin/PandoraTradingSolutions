@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Prediction, PredictionHorizon
 import marketDictionary.models as md
@@ -22,7 +23,12 @@ def index(request):
 
         prediction_list.append(ticker_prediction)
 
-    context = {'prediction_list': prediction_list}
+    paginator = Paginator(prediction_list, 25)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj': page_obj}
+    #context = {'prediction_list': prediction_list}
 
     return render(request, 'predictions/index.html', context)
 

@@ -7,13 +7,15 @@
 
 {% block content %}
 
-{% if prediction_list %}
+{% if page_obj %}
     <table>
         <thead>
             <tr>
                 <td>Тикер</td>
-                <td width="140px">1w</td>
-                <td width="140px">2w</td>
+                {% if user.is_authenticated %}
+                    <td width="140px">1w</td>
+                    <td width="140px">2w</td>
+                {% endif %}
                 <td width="140px">1m</td>
                 <td width="140px">3m</td>
                 <td width="140px">6m</td>
@@ -21,15 +23,17 @@
             </tr>
         </thead>
         <tbody>
-            {% for prediction in prediction_list %}
+            {% for prediction in page_obj %}
             <tr>
                 <td>{{ prediction.ticker }}</td>
-                <td>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}<br>
-                    {{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}<br>
-                    {{ prediction.1w.probability|predictionproba}}</td>
-                <td>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}<br>
-                    {{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}<br>
-                    {{ prediction.2w.probability|predictionproba}}</td>
+                {% if user.is_authenticated %}
+                    <td>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}<br>
+                        {{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}<br>
+                        {{ prediction.1w.probability|predictionproba}}</td>
+                    <td>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}<br>
+                        {{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}<br>
+                        {{ prediction.2w.probability|predictionproba}}</td>
+                {% endif %}
                 <td>{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d-m-Y" }}<br>
                     {{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}<br>
                     {{ prediction.1m.probability|predictionproba}}</td>
@@ -49,6 +53,26 @@
 {% else %}
     <p>Нет прогнозов, удовлетворяющих условиям отбора</p>
 {% endif %}
+
+    <br>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <br>
 
 <div>
     <h6>ПРЕДУПРЕЖДЕНИЕ: Операции на российских и международных рынках содержат в себе высокий уровень риска. Администрация сайта
