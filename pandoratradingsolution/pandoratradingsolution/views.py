@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+
 from dailyAnalysis.models import Post
+from .form import SignUpForm
 
 def mainpage(request):
     post_list = Post.objects.order_by('-date_analysis')[:30]
@@ -10,3 +13,23 @@ def mainpage(request):
 
 def handler404(request, exception):
     return render(request, 'pandoratradingsolution/error404.html', status=404)
+
+def profile_view(request):
+    return render(request, 'pandoratradingsolution/profile.html')
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            new_user.first_name = form.cleaned_data['first_name']
+            new_user.last_name = form.cleaned_data['last_name']
+            new_user.email = form.cleaned_data['email']
+            new_user.save()
+            return redirect('profile')
+        else:
+            form = SignUpForm(request.POST)
+            return render(request, 'pandoratradingsolution/signup.html', {'form': form})
+    else:
+        form = SignUpForm()
+        return render(request, 'pandoratradingsolution/signup.html', {'form': form})

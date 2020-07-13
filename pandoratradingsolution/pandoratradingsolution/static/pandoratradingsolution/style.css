@@ -53,7 +53,7 @@ h6 {
 nav {
   float: right;
   background:#152F70;
-  height:140px;
+  height:103px;
 }
 
 nav ul {
@@ -128,3 +128,8 @@ table tbody tr a:visited {color: #001145; text-decoration: none;}
 .pagination a {
     color: #001145; line-height: 20px;
 }
+
+/* auth system */
+.main_menu_auth_text {color: white; font-weight: 400; font-size: 14px; text-align: right; padding: 10px 10px}
+.main_menu_auth_text a {color: white; font-weight: 400; font-size: 14px;}
+.main_menu_auth_text a:visited {color: white; font-weight: 400; font-size: 14px;}

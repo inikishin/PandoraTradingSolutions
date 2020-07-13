@@ -1,0 +1,25 @@
+{% extends "pandoratradingsolution/base.html" %}
+
+{% block title %}Регистрация нового пользователя{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Регистрация нового пользователя</h2>
+        <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+          {{ field.label_tag }}<br>
+          <h6>{{ field }}
+              {% if field.help_text %}
+                {{ field.help_text }}</h6>
+              {% endif %}
+          {% for error in field.errors %}
+                <h6><b>{{ error }}</b></h6>
+          {% endfor %}
+        </div>
+        {% endfor %}
+        <button class="button" type="submit">Создать пользователя</button>
+    </form>
+</div>
+{% endblock %}
