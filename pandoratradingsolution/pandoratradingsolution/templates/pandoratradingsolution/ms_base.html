@@ -349,11 +349,11 @@
             <a class="collapsed" role="button" data-toggle="collapse" href="#sc1" aria-expanded="false" aria-controls="sc1">
               <i class="zmdi zmdi-home"></i> Карта сайта </a>
             <ul id="sc1" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch1" data-parent="#slidebar-menu">
-              <li><a href="index.html">Главная</a></li>
-              <li><a href="home-generic-2.html">Аналитика</a></li>
-              <li><a href="home-landing.html">Прогнозы</a></li>
-              <li><a href="home-landing3.html">Как пользоваться сайтом</a></li>
-              <li><a href="home-shop.html">Форум</a></li>
+              <li><a href="/">Главная</a></li>
+              <li><a href="{% url 'dailyAnalysis' %}">Аналитика</a></li>
+              <li><a href="{% url 'predictions' %}">Прогнозы</a></li>
+              <li><a href="{% url 'how-to-use' %}">Как пользоваться сайтом</a></li>
+              <li><a href="http://forum.pandoratradingsolutions.ru/index.php">Форум</a></li>
             </ul>
           </li>
           <li class="card" role="tab" id="sch2">

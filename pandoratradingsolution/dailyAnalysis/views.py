@@ -32,7 +32,7 @@ def index(request):
                'post_ticker': filter_post_ticker,
                'page_obj': page_obj}
 
-    return render(request, 'dailyAnalysis/index.html', context)
+    return render(request, 'dailyAnalysis/ms_index.html', context)
 
 
 def detail(request, post_id):

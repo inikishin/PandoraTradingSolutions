@@ -30,7 +30,7 @@ def index(request):
     context = {'page_obj': page_obj}
     #context = {'prediction_list': prediction_list}
 
-    return render(request, 'predictions/index.html', context)
+    return render(request, 'predictions/ms_index.html', context)
 
 # API
 from rest_framework.response import Response
