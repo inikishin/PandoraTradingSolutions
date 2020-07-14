@@ -36,3 +36,6 @@ def signup(request):
 
 def contact(request):
     return render(request, 'pandoratradingsolution/ms_contact.html')
+
+def about(request):
+    return render(request, 'pandoratradingsolution/ms_about.html')

@@ -36,7 +36,8 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='pandoratradingsolution/logged_out.html'), name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('profile/', views.profile_view, name='profile'),
-    path('contact/', views.contact, name='contact')
+    path('contact/', views.contact, name='contact'),
+    path('about/', views.about, name='about')
 ]
 
 if settings.DEBUG:
@@ -53,5 +54,4 @@ urlpatterns += [
     path('how-to-use_divbar/', flatpageview.flatpage, {'url': '/how-to-use_divbar/'}, name='how-to-use_divbar'), # страница о том как пользоваться сайтом
     path('how-to-use_volatility/', flatpageview.flatpage, {'url': '/how-to-use_volatility/'}, name='how-to-use_volatility'), # страница о том как пользоваться сайтом
     path('how-to-use_NR4ID/', flatpageview.flatpage, {'url': '/how-to-use_nr4id/'}, name='how-to-use_NR4ID'), # страница о том как пользоваться сайтом
-    path('about/', flatpageview.flatpage, {'url': '/about/'}, name='about'),
 ]
