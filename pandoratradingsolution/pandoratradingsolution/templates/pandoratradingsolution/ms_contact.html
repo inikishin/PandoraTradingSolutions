@@ -1,0 +1,74 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+{% load blog_tags %}
+
+{% block title %} Контакты {% endblock %}
+
+{% block content %}
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 col-lg-7">
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="ms-hero-bg-primary ms-hero-img-mountain">
+                <h2 class="text-center no-m pt-4 pb-4 color-white index-1">Контакты</h2>
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal">
+                  <fieldset class="container">
+                    <div class="form-group row">
+                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Имя</label>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" id="inputName" placeholder="Имя">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Email</label>
+                      <div class="col-lg-9">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Тема</label>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" id="inputSubject" placeholder="Тема">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="textArea" class="col-lg-2 control-label">Сообщение</label>
+                      <div class="col-lg-9">
+                        <textarea class="form-control" rows="3" id="textArea" placeholder="Ваше сообщение..."></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row justify-content-end">
+                      <div class="col-lg-10">
+                        <button type="submit" class="btn btn-raised btn-primary">Отправить сообщение</button>
+                        <button type="button" class="btn btn-danger">Отмена</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-5">
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-body">
+                <div class="text-center mb-2">
+                  <span class="ms-logo ms-logo-sm mr-1">P</span>
+                  <h3 class="no-m ms-site-title"><span>Pandora</span>TradingSolutions</h3>
+                </div>
+                <address class="no-mb">
+                  <p><i class="color-warning-light zmdi zmdi-map mr-1"></i> Moscow, Russian Federation</p>
+                  <p><i class="color-info-light zmdi zmdi-email mr-1"></i> <a href="mailto:info@pandoratradingsolutions.ru">info@pandoratradingsolutions.ru</a></p>
+                </address>
+              </div>
+            </div>
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-header">
+                <h3 class="card-title"><i class="zmdi zmdi-map"></i>Карта</h3>
+              </div>
+              <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0cb31d7c6415c168dfdcb5c2b934dfd69d20f68b8fd27c0157a39c5f2b45fb51&amp;source=constructor" width="340" height="355" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+      </div> <!-- container -->
+{% endblock %}

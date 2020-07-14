@@ -33,3 +33,6 @@ def signup(request):
     else:
         form = SignUpForm()
         return render(request, 'pandoratradingsolution/signup.html', {'form': form})
+
+def contact(request):
+    return render(request, 'pandoratradingsolution/ms_contact.html')
