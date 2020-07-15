@@ -1,0 +1,358 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" >
+           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+           m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+           ym(65002513, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true
+           });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/65002513" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+        <meta name="yandex-verification" content="fd8ca6854d52ddf1" />
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="theme-color" content="#333">
+        <title>Pandora Trading Solutions - Главная</title>
+        <meta name="description" content="Material Style Theme">
+        <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
+        <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/plugins.min.css" %}">
+        <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/style.indigo-800.min.css" %}">
+        <!--[if lt IE 9]>
+            <script src="{% static "pandoratradingsolution/assets/js/html5shiv.min.js" %}"></script>
+            <script src="{% static "pandoratradingsolution/assets/js/respond.min.js" %}"></script>
+        <![endif]-->
+    </head>
+    <body>
+    <div id="ms-preload" class="ms-preload">
+      <div id="status">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ms-site-container ms-nav-fixed">
+      <nav class="navbar navbar-expand-md navbar-fixed ms-lead-navbar navbar-mode navbar-mode mb-0" id="navbar-lead">
+        <div class="container container-full">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+              <!-- <img src="assets/img/demo/logo-navbar.png" alt=""> -->
+              <span class="ms-logo ms-logo-white ms-logo-sm">P</span>
+              <span class="ms-title"><strong>Pandora</strong> Trading Solutions</span>
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item"><a data-scroll class="nav-link active" href="/">Главная</a></li>
+              <li class="nav-item"><a data-scroll class="nav-link" href="{% url 'dailyAnalysis' %}">Аналитика</a></li>
+              <li class="nav-item"><a data-scroll class="nav-link" href="{% url 'predictions' %}">Прогнозы</a></li>
+              <li class="nav-item"><a data-scroll class="nav-link" href="{% url 'how-to-use' %}">Инструкция</a></li>
+              <li class="nav-item"><a data-scroll class="nav-link" href="{% url 'about' %}">О нас</a></li>
+              <li class="nav-item"><a data-scroll class="nav-link" href="https://forum.pandoratradingsolutions.ru/index.php">Форум</a></li>
+
+            </ul>
+          </div> <!-- navbar-collapse collapse -->
+          <a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a>
+        </div> <!-- container -->
+      </nav>
+      <div class="intro-full ms-hero-img-city2 ms-hero-bg-primary color-white" id="home">
+        <div class="intro-full-content index-1">
+          <div class="container">
+            <div class="text-center mb-4">
+              <span class="ms-logo ms-logo-lg ms-logo-white center-block mb-2 mt-2 animated zoomInDown animation-delay-5">P</span>
+              <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5"><span>Pandora</span> Trading Solutions</h1>
+              <p class="lead lead-lg color-white text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">Откройте для себя чувство уверенности <span class="color-warning">успешного инвестора</span>. Разделите наши принципы, миссию, опыт и знания.</p>
+            </div>
+            <div class="text-center mb-2">
+              <a id="go-intro-full-next" href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-white animated zoomInUp animation-delay-12"><i class="zmdi zmdi-long-arrow-down"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-back-top">
+        <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
+      </div>
+      <div class="bg-light index-1 intro-full-next pt-6">
+        <div class="container" id="intro-next">
+          <h2 class="text-center color-primary mb-2 wow fadeInDown animation-delay-4">Наши возможности</h2>
+          <p class="lead text-center aco wow fadeInDown animation-delay-5 mw-800 center-block mb-4"> Lorem ipsum dolor sit amet, <span class="color-primary">consectetur adipisicing</span> elit. Dolor alias provident excepturi eligendi, nam numquam iusto eum illum, ea quisquam.</p>
+          <div class="row">
+            <div class="ms-feature col-xl-3 col-lg-3 col-md-6 col-sm-6 card wow fadeInUp animation-delay-4">
+              <div class="text-center card-body">
+                <span class="ms-icon ms-icon-circle ms-icon-xxlg color-info"><i class="zmdi zmdi-equalizer"></i></span>
+                <h4 class="color-info">Аналитика</h4>
+                <p class="">Лучшая аналитика</p>
+                <a href="{% url 'dailyAnalysis' %}" class="btn btn-info btn-raised">Перейти</a>
+              </div>
+            </div>
+            <div class="ms-feature col-xl-3 col-lg-3 col-md-6 col-sm-6 card wow fadeInUp animation-delay-8">
+              <div class="text-center card-body">
+                <span class="ms-icon ms-icon-circle ms-icon-xxlg color-warning"><i class="zmdi zmdi-time-restore"></i></span>
+                <h4 class="color-warning">Прогнозы</h4>
+                <p class="">Качественные прогнозы</p>
+                <a href="{% url 'predictions' %}" class="btn btn-warning btn-raised">Перейти</a>
+              </div>
+            </div>
+            <div class="ms-feature col-xl-3 col-lg-3 col-md-6 col-sm-6 card wow fadeInUp animation-delay-10">
+              <div class="text-center card-body">
+                <span class="ms-icon ms-icon-circle ms-icon-xxlg color-success"><i class="zmdi zmdi-book"></i></span>
+                <h4 class="color-success">База знаний</h4>
+                <p class="">Информация для успешного трейдинга</p>
+                <a href="{% url 'how-to-use' %}" class="btn btn-success btn-raised">Перейти</a>
+              </div>
+            </div>
+            <div class="ms-feature col-xl-3 col-lg-3 col-md-6 col-sm-6 card wow fadeInUp animation-delay-6">
+              <div class="text-center card-body">
+                <span class="ms-icon ms-icon-circle ms-icon-xxlg  color-danger"><i class="zmdi zmdi-comments"></i></span>
+                <h4 class="color-danger">Форум</h4>
+                <p class="">Общение связанное трейдингом и с работой сайта.</p>
+                <a href="https://forum.pandoratradingsolutions.ru/index.php" class="btn btn-danger btn-raised">Перейти</a>
+              </div>
+            </div>
+          </div>
+        </div><!-- container -->
+        <section id="services" class="mt-6">
+          <div class="wrap ms-hero-img-meeting ms-hero-bg-info color-white ms-bg-fixed">
+            <div class="container">
+              <div class="text-center mb-4">
+                <h1 class="wow zoomInDown">Услуги</h1>
+                <h3 class="wow zoomInDown">Познакомьтесь с возможностями сайта <span class="text-normal">Pandora Trading Solutions</span></h3>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <h3 class="wow fadeInUp animation-delay-2">Описание</h3>
+                  <p class="wow fadeInUp animation-delay-3">Мы предоставляем качественную <strong>аналитику</strong> и <strong>прогнозы</strong> торговых инструментов на многих международных финансовых рынках.</p>
+                  <p class="wow fadeInUp animation-delay-4">Наш опыт использования передовых технологий в области <strong>машинного обучения</strong> и <strong>искусственного интеллекта</strong> позволяет обеспечивать современного <strong>успешного инвестора</strong> необходимой информацией для работы на наиболее крупных мировых финансовых рынках.</p>
+                </div>
+                <div class="col-lg-6">
+                  <div class="ms-collapse" id="accordion2" role="tablist" aria-multiselectable="true">
+                    <div class="mb-0 card card-info wow fadeInUp animation-delay-2">
+                      <div class="card-header" role="tab" id="headingOne2">
+                        <h4 class="card-title">
+                          <a class="withripple" role="button" data-toggle="collapse" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                            <i class="fa fa-lightbulb-o"></i> Технологичность </a>
+                        </h4>
+                      </div>
+                      <div id="collapseOne2" class="card-collapse collapse show" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordion2">
+                        <div class="card-body color-dark">
+                          <p>Мы используем только передовые технологии в области машинного обучения и искусственного интеллекта.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-0 card card-info wow fadeInUp animation-delay-5">
+                      <div class="card-header" role="tab" id="headingTwo2">
+                        <h4 class="card-title">
+                          <a class="collapsed withripple" role="button" data-toggle="collapse" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                            <i class="fa fa-desktop"></i> Доступность </a>
+                        </h4>
+                      </div>
+                      <div id="collapseTwo2" class="card-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordion2">
+                        <div class="card-body color-dark">
+                          <p>Мы хотим, чтобы наш продукт был доступен как можно более широкому кругу людей</p>
+                          <p>Мы всегда готовы к диалогу и готовы демонстрировать принципы работы искусственного интеллекта и машнного обучения в трейдинге</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-0 card card-info wow fadeInUp animation-delay-7">
+                      <div class="card-header" role="tab" id="headingThree3">
+                        <h4 class="card-title">
+                          <a class="collapsed withripple" role="button" data-toggle="collapse" href="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                            <i class="fa fa-user"></i> Точность и качество </a>
+                        </h4>
+                      </div>
+                      <div id="collapseThree2" class="card-collapse collapse" role="tabpanel" aria-labelledby="headingThree2" data-parent="#accordion2">
+                        <div class="card-body color-dark">
+                          <p>Мы стремимся прикладывать максимум усилий для того, чтобы предоставлять качественную аналитику и точные прогнозы.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-6 color-dark">
+                <h2 class="color-white text-center mb-4 wow fadeInUp animation-delay-2">Проект в цифрах</h2>
+                <div class="row">
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-royal-inverse card-body overflow-hidden text-center wow zoomInUp animation-delay-2">
+                      <h2 class="counter">450</h2>
+                      <i class="fa fa-4x fa-coffee"></i>
+                      <p class="mt-2 no-mb lead small-caps">чашек кофе</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-success-inverse card-body overflow-hidden text-center wow zoomInUp animation-delay-5">
+                      <h2 class="counter">15</h2>
+                      <i class="fa fa-4x fa-briefcase"></i>
+                      <p class="mt-2 no-mb lead small-caps">торговых инструментов</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-danger-inverse card-body overflow-hidden text-center wow zoomInUp animation-delay-4">
+                      <h2 class="counter">600</h2>
+                      <i class="fa fa-4x fa-comments-o"></i>
+                      <p class="mt-2 no-mb lead small-caps">аналитических постов</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-warning-inverse card-body overflow-hidden text-center wow zoomInUp animation-delay-3">
+                      <h2 class="counter">50</h2>
+                      <i class="fa fa-4x fa-group"></i>
+                      <p class="mt-2 no-mb lead small-caps">пользователей</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center color-white mw-800 center-block mt-4">
+                  <p class="lead lead-lg wow fadeInUp animation-delay-2">Присоединяйся к нашему проекту</p>
+                  <a href="javascript:void(0)" class="btn btn-raised btn-xlg btn-white color-info wow flipInX animation-delay-5"><i class="zmdi zmdi-account"></i> Регистрация</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="about">
+          <div class="container pt-6">
+            <h2 class="right-line">О нас</h2>
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 class="color-primary wow fadeInUp animation-delay-2">Миссия</h3>
+                <p class="wow fadeInUp animation-delay-2">Наша миссия - это помощь в достижении инвестиционных и финансовых целей наших пользователей за счет предоставление высококачественной аналитической информации и прогнозов, а также способствование стабильной прибыльной торговле на мировых финансовых рынках с помощью автоматизированных алгоритмов на основе искусственного интеллекта и машинного обучения.</p>
+                <p class="wow fadeInUp animation-delay-2">Помощь пользователям в получении дохода от трейдинга на финансовых рынках путем повышения финансовой грамотности, предоставления доступа к необходимой аналитической информации и прогнозам.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="contact" class="mt-6">
+          <div class="wrap ms-hero-bg-warning ms-hero-img-team ms-bg-fixed">
+            <div class="container">
+              <h1 class="text-center color-white mb-4 wow fadeInUp animation-delay-2">Оставьте нам сообщение</h1>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card card-primary animated zoomInUp animation-delay-5">
+                    <div class="card-body">
+                      <form class="form-horizontal">
+                        <fieldset class="container">
+                          <div class="form-group row">
+                            <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-9">
+                              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Subject</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="textArea" class="col-lg-2 control-label">Message</label>
+                            <div class="col-lg-9">
+                              <textarea class="form-control" rows="3" id="textArea" placeholder="Yout message..."></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group row justify-content-end">
+                            <div class="col-lg-10">
+                              <button type="submit" class="btn btn-raised btn-primary">Submit</button>
+                              <button type="button" class="btn btn-danger">Cancel</button>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- container -->
+          </div>
+        </section>
+        <footer class="ms-footer">
+          <div class="container">
+            <p>Copyright &copy; pandoratradingsolutions.ru 2020</p>
+          </div>
+        </footer>
+        <div class="btn-back-top">
+          <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
+        </div>
+      </div>
+    </div> <!-- ms-site-container -->
+
+    <div class="ms-slidebar sb-slidebar sb-left sb-style-overlay" id="ms-slidebar">
+      <div class="sb-slidebar-container">
+        <header class="ms-slidebar-header">
+          <div class="ms-slidebar-login">
+            <a href="javascript:void(0)" class="withripple"><i class="zmdi zmdi-account"></i> Login</a>
+            <a href="javascript:void(0)" class="withripple"><i class="zmdi zmdi-account-add"></i> Register</a>
+          </div>
+          <div class="ms-slidebar-title">
+
+            <div class="ms-slidebar-t">
+              <h3><span>Pandora</span> Trading Solutions</h3>
+            </div>
+          </div>
+        </header>
+        <ul class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
+          <li class="card" role="tab" id="sch1">
+            <a class="collapsed" role="button" data-toggle="collapse" href="#sc1" aria-expanded="false" aria-controls="sc1">
+              <i class="zmdi zmdi-home"></i> Карта сайта </a>
+            <ul id="sc1" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch1" data-parent="#slidebar-menu">
+              <li><a href="/">Главная</a></li>
+              <li><a href="{% url 'dailyAnalysis' %}">Аналитика</a></li>
+              <li><a href="{% url 'predictions' %}">Прогнозы</a></li>
+              <li><a href="{% url 'how-to-use' %}">Как пользоваться сайтом</a></li>
+              <li><a href="http://forum.pandoratradingsolutions.ru/index.php">Форум</a></li>
+            </ul>
+          </li>
+          <li class="card" role="tab" id="sch2">
+            <a class="collapsed" role="button" data-toggle="collapse" href="#sc2" aria-expanded="false" aria-controls="sc2">
+              <i class="zmdi zmdi-desktop-mac"></i> Стратегии </a>
+            <ul id="sc2" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch2" data-parent="#slidebar-menu">
+              <li><a href="{% url 'how-to-use_elder' %}">Стратегия экраны Элдера</a></li>
+              <li><a href="{% url 'how-to-use_channel' %}">Канальная стратегия</a></li>
+              <li><a href="{% url 'how-to-use_divbar' %}">Стратегия дивергентный бар</a></li>
+              <li><a href="{% url 'how-to-use_volatility' %}">Стратегия прорыв волатильности</a></li>
+              <li><a href="{% url 'how-to-use_NR4ID' %}">Стратегия NR4/ID</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="ms-slidebar-social ms-slidebar-block">
+          <h4 class="ms-slidebar-block-title">Social Links</h4>
+          <div class="ms-slidebar-social">
+            <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-facebook"><i class="zmdi zmdi-facebook"></i> <!-- <span class="badge-pill badge-pill-pink">12</span> -->
+              <div class="ripple-container"></div>
+            </a>
+            <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-google"><i class="zmdi zmdi-google"></i>
+              <div class="ripple-container"></div>
+            </a>
+            <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-instagram"><i class="zmdi zmdi-instagram"></i>
+              <div class="ripple-container"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static "pandoratradingsolution/assets/js/plugins.min.js" %}"></script>
+    <script src="{% static "pandoratradingsolution/assets/js/app.min.js" %}"></script>
+    <script src="{% static "pandoratradingsolution/assets/js/lead-full.js" %}"></script>
+  </body>
+</html>

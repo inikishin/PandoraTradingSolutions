@@ -9,7 +9,7 @@ def mainpage(request):
 
     context = {'post_list': post_list}
 
-    return render(request, 'pandoratradingsolution/index.html', context)
+    return render(request, 'pandoratradingsolution/ms_index.html', context)
 
 def handler404(request, exception):
     return render(request, 'pandoratradingsolution/error404.html', status=404)

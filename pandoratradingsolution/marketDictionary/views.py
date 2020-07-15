@@ -14,7 +14,7 @@ def index(request):
     page_obj = paginator.get_page(page_number)
 
     context = {'page_obj': page_obj}
-    return render(request, 'marketDictionary/index.html', context)
+    return render(request, 'marketDictionary/ms_index.html', context)
 
 
 def detail(request, ticker_id):

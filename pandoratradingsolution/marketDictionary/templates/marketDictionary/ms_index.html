@@ -1,0 +1,68 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+
+{% load blog_tags %}
+{% load static %}
+
+{% block title %} Список доступных тикеров {% endblock %}
+
+{% block content %}
+
+      <header class="ms-hero-page ms-hero-bg-info ms-hero-img-airplane mb-4">
+        <div class="container">
+          <div class="text-center">
+            <h1 class="color-warning mb-4 animated fadeInDown animation-delay-4">Список доступных тикеров</h1>
+            <p class="lead lead-xl mw-800 center-block color-medium mb-2 animated fadeInDown animation-delay-4"> Активные торговые инструменты </p>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="row pricing-table-container">
+
+            {% if page_obj %}
+
+            <div class="card card-primary table-responsive style="width:100%">
+                    <div class="card-header table-responsive">
+                        <h3 class="card-title">Тикеры</h3>
+                    </div>
+
+                    <table class="table table-striped table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <td>Рынок</td>
+                                <td>Полное наименование</td>
+                                <td>Тикер</td>
+                                <td>Сайт</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ticker in page_obj %}
+                                <tr>
+                                    <td>{{ ticker.market }}</td>
+                                    <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.full_name }}</a></td>
+                                    <td>{{ ticker.short_name }}</td>
+                                    <td>{{ ticker.site }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav aria-label="...">
+                    <ul class="pager pager-flat d-flex justify-content-between">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">«</span> предыдущая</a></li>
+                        {% endif %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">следующая <span aria-hidden="true">»</span></a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% else %}
+                <p>Нет тикеров, соответвующих условиям отбора</p>
+            {% endif %}
+
+        </div> <!-- row -->
+      </div> <!-- container -->
+
+
+{% endblock %}
