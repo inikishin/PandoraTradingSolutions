@@ -30,3 +30,23 @@ def buysell_signal(value, arg):
         return 'Sell (' + str(round(arg*100, 2)) + '%)'
     else:
         return '-'
+
+@register.filter(name='price_color')
+def price_color_format(price_change):
+    if price_change > 0:
+        col = 'color-success'
+    elif price_change < 0:
+        col = 'color-danger'
+    else:
+        col = 'color-primary'
+    return col
+
+@register.filter(name='icon_type')
+def icon_type_format(price_change):
+    if price_change > 0:
+        col = 'fa fa-arrow-up'
+    elif price_change< 0:
+        col = 'fa fa-arrow-down'
+    else:
+        col = 'fa fa-arrow-right'
+    return col

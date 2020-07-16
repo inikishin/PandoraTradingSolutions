@@ -74,11 +74,35 @@
                         <tr>
                             <td><a href="{% url 'detail' post.id %}">{{ post.ticker.full_name }} ({{ post.ticker }})</a></td>
                             <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
-                            <td><a href="{% url 'detail' post.id %}">{{ post.sig_elder|buysell_signal:post.sig_elder_proba }}</a></td>
-                            <td><a href="{% url 'detail' post.id %}">{{ post.sig_channel|buysell_signal:post.sig_channel_proba }}</a></td>
-                            <td><a href="{% url 'detail' post.id %}">{{ post.sig_DivBar|buysell_signal:post.sig_DivBar_proba }}</a></td>
-                            <td><a href="{% url 'detail' post.id %}">{{ post.sig_NR4ID|signal:post.sig_NR4ID_proba }}</a></td>
-                            <td><a href="{% url 'detail' post.id %}">{{ post.sig_breakVolatility|signal:post.sig_breakVolatility_proba }}</a></td>
+                            <td>
+                                {% if post.sig_elder != 0 %}
+                                <div class="row col-xs-4 {{ post.sig_elder|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_elder|price_color }}"><i class="{{ post.sig_elder|icon_type }}"></i></span>Check</div><br>
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if post.sig_channel != 0 %}
+                                <div class="row col-xs-4 {{ post.sig_channel|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_channel|price_color }}"><i class="{{ post.sig_channel|icon_type }}"></i></span>Check</div><br>
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if post.sig_DivBar != 0 %}
+                                <div class="row col-xs-4 {{ post.sig_DivBar|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_DivBar|price_color }}"><i class="{{ post.sig_DivBar|icon_type }}"></i></span>Check</div><br>
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if post.sig_NR4ID != 0 %}
+                                <div class="row col-xs-4 color-warning"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-warning"><i class="fa fa-arrow-right"></i></span>Check</div><br>
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_NR4ID_proba}}</div></td>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if post.sig_breakVolatility != 0 %}
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_breakVolatility_proba}}</div></td>
+                                {% endif %}
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

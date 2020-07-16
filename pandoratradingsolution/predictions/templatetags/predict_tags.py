@@ -25,7 +25,27 @@ def predictiondate_format(text, percCh):
 @register.filter(name='predictionproba')
 def predictionproba_format(text):
     if text != 0:
-        predictiondate = 'Prob.: {0}%'.format(round(text*100, 1))
+        predictiondate = '{0}%'.format(round(text*100, 1))
     else:
         predictiondate = ''
     return predictiondate
+
+@register.filter(name='price_color')
+def price_color_format(price_change):
+    if price_change > 0:
+        col = 'color-success'
+    elif price_change < 0:
+        col = 'color-danger'
+    else:
+        col = 'color-primary'
+    return col
+
+@register.filter(name='icon_type')
+def icon_type_format(price_change):
+    if price_change > 0:
+        col = 'fa fa-arrow-up'
+    elif price_change< 0:
+        col = 'fa fa-arrow-down'
+    else:
+        col = 'fa fa-arrow-right'
+    return col

@@ -41,27 +41,27 @@
                         <tbody>
                             {% for prediction in page_obj %}
                             <tr>
-                                <td>{{ prediction.ticker.full_name }} ({{ prediction.ticker }})</td>
+                                <td class="color-primary">{{ prediction.ticker.full_name }} ({{ prediction.ticker }})</td>
                                 {% if user.is_authenticated %}
-                                    <td>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}
-                                        {{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}
-                                        {{ prediction.1w.probability|predictionproba}}</td>
-                                    <td>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}
-                                        {{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}
-                                        {{ prediction.2w.probability|predictionproba}}</td>
+                                    <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}</div><br>
+                                        <div class="row col-xs-4 {{ prediction.1w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1w.prctChange|price_color }}"><i class="{{ prediction.1w.prctChange|icon_type }}"></i></span>{{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}</div><br>
+                                        <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1w.probability|predictionproba}}</div></td>
+                                    <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}</div><br>
+                                        <div class="row col-xs-4 {{ prediction.2w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.2w.prctChange|price_color }}"><i class="{{ prediction.2w.prctChange|icon_type }}"></i></span>{{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}</div><br>
+                                        <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.2w.probability|predictionproba}}</div></td>
                                 {% endif %}
-                                <td>{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d-m-Y" }}
-                                    {{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}
-                                    {{ prediction.1m.probability|predictionproba}}</td>
-                                <td>{{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d-m-Y" }}
-                                    {{ prediction.3m.predictprice|predictionprice:prediction.3m.prctChange }}
-                                    {{ prediction.3m.probability|predictionproba}}</td>
-                                <td>{{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d-m-Y" }}
-                                    {{ prediction.6m.predictprice|predictionprice:prediction.6m.prctChange }}
-                                    {{ prediction.6m.probability|predictionproba}}</td>
-                                <td>{{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d-m-Y" }}
-                                    {{ prediction.1y.predictprice|predictionprice:prediction.1y.prctChange }}
-                                    {{ prediction.1y.probability|predictionproba}}</td>
+                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d-m-Y" }}</div><br>
+                                    <div class="row col-xs-4 {{ prediction.1m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1m.prctChange|price_color }}"><i class="{{ prediction.1m.prctChange|icon_type }}"></i></span>{{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}</div><br>
+                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1m.probability|predictionproba}}</div></td>
+                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d-m-Y" }}</div><br>
+                                    <div class="row col-xs-4 {{ prediction.3m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.3m.prctChange|price_color }}"><i class="{{ prediction.3m.prctChange|icon_type }}"></i></span>{{ prediction.3m.predictprice|predictionprice:prediction.3m.prctChange }}</div><br>
+                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.3m.probability|predictionproba}}</div></td>
+                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d-m-Y" }}</div><br>
+                                    <div class="row col-xs-4 {{ prediction.6m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.6m.prctChange|price_color }}"><i class="{{ prediction.6m.prctChange|icon_type }}"></i></span>{{ prediction.6m.predictprice|predictionprice:prediction.6m.prctChange }}</div><br>
+                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.6m.probability|predictionproba}}</div></td>
+                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d-m-Y" }}</div><br>
+                                    <div class="row col-xs-4 {{ prediction.1y.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1y.prctChange|price_color }}"><i class="{{ prediction.1y.prctChange|icon_type }}"></i></span>{{ prediction.1y.predictprice|predictionprice:prediction.1y.prctChange }}</div><br>
+                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1y.probability|predictionproba}}</div></td>
                             </tr>
                             {% endfor %}
                         </tbody>
