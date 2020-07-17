@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 
 from dailyAnalysis.models import Post
 from .form import SignUpForm
@@ -13,6 +12,9 @@ def mainpage(request):
 
 def handler404(request, exception):
     return render(request, 'pandoratradingsolution/error404.html', status=404)
+
+def handler500(request):
+    return render(request, 'pandoratradingsolution/error500.html', status=500)
 
 def profile_view(request):
     return render(request, 'pandoratradingsolution/profile.html')

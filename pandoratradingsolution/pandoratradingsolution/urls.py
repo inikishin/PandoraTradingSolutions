@@ -24,6 +24,7 @@ from django.conf import settings
 from . import views
 
 handler404 = 'pandoratradingsolution.views.handler404'
+handler500 = 'pandoratradingsolution.views.handler500'
 
 urlpatterns = [
     path('', views.mainpage, name='mainpage'),
