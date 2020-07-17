@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#333">
+    <title>Login - Pandora Trading Solutions</title>
+    <meta name="description" content="Login">
+    <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
+    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/plugins.min.css" %}">
+    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/style.indigo-800.min.css" %}">
+    <!--[if lt IE 9]>
+        <script src="{% static "pandoratradingsolution/assets/js/html5shiv.min.js"></script>
+        <script src="{% static "pandoratradingsolution/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="ms-preload" class="ms-preload">
+      <div id="status">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-full-page bg-primary back-fixed">
+      <div class="mw-500 absolute-center">
+        <div class="card color-dark animated zoomInDown animation-delay-5">
+          <div class="card-body">
+            <h1 class="color-primary">Login</h1>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="form-group label-floating">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                        <label class="control-label" for="{{ form.username.id_for_label }}">Username</label>
+                        <input type="text" id="{{ form.username.id_for_label }}" class="form-control" name="username">
+                      </div>
+                    </div>
+                    <div class="form-group label-floating">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+                        <label class="control-label" for="{{ form.password.id_for_label }}">Password</label>
+                        <input type="password" id="{{ form.password.id_for_label }}" class="form-control" name="password">
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="col-md-6">
+                          <button class="btn btn-raised btn-primary btn-block" type="submit">Login <i class="zmdi zmdi-long-arrow-right no-mr ml-1"></i></button>
+                          <input type="hidden" name="next" value="/">
+                      </div>
+                      <div class="col-md-6">
+                          <!-- <button class="btn btn-primary btn-block"><i class="zmdi zmdi-account-add mr-1"></i> Sign Up</button> -->
+                          <a href="{% url 'signup' %}" class="btn btn-primary btn-block"> <i class="zmdi zmdi-account-add mr-1"></i> Sign Up</a>
+                      </div>
+                    </div>
+                  </fieldset>
+            </form>
+            <div class="text-center">
+              <h3 class="color-dark">Login with</h3>
+              <a href="javascript:void(0)" class="wave-effect-light btn btn-raised btn-facebook"><i class="zmdi zmdi-facebook"></i> Facebook</a>
+              <a href="javascript:void(0)" class="wave-effect-light btn btn-raised btn-twitter"><i class="zmdi zmdi-twitter"></i> Twitter</a>
+              <a href="javascript:void(0)" class="wave-effect-light btn btn-raised btn-google"><i class="zmdi zmdi-google"></i> Google</a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center animated fadeInUp animation-delay-7">
+          <a href="index.html" class="btn btn-white"><i class="zmdi zmdi-home"></i> Go Home</a>
+          <a href="javascript:void(0)" class="btn btn-white"><i class="zmdi zmdi-key"></i> Recovery Pass</a>
+        </div>
+      </div>
+    </div>
+    <script src="{% static "pandoratradingsolution/assets/js/plugins.min.js" %}"></script>
+    <script src="{% static "pandoratradingsolution/assets/js/app.min.js" %}"></script>
+  </body>
+</html>

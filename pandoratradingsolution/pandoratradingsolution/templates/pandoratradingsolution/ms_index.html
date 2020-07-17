@@ -300,8 +300,13 @@
       <div class="sb-slidebar-container">
         <header class="ms-slidebar-header">
           <div class="ms-slidebar-login">
-            <a href="javascript:void(0)" class="withripple"><i class="zmdi zmdi-account"></i> Login</a>
-            <a href="javascript:void(0)" class="withripple"><i class="zmdi zmdi-account-add"></i> Register</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="withripple"><i class="zmdi zmdi-account"></i> {{ user.username }}</a>
+            <a href="{% url 'logout' %}" class="withripple"><i class="zmdi zmdi-run"></i> Выход</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="withripple"><i class="zmdi zmdi-account"></i> Login</a>
+            <a href="{% url 'signup' %}" class="withripple"><i class="zmdi zmdi-account-add"></i> Register</a>
+            {% endif %}
           </div>
           <div class="ms-slidebar-title">
 
