@@ -17,7 +17,7 @@ def handler500(request):
     return render(request, 'pandoratradingsolution/error500.html', status=500)
 
 def profile_view(request):
-    return render(request, 'pandoratradingsolution/profile.html')
+    return render(request, 'pandoratradingsolution/ms_profile.html')
 
 def signup(request):
     if request.method == 'POST':

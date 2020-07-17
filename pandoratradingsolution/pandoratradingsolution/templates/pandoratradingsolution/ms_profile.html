@@ -1,0 +1,105 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+{% load blog_tags %}
+{% load static%}
+
+{% if user.is_authenticated %}
+    {% block title %} Профиль пользователя: {{ user.username }} {% endblock %}
+{% else %}
+    <div>Пожалуйста войдите на сайт.</div>
+{% endif %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="row">
+          <div class="col-lg-12 col-md-6 order-md-1">
+            <div class="card animated fadeInUp animation-delay-7">
+              <div class="ms-hero-bg-primary ms-hero-img-coffee">
+                <h3 class="color-white index-1 text-center no-m pt-4">{{ user.first_name }} {{ user.last_name }}</h3>
+                <div class="color-medium index-1 text-center np-m">@{{ user.username }}</div>
+                <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-4 text-center">
+                <h3 class="color-primary">Bio</h3>
+                <p>Short description</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook"><i class="zmdi zmdi-facebook"></i></a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><i class="zmdi zmdi-twitter"></i></a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram"><i class="zmdi zmdi-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 order-md-3 order-lg-2">
+            <a href="javascript:void(0)" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Edit Profile</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-delete"></i> Delete User</a>
+          </div>
+          <div class="col-lg-12 col-md-6 order-md-2 order-lg-3">
+            <div class="card animated fadeInUp animation-delay-12">
+              <img src="{% static "pandoratradingsolution/vertical_tagline_on_corporate.png" %}" alt="vertical_logo">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card card-primary animated fadeInUp animation-delay-12">
+          <div class="card-header">
+            <h3 class="card-title"><i class="zmdi zmdi-account-circle"></i> Общая информация</h3>
+          </div>
+          <table class="table table-no-border table-striped">
+            <tr>
+              <th><i class="zmdi zmdi-account mr-1 color-success"></i> Имя пользователя</th>
+              <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+              <th><i class="zmdi zmdi-face mr-1 color-warning"></i> Имя</th>
+              <td>{{ user.first_name }}</td>
+            </tr>
+              <tr>
+              <th><i class="zmdi zmdi-face mr-1 color-warning"></i> Фамилия</th>
+              <td>{{ user.last_name }}</td>
+            </tr>
+            <tr>
+              <th><i class="zmdi zmdi-email mr-1 color-danger"></i> Email</th>
+              <td><a href="#">{{ user.email }}</a></td>
+            </tr>
+            <tr>
+              <th><i class="zmdi zmdi-calendar mr-1 color-royal"></i> Зарегистрирован на сайте</th>
+              <td>Non Avilable</td>
+            </tr>
+          </table>
+        </div>
+        <h2 class="color-primary text-center mt-4 mb-2">Последняя активность</h2>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="ms-timeline">
+              <li class="ms-timeline-item wow materialUp">
+                <div class="ms-timeline-date">
+                  <time class="timeline-time" datetime="">2020 <span>Июль</span></time>
+                  <i class="ms-timeline-point bg-royal"></i>
+                  <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+                </div>
+                <div class="card card-royal">
+                  <div class="card-header">
+                    <h3 class="card-title">Действие</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <img src="assets/img/demo/office1.jpg" alt="" class="img-fluid">
+                      </div>
+                      <div class="col-sm-8">
+                        <p>Пользователь был зарегистрирован на сайте.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> <!-- container -->
+
+{% endblock %}
