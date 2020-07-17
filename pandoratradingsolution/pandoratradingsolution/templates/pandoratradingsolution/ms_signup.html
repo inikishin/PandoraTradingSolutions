@@ -1,0 +1,108 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+
+{% block title %} Регистрация нового пользователя {% endblock %}
+
+{% block content %}
+
+<div class="ms-hero-page-override ms-hero-img-airplane ms-bg-fixed ms-hero-bg-dark-light">
+  <div class="container">
+    <div class="text-center">
+      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Регистрация нового пользователя</h1>
+      <p class="lead lead-lg color-light text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">Регистрируйтесь прямо сейчас и получайте доступ к <span class="color-info">лучшей аналитике и прогнозам</span> международных финансовых рынков</p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card card-primary card-hero animated fadeInUp animation-delay-7">
+    <div class="card-body">
+      <form class="form-horizontal" method="post">
+        {% csrf_token %}
+        <fieldset>
+          <div class="row form-group">
+            <label for="{{ form.username.id_for_label }}" class="col-md-2 control-label">Username</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="username" placeholder="Username" title="{{ form.username.help_text }}">
+              {% for error in form.username.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ form.email.id_for_label }}" class="col-md-2 control-label">Email</label>
+            <div class="col-md-9">
+              <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="email" placeholder="Email" title="{{ form.email.help_text }}">
+              {% for error in form.email.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ form.password1.id_for_label }}" class="col-md-2 control-label">Password</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="password1" placeholder="Password" title="{{ form.password1.help_text }}">
+              {% for error in form.password1.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ form.password2.id_for_label }}" class="col-md-2 control-label">Again</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="password2" placeholder="Password" title="{{ form.password2.help_text }}">
+              {% for error in form.password2.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ form.first_name.id_for_label }}" class="col-md-2 control-label">First Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="first_name" placeholder="First Name" title="{{ form.first_name.help_text }}">
+              {% for error in form.first_name.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ form.last_name.id_for_label }}" class="col-md-2 control-label">Last Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="last_name" placeholder="Last Name" title="{{ form.last_name.help_text }}">
+              {% for error in form.last_name.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="inputGen" class="col-md-2 control-label">Gender</label>
+            <div class="col-md-9">
+              <select id="inputGen" class="form-control selectpicker">
+                <option>Male</option>
+                <option>Female </option>
+              </select>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="inputDate" class="col-md-2 control-label">Bithday</label>
+            <div class="col-md-9">
+              <input id="datePicker" type="text" class="form-control" placeholder="mm/dd/yy">
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="offset-lg-2 col-lg-6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> <span class="ml-2"> Я согласен с условиями использования сайта.</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <button class="btn btn-raised btn-primary btn-block" type="submit">Зарегистрироваться</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div> <!-- container -->
+
+{% endblock %}
