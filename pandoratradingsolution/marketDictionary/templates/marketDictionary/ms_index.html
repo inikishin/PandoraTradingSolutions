@@ -29,7 +29,7 @@
                         <thead>
                             <tr>
                                 <td>Рынок</td>
-                                <td>Полное наименование</td>
+                                <td>Наименование</td>
                                 <td>Тикер</td>
                                 <td>Сайт</td>
                             </tr>
@@ -38,7 +38,7 @@
                             {% for ticker in page_obj %}
                                 <tr>
                                     <td>{{ ticker.market }}</td>
-                                    <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.full_name }}</a></td>
+                                    <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.ticker_name }}</a></td>
                                     <td>{{ ticker.short_name }}</td>
                                     <td>{{ ticker.site }}</td>
                                 </tr>

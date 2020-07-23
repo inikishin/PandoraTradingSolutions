@@ -72,7 +72,7 @@
                     <tbody>
                         {% for post in page_obj %}
                         <tr>
-                            <td><center><a href="{% url 'detail' post.id %}">{{ post.ticker.full_name }} ({{ post.ticker }})</a></center></td>
+                            <td><center><a href="{% url 'detail' post.id %}">{{ post.ticker.ticker_name }} ({{ post.ticker }})</a></center></td>
                             <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
                             <td>
                                 {% if post.sig_elder != 0 %}
