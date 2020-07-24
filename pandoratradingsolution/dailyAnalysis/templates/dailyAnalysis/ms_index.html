@@ -72,35 +72,36 @@
                     <tbody>
                         {% for post in page_obj %}
                         <tr>
-                            <td><center><a href="{% url 'detail' post.id %}">{{ post.ticker.ticker_name }} ({{ post.ticker }})</a></center></td>
+                            <td><a href="{% url 'detail' post.id %}">{{ post.ticker.ticker_name }} ({{ post.ticker }})</a></td>
                             <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
                             <td>
                                 {% if post.sig_elder != 0 %}
-                                <div class="row col-xs-4 {{ post.sig_elder|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_elder|price_color }}"><i class="{{ post.sig_elder|icon_type }}"></i></span>Check</div><br>
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>
+                                <div class="row col-xs-4 {{ post.sig_elder|price_color }}" title="Вероятность сигнала: {{ post.sig_elder_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_elder|price_color }}"><i class="{{ post.sig_elder|icon_type }}"></i></span>{{ post.sig_elder|buysell_signal }}</div><br>
+<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_elder_proba}}</div></td>-->
                                 {% endif %}
                             </td>
                             <td>
                                 {% if post.sig_channel != 0 %}
-                                <div class="row col-xs-4 {{ post.sig_channel|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_channel|price_color }}"><i class="{{ post.sig_channel|icon_type }}"></i></span>Check</div><br>
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>
+                                <div class="row col-xs-4 {{ post.sig_channel|price_color }}" title="Вероятность сигнала: {{ post.sig_channel_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_channel|price_color }}"><i class="{{ post.sig_channel|icon_type }}"></i></span>{{ post.sig_channel|buysell_signal }}</div><br>
+<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_channel_proba}}</div></td>-->
                                 {% endif %}
                             </td>
                             <td>
                                 {% if post.sig_DivBar != 0 %}
-                                <div class="row col-xs-4 {{ post.sig_DivBar|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_DivBar|price_color }}"><i class="{{ post.sig_DivBar|icon_type }}"></i></span>Check</div><br>
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>
+                                <div class="row col-xs-4 {{ post.sig_DivBar|price_color }}" title="Вероятность сигнала: {{ post.sig_DivBar_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_DivBar|price_color }}"><i class="{{ post.sig_DivBar|icon_type }}"></i></span>{{ post.sig_DivBar|buysell_signal }}</div><br>
+<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>-->
                                 {% endif %}
                             </td>
                             <td>
                                 {% if post.sig_NR4ID != 0 %}
-                                <div class="row col-xs-4 color-warning"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-warning"><i class="fa fa-arrow-right"></i></span>Check</div><br>
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_NR4ID_proba}}</div></td>
+                                <div class="row col-xs-4 color-warning" title="Вероятность сигнала: {{ post.sig_NR4ID_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-warning"><i class="fa fa-arrow-right"></i></span>Signal</div><br>
+<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_NR4ID_proba}}</div></td>-->
                                 {% endif %}
                             </td>
                             <td>
                                 {% if post.sig_breakVolatility != 0 %}
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_breakVolatility_proba}}</div></td>
+                                <div class="row col-xs-4 color-warning" title="Вероятность сигнала: {{ post.sig_breakVolatility_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-warning"><i class="fa fa-arrow-right"></i></span>Signal</div><br>
+                                <!-- <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_breakVolatility_proba}}</div></td> -->
                                 {% endif %}
                             </td>
                         </tr>

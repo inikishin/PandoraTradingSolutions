@@ -22,14 +22,18 @@ def signal(value, arg):
     else:
         return '-'
 
+@register.filter(name='perc_format')
+def signal(value):
+    return str(round(value*100, 2)) + '%'
+
 @register.filter(name='buysell_signal')
-def buysell_signal(value, arg):
+def buysell_signal(value):
     if value == 1:
-        return 'Buy (' + str(round(arg*100, 2)) + '%)'
+        return 'Buy'
     elif value == -1:
-        return 'Sell (' + str(round(arg*100, 2)) + '%)'
+        return 'Sell'
     else:
-        return '-'
+        return ''
 
 @register.filter(name='price_color')
 def price_color_format(price_change):

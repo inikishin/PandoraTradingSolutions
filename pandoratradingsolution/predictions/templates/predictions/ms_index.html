@@ -41,7 +41,7 @@
                         <tbody>
                             {% for prediction in page_obj %}
                             <tr>
-                                <td class="color-primary"><center>{{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</center></td>
+                                <td class="color-primary">{{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</td>
                                 {% if user.is_authenticated %}
                                     <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}</div><br>
                                         <div class="row col-xs-4 {{ prediction.1w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1w.prctChange|price_color }}"><i class="{{ prediction.1w.prctChange|icon_type }}"></i></span>{{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}</div><br>
