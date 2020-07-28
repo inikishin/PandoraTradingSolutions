@@ -54,4 +54,4 @@ class PredictionView(APIView):
         serializer = PredictionSerializer(data=prediction)
         if serializer.is_valid(raise_exception=True):
             prediction_saved = serializer.save()
-        return Response({"success": "Prediction id '{}' created successfully".format(prediction_saved.id)})
+        return Response({"success": "Prediction id '{0}' created successfully".format(prediction_saved.id)})

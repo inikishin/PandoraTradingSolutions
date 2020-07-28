@@ -11,7 +11,7 @@ class PredictionHorizon(models.Model):
 class Prediction(models.Model):
     horizon = models.ForeignKey(PredictionHorizon, on_delete=models.CASCADE)
     ticker = models.ForeignKey(md.Ticker, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateField(auto_now_add=True)
     currentprice = models.FloatField(default=0)
     predictprice = models.FloatField(default=0)
     prctChange = models.FloatField(default=0)
