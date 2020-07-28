@@ -4,6 +4,8 @@
 {% load static %}
 
 {% block title %} {{ post.header }} {% endblock %}
+{% block description %}Технический анализ акций {{ post.ticker.ticker_name }}. Торговые сигналы основанные на предсказаниях искусственного интеллекта.{% endblock %}
+{% block keywords %}инвестирование, торговля, акции РФ, {{ post.ticker.ticker_name }}, {{ post.ticker.short_name }}, торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы, искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ{% endblock %}
 
 {% block content %}
 

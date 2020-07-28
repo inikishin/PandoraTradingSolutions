@@ -27,7 +27,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <meta name="theme-color" content="#333">
       <title>{% block title %}{% endblock %}</title>
-      <meta name="description" content="Pandora Trading Solutions - инструмент успешного инвестора. Лучшая аналитика и прогнозы мировых финансовых рынков, основанные на предсказаниях искусственного интеллекта.">
+      <meta name="description" content="{% block description %}{% endblock %}">
+      <meta name="keywords" content="{% block keywords %}{% endblock %}" />
       <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
