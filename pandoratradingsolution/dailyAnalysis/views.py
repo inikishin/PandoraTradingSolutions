@@ -1,10 +1,12 @@
 from datetime import datetime
+from collections import Counter
 
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Post
 import marketDictionary.models as md
+import predictions.models as p
 
 def index(request):
     filter_post_date = request.GET.get('post_date', '')
@@ -37,7 +39,25 @@ def index(request):
 
 def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    return render(request, 'dailyAnalysis/ms_detail.html', {'post': post})
+
+    post_all = Post.objects.all().order_by('-date_analysis')
+    post_count = len(post_all)
+    pred_count = len(p.Prediction.objects.all())
+
+    d_list = []
+    for post in post_all:
+        d_list.append(post.date_analysis.replace(day=1))
+    post_counter = list(Counter(d_list).items())
+
+    ticker_list = md.Ticker.objects.all()
+
+    context = {'post': post,
+               'post_count': post_count,
+               'pred_count': pred_count,
+               'post_counter': post_counter,
+               'ticker_list': ticker_list}
+
+    return render(request, 'dailyAnalysis/ms_detail.html', context)
 
 
 # API

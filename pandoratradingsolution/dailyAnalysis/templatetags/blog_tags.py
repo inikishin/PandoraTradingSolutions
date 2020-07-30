@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
@@ -54,3 +56,7 @@ def icon_type_format(price_change):
     else:
         col = 'fa fa-arrow-right'
     return col
+
+@register.filter(name='date_nav')
+def date_nav(date):
+    return date.strftime('%B, %Y')
