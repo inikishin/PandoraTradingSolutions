@@ -12,30 +12,31 @@
                 <h2 class="text-center no-m pt-4 pb-4 color-white index-1">Контакты</h2>
               </div>
               <div class="card-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" id="contact_form" action="{% url 'contact' %}" method="post">
+                  {% csrf_token %}
                   <fieldset class="container">
                     <div class="form-group row">
-                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Имя</label>
+                      <label for="name" autocomplete="false" class="col-lg-2 control-label">Имя</label>
                       <div class="col-lg-9">
-                        <input type="text" class="form-control" id="inputName" placeholder="Имя">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Имя">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Email</label>
+                      <label for="email" autocomplete="false" class="col-lg-2 control-label">Email</label>
                       <div class="col-lg-9">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Тема</label>
+                      <label for="subject" autocomplete="false" class="col-lg-2 control-label">Тема</label>
                       <div class="col-lg-9">
-                        <input type="text" class="form-control" id="inputSubject" placeholder="Тема">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Тема">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="textArea" class="col-lg-2 control-label">Сообщение</label>
+                      <label for="message" class="col-lg-2 control-label">Сообщение</label>
                       <div class="col-lg-9">
-                        <textarea class="form-control" rows="3" id="textArea" placeholder="Ваше сообщение..."></textarea>
+                        <textarea class="form-control" rows="3" id="message" name="message" placeholder="Ваше сообщение..."></textarea>
                       </div>
                     </div>
                     <div class="form-group row justify-content-end">
