@@ -1,12 +1,11 @@
 from datetime import datetime
-from collections import Counter
 
-from django.shortcuts import render, HttpResponse, get_object_or_404
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 
 from .models import Post
+from pandoratradingsolution import views as pts_views
 import marketDictionary.models as md
-import predictions.models as post_model
 
 def index(request):
     filter_post_date = request.GET.get('post_date', '')
@@ -40,22 +39,8 @@ def index(request):
 def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
 
-    post_all = Post.objects.all().order_by('-date_analysis')
-    post_count = len(post_all)
-    pred_count = len(post_model.Prediction.objects.all())
-
-    d_list = []
-    for p in post_all:
-        d_list.append(p.date_analysis.replace(day=1))
-    post_counter = list(Counter(d_list).items())
-
-    ticker_list = md.Ticker.objects.all()
-
-    context = {'post': post,
-               'post_count': post_count,
-               'pred_count': pred_count,
-               'post_counter': post_counter,
-               'ticker_list': ticker_list}
+    context = {'post': post}
+    context.update(pts_views.get_navbar_stat())
 
     return render(request, 'dailyAnalysis/ms_detail.html', context)
 

@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib.flatpages import views as flatpageview
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
@@ -50,10 +49,10 @@ urlpatterns += staticfiles_urlpatterns()
 
 # flatpages
 urlpatterns += [
-    path('how-to-use/', flatpageview.flatpage, {'url': '/how-to-use/'}, name='how-to-use'), # страница о том как пользоваться сайтом
-    path('how-to-use_elder/', flatpageview.flatpage, {'url': '/how-to-use_elder/'}, name='how-to-use_elder'), # страница о том как пользоваться сайтом
-    path('how-to-use_channel/', flatpageview.flatpage, {'url': '/how-to-use_channel/'}, name='how-to-use_channel'), # страница о том как пользоваться сайтом
-    path('how-to-use_divbar/', flatpageview.flatpage, {'url': '/how-to-use_divbar/'}, name='how-to-use_divbar'), # страница о том как пользоваться сайтом
-    path('how-to-use_volatility/', flatpageview.flatpage, {'url': '/how-to-use_volatility/'}, name='how-to-use_volatility'), # страница о том как пользоваться сайтом
-    path('how-to-use_NR4ID/', flatpageview.flatpage, {'url': '/how-to-use_nr4id/'}, name='how-to-use_NR4ID'), # страница о том как пользоваться сайтом
+    path('how-to-use/', views.flatpage, {'url': '/how-to-use/'}, name='how-to-use'), # страница о том как пользоваться сайтом
+    path('how-to-use_elder/', views.flatpage, {'url': '/how-to-use_elder/'}, name='how-to-use_elder'), # страница о том как пользоваться сайтом
+    path('how-to-use_channel/', views.flatpage, {'url': '/how-to-use_channel/'}, name='how-to-use_channel'), # страница о том как пользоваться сайтом
+    path('how-to-use_divbar/', views.flatpage, {'url': '/how-to-use_divbar/'}, name='how-to-use_divbar'), # страница о том как пользоваться сайтом
+    path('how-to-use_volatility/', views.flatpage, {'url': '/how-to-use_volatility/'}, name='how-to-use_volatility'), # страница о том как пользоваться сайтом
+    path('how-to-use_NR4ID/', views.flatpage, {'url': '/how-to-use_nr4id/'}, name='how-to-use_NR4ID'), # страница о том как пользоваться сайтом
 ]

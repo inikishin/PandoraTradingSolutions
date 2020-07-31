@@ -1,0 +1,121 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+
+{% load static %}
+{% load blog_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        {% block post %} {% endblock %}
+
+        <div class="col-lg-4">
+            <div class="card animated fadeInUp animation-delay-7">
+              <img src="{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %}" alt="vertical_logo">
+            </div>
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-header">
+                <h3 class="card-title"><i class="zmdi zmdi-apps"></i> Навигатор</h3>
+              </div>
+              <div class="card-tabs">
+                <ul class="nav nav-tabs nav-tabs-transparent indicator-primary nav-tabs-full nav-tabs-4" role="tablist">
+                  <li class="nav-item"><a href="#favorite" aria-controls="favorite" role="tab" data-toggle="tab" class="nav-link withoutripple active"><i class="no-mr zmdi zmdi-star"></i></a></li>
+                  <li class="nav-item"><a href="#categories" aria-controls="categories" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="no-mr zmdi zmdi-folder"></i></a></li>
+                  <li class="nav-item"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="no-mr zmdi zmdi-time"></i></a></li>
+                  <li class="nav-item"><a href="#tags" aria-controls="tags" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="no-mr zmdi zmdi-tag-more"></i></a></li>
+                </ul>
+              </div>
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active show" id="favorite">
+                  <div class="card-body">
+                    <div class="ms-media-list">
+                      <div class="media mb-2">
+                        <div class="media-body">
+                          <a href="{% url 'how-to-use_elder' %}" class="media-heading">Стратегия экраны Элдера</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> Июль 18, 2020</span>
+                            <span><i class="zmdi zmdi-folder-outline color-success mr-05"></i> <a href="{% url 'how-to-use' %}">Стратегии</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media mb-2">
+                        <div class="media-body">
+                          <a href="{% url 'how-to-use_channel' %}" class="media-heading">Канальная стратегия</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> Июль 18, 2020</span>
+                            <span><i class="zmdi zmdi-folder-outline color-success mr-05"></i> <a href="{% url 'how-to-use' %}">Стратегии</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media mb-2">
+                        <div class="media-body">
+                          <a href="{% url 'how-to-use_divbar' %}" class="media-heading">Стратегия дивергентный бар</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> Июль 18, 2020</span>
+                            <span><i class="zmdi zmdi-folder-outline color-success mr-05"></i> <a href="{% url 'how-to-use' %}">Стратегии</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media mb-2">
+                        <div class="media-body">
+                          <a href="{% url 'how-to-use_volatility' %}" class="media-heading">Стратегия прорыв волатильности</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> Июль 18, 2020</span>
+                            <span><i class="zmdi zmdi-folder-outline color-success mr-05"></i> <a href="javascript:void(0)">Стратегии</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body">
+                          <a href="{% url 'how-to-use_NR4ID' %}" class="media-heading">Стратегия NR4/ID</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> Июль 18, 2020</span>
+                            <span><i class="zmdi zmdi-folder-outline color-success mr-05"></i> <a href="{% url 'how-to-use' %}">Стратегии</a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="categories">
+                  <div class="list-group">
+                    <a href="{% url 'dailyAnalysis' %}" class="list-group-item list-group-item-action withripple"><i class=" color-info zmdi zmdi-cocktail"></i>Аналитика <span class="ml-auto badge-pill badge-pill-info">{{ post_count }}</span></a>
+                    <a href="{% url 'predictions' %}" class="list-group-item list-group-item-action withripple"><i class=" color-danger zmdi zmdi-case-check"></i> Прогнозы <span class="ml-auto badge-pill badge-pill-danger">{{ pred_count }}</span></a>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="archives">
+                  <div class="list-group">
+                    {% for key, val in post_counter %}
+                      <a href="{% url 'dailyAnalysis' %}" class="list-group-item list-group-item-action withripple"><i class="zmdi zmdi-calendar"></i>
+                        {{ key|date_nav }} <span class="ml-auto badge-pill">{{ val }}</span></a>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tags">
+                  <div class="card-body overflow-hidden text-center">
+                    {% for t in ticker_list %}
+                      <a href="{% url 'marketDictionary:detail' t.id %}" class="ms-tag ms-tag-primary">{{ t }}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-header">
+                <h3 class="card-title"><i class="zmdi zmdi-widgets"></i> Информация</h3>
+              </div>
+              <div class="card-body">
+                <p>ПРЕДУПРЕЖДЕНИЕ: Операции на российских и международных рынках содержат в себе высокий уровень риска. Администрация сайта
+                                    pandoratradingsolutions.ru напоминает вам, что данные, предоставленные на данном сайте, не
+                                    обязательно даны в режиме реального времени и могут не являться точными. Все цены на акции, индексы, фьючерсы носят
+                                    ориентировочный характер и на них нельзя полагаться при торговле. Таким образом, администрация сайта
+                                    pandoratradingsolutions.ru не несет никакой ответственности за любые убытки, которые вы можете понести в результате
+                                    использования информации, содержащейся на этом сайте, котировок, графиков и сигналов.</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- container -->
+
+{% endblock %}
