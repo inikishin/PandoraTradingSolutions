@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.views import View
 
 from pandoratradingsolution import settings
+from integrations import api_google
 from dailyAnalysis.models import Post
 from .form import SignUpForm, ContactForm
 
@@ -44,8 +45,21 @@ def signup(request):
 def about(request):
     return render(request, 'pandoratradingsolution/ms_about.html')
 
-#def contact(request):
-#    return render(request, 'pandoratradingsolution/ms_contact.html')
+def search(request):
+    results = api_google.search(request.GET['q'])
+
+    if results['searchInformation']['totalResults'] == '0':
+        context = {'q': results['queries']['request'][0]['searchTerms'],
+                   'total_results': results['searchInformation']['totalResults'],
+                   'results': ''}
+    else:
+        context = {'q': results['queries']['request'][0]['searchTerms'],
+                   'total_results': results['searchInformation']['totalResults'],
+                    'results': results['items']
+                    }
+
+    return render(request, 'pandoratradingsolution/ms_search.html', context=context)
+
 class EContactsView(View):
     template_name = 'pandoratradingsolution/ms_contact.html'
 

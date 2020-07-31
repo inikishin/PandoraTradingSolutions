@@ -37,10 +37,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='pandoratradingsolution/logged_out.html'), name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('profile/', views.profile_view, name='profile'),
-    #path('contact/', views.contact, name='contact'),
     path('contact/', views.EContactsView.as_view(), name='contact'),
-#url(r'^contacts/$', views.EContactsView.as_view(), name='contacts'),
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
+    path('search/', views.search, name='search')
 ]
 
 if settings.DEBUG:
