@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Post
 import marketDictionary.models as md
-import predictions.models as p
+import predictions.models as post_model
 
 def index(request):
     filter_post_date = request.GET.get('post_date', '')
@@ -42,11 +42,11 @@ def detail(request, post_id):
 
     post_all = Post.objects.all().order_by('-date_analysis')
     post_count = len(post_all)
-    pred_count = len(p.Prediction.objects.all())
+    pred_count = len(post_model.Prediction.objects.all())
 
     d_list = []
-    for post in post_all:
-        d_list.append(post.date_analysis.replace(day=1))
+    for p in post_all:
+        d_list.append(p.date_analysis.replace(day=1))
     post_counter = list(Counter(d_list).items())
 
     ticker_list = md.Ticker.objects.all()
