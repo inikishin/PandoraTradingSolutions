@@ -22,7 +22,7 @@
 
             {% if page_obj %}
 
-            <div class="card card-primary table-responsive style="width:100%"">
+            <div class="card card-primary table-responsive">
                     <div class="card-header table-responsive">
                         <h3 class="card-title">Прогнозы</h3>
                     </div>
@@ -43,7 +43,7 @@
                         <tbody>
                             {% for prediction in page_obj %}
                             <tr>
-                                <td class="color-primary">{{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</td>
+                                <td class="color-primary"><i class="fa fa-line-chart color-info"></i> {{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</td>
                                 {% if user.is_authenticated %}
                                     <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}</div><br>
                                         <div class="row col-xs-4 {{ prediction.1w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1w.prctChange|price_color }}"><i class="{{ prediction.1w.prctChange|icon_type }}"></i></span>{{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}</div><br>
