@@ -5,7 +5,6 @@ from django.core.mail import send_mail
 from django.views import View
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import Http404, HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.safestring import mark_safe
 

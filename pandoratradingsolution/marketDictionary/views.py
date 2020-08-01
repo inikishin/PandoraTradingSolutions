@@ -23,7 +23,11 @@ def detail(request, ticker_id):
     post_list = Post.objects.order_by('-date_analysis').filter(ticker__exact=ticker_id)
     prediction_ticker_list = Prediction.objects.filter(ticker__exact=ticker_id).order_by('-created')
 
-    return render(request, 'marketDictionary/detail.html', {'ticker': ticker, 'post_list': post_list, 'prediction_ticker_list': prediction_ticker_list})
+    return render(request, 'marketDictionary/ms_ticker.html', {'ticker': ticker,
+                                                               'post_list': post_list[:3],
+                                                               'prediction_ticker_list': prediction_ticker_list,
+                                                               'post_count': len(post_list),
+                                                               'prediction_count': len(prediction_ticker_list)})
 
 # API
 

@@ -14,3 +14,12 @@ def predictiondate_format(create_date, lag):
 def round_num_format(n, digits):
     rounded_number = round(n, digits)
     return rounded_number
+
+@register.filter(name='content_preview')
+def content_preview(text):
+    preview = text.split('\n')[1]
+    return preview[:100] + '...'
+
+@register.filter(name='get_color_for_pred')
+def get_color_for_pred(perc_change):
+    return 'color-success' if perc_change > 0 else 'color-danger'

@@ -1,0 +1,115 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+
+{% load marketdict_tags %}
+{% load static %}
+
+{% block title %} {{ ticker.full_name }} ({{ ticker.short_name }}) {% endblock %}
+
+{% block content %}
+
+<div class="ms-site-container">
+<!-- Modal -->
+    <div class="ms-hero-page-override ms-hero-img-coffee ms-bg-fixed ms-hero-bg-primary">
+        <div class="container">
+          <div class="text-center mt-2">
+            <h1 class="color-white mt-4 animated fadeInUp animation-delay-10">{{ ticker.full_name }}</h1>
+            <h3 class="color-medium no-mb animated fadeInUp animation-delay-10">{{ ticker.short_name }}</h3>
+          </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card card-hero card-primary animated fadeInUp animation-delay-7">
+          <div class="card-header-100 bg-primary-dark">
+            <div class="row justify-content-center">
+              <div class="col col-md-2">
+                <div class="text-center">
+                  <h3><strong>{{ post_count }}</strong></h3> Аналитика
+                </div>
+              </div>
+              <div class="col col-md-2">
+                <div class="text-center">
+                  <h3><strong>{{ prediction_count }}</strong> </h3> Прогнозы
+                </div>
+              </div>
+              <div class="col col-md-2">
+                <div class="text-center">
+                  <h3><strong>0</strong></h3> Комментарии
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4 col-12">
+              <div class="card-body">
+                <h2 class="color-primary no-mb">Информация об инструменте</h2>
+              </div>
+              <table class="table table-no-border table-striped">
+                <tr>
+                  <th> Название</th>
+                  <td>{{ ticker.ticker_name }}</td>
+                </tr>
+                <tr>
+                  <th> Идентификатор</th>
+                  <td>{{ ticker.short_name }}</td>
+                </tr>
+                <tr>
+                  <th> Полное название</th>
+                  <td>{{ ticker.full_name }}</td>
+                </tr>
+                <tr>
+                  <th> Рынок</th>
+                  <td>{{ ticker.market }}</td>
+                </tr>
+                <tr>
+                  <th> Website</th>
+                  <td>{{ ticker.site }}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xl-4 col-md-6">
+              <div class="card-body">
+                <h2 class="color-primary">Последние публикации</h2>
+                  {% for p in post_list %}
+                    <div class="media mb-3">
+                      <div class="media-body">
+                        <h4 class="no-m"><a href="{% url 'detail' p.id %}">{{ p.header }}</a></h4>
+                        <p>{{ p.content|content_preview }}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+              <div class="card-body">
+                <h2 class="color-primary">Актуальные прогнозы</h2>
+                <div class="ms-media-list">
+                    {% if prediction_ticker_list %}
+                        {% for prediction in prediction_ticker_list %}
+                          <div class="media mb-2">
+                            <div class="media-body">
+                              <h4 class="mt-0 mb-0 color-warning">Прогноз на {{ prediction.created|predictiondate:prediction.horizon.lag|date:"d-m-Y" }} ({{ prediction.horizon }})</h4>
+                                <p class="{{ prediction.prctChange|get_color_for_pred }}">{{ prediction.prctChange|round_num:2 }}% ({{ prediction.predictprice|round_num:2 }}) с вероятностью {{ prediction.probability|round_num:2 }}</p>
+                            </div>
+                          </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="media mb-2">
+                            <div class="media-body">
+                                Нет прогнозов, удовлетворяющих условиям отбора
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div> <!-- container -->
+
+
+    <div class="btn-back-top">
+        <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
+    </div>
+</div> <!-- ms-site-container -->
+
+{% endblock %}
