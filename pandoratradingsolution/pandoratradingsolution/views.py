@@ -113,6 +113,7 @@ class EContactsView(View):
 
             # и отправляем сообщение
             send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, settings.EMAIL_TARGET, fail_silently=False)
+            context = {'send_success': True}
 
         return render(request, template_name=self.template_name, context=context)
 

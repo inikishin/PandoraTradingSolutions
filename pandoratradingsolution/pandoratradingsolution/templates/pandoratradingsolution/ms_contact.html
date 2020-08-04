@@ -4,6 +4,34 @@
 {% block title %} Контакты {% endblock %}
 
 {% block content %}
+
+    <!-- Modal -->
+    {% if send_success %}
+    <script type="text/javascript">
+      function showmodal() {
+          $('#myModal').modal('show');
+      }
+      window.onload = showmodal;
+    </script>
+    {% endif %}
+    <div class="modal modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="myModalLabel">Сообщение успешно отправлено</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                </div>
+                <div class="modal-body">
+                    Спасибо за Ваше сообщение. Мы обязательно с Вами свяжемся.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
       <div class="container">
         <div class="row">
           <div class="col-xl-8 col-lg-7">
