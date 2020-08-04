@@ -20,7 +20,7 @@
 
             {% if page_obj %}
 
-            <div class="card card-primary table-responsive style="width:100%">
+            <div class="card card-primary table-responsive" style="width:100%">
                     <div class="card-header table-responsive">
                         <h3 class="card-title">Тикеры</h3>
                     </div>
@@ -40,7 +40,7 @@
                                     <td>{{ ticker.market }}</td>
                                     <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.ticker_name }}</a></td>
                                     <td>{{ ticker.short_name }}</td>
-                                    <td>{{ ticker.site }}</td>
+                                    <td><a href="http:\\{{ ticker.site }}" target="_blank">{{ ticker.site }}</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

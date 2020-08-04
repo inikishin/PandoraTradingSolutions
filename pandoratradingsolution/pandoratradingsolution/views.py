@@ -53,6 +53,9 @@ def signup(request):
 def about(request):
     return render(request, 'pandoratradingsolution/ms_about.html')
 
+def coming(request):
+    return render(request, 'pandoratradingsolution/ms_coming.html')
+
 def search(request):
     results = api_google.search(request.GET['q'])
 

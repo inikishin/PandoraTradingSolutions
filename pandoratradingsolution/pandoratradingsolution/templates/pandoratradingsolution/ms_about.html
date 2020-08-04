@@ -1,4 +1,5 @@
 {% extends "pandoratradingsolution/ms_base.html" %}
+{% load static %}
 {% load blog_tags %}
 
 {% block title %} О нас {% endblock %}
@@ -53,6 +54,33 @@
               <span class="ms-timeline-left-city">Москва</span>
               <p>Начало проекта.</p>
             </li>
+            <li class="ms-timeline-left-item wow fadeInUp">
+              <h4>Новый дизайн сайта</h4>
+              <div class="ms-timeline-left-left">
+                <h4 class="color-primary">Новый дизайн сайта</h4>
+                <time class="ms-timeline-left-time">Август 2020</time>
+              </div>
+              <span class="ms-timeline-left-city">Москва</span>
+              <div>Обновлен дизайн основного сайта проекта. <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <a href="{% static 'pandoratradingsolution/about/pts-ms-mainpage-screen.png' %}" data-lightbox="screen-1" data-title="Screen">
+                      <div class="thumbnail-container">
+                        <img class="img-fluid" src="{% static 'pandoratradingsolution/about/pts-ms-mainpage-screen.png' %}">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="{% static 'pandoratradingsolution/about/pts-ms-pred-screen.png' %}" data-lightbox="screen-2" data-title="Screen">
+                      <div class="thumbnail-container">
+                        <img class="img-fluid" src="{% static 'pandoratradingsolution/about/pts-ms-pred-screen.png' %}">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
           </ul>
         </div>
       </div> <!-- container -->

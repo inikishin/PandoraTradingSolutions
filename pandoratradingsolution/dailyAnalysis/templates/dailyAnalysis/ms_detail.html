@@ -14,7 +14,7 @@
     <div class="card-body card-body-big">
       <h1 class="no-mt">{{ post.header }}</h1>
       <div class="mb-4">
-        <a href="javascript:void(0)" class="ms-tag ms-tag-info">Аналитика</a>
+        <a href="{% url 'dailyAnalysis' %}" class="ms-tag ms-tag-info">Аналитика</a>
       </div>
 
       {{ post.content|media_url:"media_url/"|markdown }}

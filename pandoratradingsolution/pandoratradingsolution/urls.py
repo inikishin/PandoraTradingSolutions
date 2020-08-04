@@ -38,6 +38,7 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),
     path('contact/', views.EContactsView.as_view(), name='contact'),
     path('about/', views.about, name='about'),
+    path('coming/', views.coming, name='coming'),
     path('search/', views.search, name='search')
 ]
 
