@@ -1,7 +1,5 @@
 import requests
 
-from pandoratradingsolution import settings
-
 def search(q):
     url = 'https://www.googleapis.com/customsearch/v1'
     google_api_key = 'AIzaSyBr0q2xRokshSpTIDmngCAoal9Tcwrk_9Q'
