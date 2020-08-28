@@ -1,6 +1,14 @@
 {% load static %}
 
 <!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2020. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -42,6 +50,11 @@
                         <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
                         <label class="control-label" for="{{ form.username.id_for_label }}">Username</label>
                         <input type="text" id="{{ form.username.id_for_label }}" class="form-control" name="username">
+                        {% if form.errors.username %}
+                          {% for error in form.username.errors %}
+                              <p class="color-danger">{{ error }}</p>
+                          {% endfor %}
+                        {% endif %}
                       </div>
                     </div>
                     <div class="form-group label-floating">
@@ -49,8 +62,18 @@
                         <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
                         <label class="control-label" for="{{ form.password.id_for_label }}">Password</label>
                         <input type="password" id="{{ form.password.id_for_label }}" class="form-control" name="password">
+                        {% if form.errors.password %}
+                          {% for error in form.password.errors %}
+                            <p class="color-danger">{{ error }}</p>
+                          {% endfor %}
+                        {% endif %}
                       </div>
                     </div>
+                    {% if form.non_field_errors %}
+                      {% for error in form.non_field_errors %}
+                        <p class="color-danger">{{ error }}</p>
+                      {% endfor %}
+                    {% endif %}
                     <div class="row ">
                       <div class="col-md-6">
                           <button class="btn btn-raised btn-primary btn-block" type="submit">Login <i class="zmdi zmdi-long-arrow-right no-mr ml-1"></i></button>
@@ -73,7 +96,7 @@
         </div>
         <div class="text-center animated fadeInUp animation-delay-7">
           <a href="index.html" class="btn btn-white"><i class="zmdi zmdi-home"></i> Go Home</a>
-          <a href="javascript:void(0)" class="btn btn-white"><i class="zmdi zmdi-key"></i> Recovery Pass</a>
+          <a href="{% url 'password_reset' %}" class="btn btn-white"><i class="zmdi zmdi-key"></i> Recovery Pass</a>
         </div>
       </div>
     </div>

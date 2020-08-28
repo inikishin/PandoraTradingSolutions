@@ -6,3 +6,4 @@
 /pandoratradingsolution/pandoratradingsolution/settings.py
 /.idea/
 /pandoratradingsolution/logs/api.log
+/pandoratradingsolution/account/migrations/

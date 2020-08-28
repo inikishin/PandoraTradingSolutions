@@ -1,0 +1,21 @@
+{% extends "account/ms_account_forms.html" %}
+
+{% block title %} Изменение данных пользователя {% endblock %}
+
+{% block form %}
+<div class="card-header">
+    <h3 class="card-title">Изменение данных пользователя</h3>
+</div>
+<div class="card-body card-body-big">
+
+    <h1>Изменение данных пользователя</h1>
+    <p>Вы можете изменить свои данные используя следующую форму:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Сохранить изменения"></p>
+    </form>
+
+</div>
+{% endblock %}

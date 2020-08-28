@@ -1,4 +1,5 @@
 from collections import Counter
+import logging
 
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
@@ -11,7 +12,7 @@ from django.utils.safestring import mark_safe
 from pandoratradingsolution import settings
 from integrations import api_google
 from dailyAnalysis.models import Post
-from .form import SignUpForm, ContactForm
+from .form import ContactForm
 import marketDictionary.models as md
 import predictions.models as post_model
 
@@ -27,28 +28,6 @@ def handler404(request, exception):
 
 def handler500(request):
     return render(request, 'pandoratradingsolution/error500.html', status=500)
-
-def profile_view(request):
-    return render(request, 'pandoratradingsolution/ms_profile.html')
-
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        print("1")
-        if form.is_valid():
-            print("2")
-            new_user = form.save()
-            new_user.first_name = form.cleaned_data['first_name']
-            new_user.last_name = form.cleaned_data['last_name']
-            new_user.email = form.cleaned_data['email']
-            new_user.save()
-            return redirect('mainpage')
-        else:
-            form = SignUpForm(request.POST)
-            return render(request, 'pandoratradingsolution/ms_signup.html', {'form': form})
-    else:
-        form = SignUpForm()
-        return render(request, 'pandoratradingsolution/ms_signup.html', {'form': form})
 
 def about(request):
     return render(request, 'pandoratradingsolution/ms_about.html')

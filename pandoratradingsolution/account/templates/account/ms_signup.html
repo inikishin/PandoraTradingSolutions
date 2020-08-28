@@ -19,9 +19,9 @@
         {% csrf_token %}
         <fieldset>
           <div class="row form-group">
-            <label for="{{ form.username.id_for_label }}" class="col-md-2 control-label">Username</label>
+            <label for="{{ form.username.id_for_label }}" class="col-md-2 control-label">Имя  пользователя</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="username" placeholder="Username" title="{{ form.username.help_text }}">
+              <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="username" placeholder="Имя  пользователя" title="{{ form.username.help_text }}">
               {% for error in form.username.errors %}
                 <p class="color-danger">{{ error }}</p>
               {% endfor %}
@@ -37,54 +37,54 @@
             </div>
           </div>
           <div class="row form-group">
-            <label for="{{ form.password1.id_for_label }}" class="col-md-2 control-label">Password</label>
+            <label for="{{ form.password1.id_for_label }}" class="col-md-2 control-label">Пароль</label>
             <div class="col-md-9">
-              <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="password1" placeholder="Password" title="{{ form.password1.help_text }}">
+              <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="password1" placeholder="Пароль" title="{{ form.password1.help_text }}">
               {% for error in form.password1.errors %}
                 <p class="color-danger">{{ error }}</p>
               {% endfor %}
             </div>
           </div>
           <div class="row form-group">
-            <label for="{{ form.password2.id_for_label }}" class="col-md-2 control-label">Again</label>
+            <label for="{{ form.password2.id_for_label }}" class="col-md-2 control-label">Пароль еще раз</label>
             <div class="col-md-9">
-              <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="password2" placeholder="Password" title="{{ form.password2.help_text }}">
+              <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="password2" placeholder="Пароль" title="{{ form.password2.help_text }}">
               {% for error in form.password2.errors %}
                 <p class="color-danger">{{ error }}</p>
               {% endfor %}
             </div>
           </div>
           <div class="row form-group">
-            <label for="{{ form.first_name.id_for_label }}" class="col-md-2 control-label">First Name</label>
+            <label for="{{ form.first_name.id_for_label }}" class="col-md-2 control-label">Имя</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="first_name" placeholder="First Name" title="{{ form.first_name.help_text }}">
+              <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="first_name" placeholder="Имя" title="{{ form.first_name.help_text }}">
               {% for error in form.first_name.errors %}
                 <p class="color-danger">{{ error }}</p>
               {% endfor %}
             </div>
           </div>
           <div class="row form-group">
-            <label for="{{ form.last_name.id_for_label }}" class="col-md-2 control-label">Last Name</label>
+            <label for="{{ form.last_name.id_for_label }}" class="col-md-2 control-label">Фамилия</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="last_name" placeholder="Last Name" title="{{ form.last_name.help_text }}">
+              <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="last_name" placeholder="Фамилия" title="{{ form.last_name.help_text }}">
               {% for error in form.last_name.errors %}
                 <p class="color-danger">{{ error }}</p>
               {% endfor %}
             </div>
           </div>
           <div class="row form-group">
-            <label for="inputGen" class="col-md-2 control-label">Gender</label>
+            <label for="{{ form.sex.id_for_label }}" class="col-md-2 control-label">Пол</label>
             <div class="col-md-9">
-              <select id="inputGen" class="form-control selectpicker">
-                <option>Male</option>
-                <option>Female </option>
+              <select id="{{ form.sex.id_for_label }}" name="sex" class="form-control selectpicker" title="{{ form.last_name.help_text }}">
+                <option>Мужской</option>
+                <option>Женский</option>
               </select>
             </div>
           </div>
           <div class="row form-group">
-            <label for="inputDate" class="col-md-2 control-label">Bithday</label>
+            <label for="{{ form.birth_date.id_for_label }}" class="col-md-2 control-label">Дата рождения</label>
             <div class="col-md-9">
-              <input id="datePicker" type="text" class="form-control" placeholder="mm/dd/yy">
+              <input id="datePicker" name="birth_date" type="text" class="form-control" placeholder="mm/dd/yy" title="{{ form.birth_date.help_text }}">
             </div>
           </div>
           <div class="row mt-2">

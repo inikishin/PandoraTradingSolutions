@@ -5,7 +5,8 @@
 {% if user.is_authenticated %}
     {% block title %} Профиль пользователя: {{ user.username }} {% endblock %}
 {% else %}
-    <div>Пожалуйста войдите на сайт.</div>
+
+<div>Пожалуйста войдите на сайт.</div>
 {% endif %}
 
 {% block content %}
@@ -23,7 +24,7 @@
               </div>
               <div class="card-body pt-4 text-center">
                 <h3 class="color-primary">Bio</h3>
-                <p>Short description</p>
+                <p>{{ user.profile.bio }}</p>
                 <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook"><i class="zmdi zmdi-facebook"></i></a>
                 <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><i class="zmdi zmdi-twitter"></i></a>
                 <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram"><i class="zmdi zmdi-instagram"></i></a>
@@ -31,7 +32,8 @@
             </div>
           </div>
           <div class="col-lg-12 col-md-12 order-md-3 order-lg-2">
-            <a href="javascript:void(0)" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Edit Profile</a>
+            <a href="{% url 'edit' %}" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Edit Profile</a>
+            <a href="{% url 'password_change' %}" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Сменить пароль</a>
             <a href="javascript:void(0)" class="btn btn-danger btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-delete"></i> Delete User</a>
           </div>
           <div class="col-lg-12 col-md-6 order-md-2 order-lg-3">
@@ -65,7 +67,7 @@
             </tr>
             <tr>
               <th><i class="zmdi zmdi-calendar mr-1 color-royal"></i> Зарегистрирован на сайте</th>
-              <td>Non Avilable</td>
+              <td>{{ user.date_joined }}</td>
             </tr>
           </table>
         </div>
@@ -89,7 +91,7 @@
                         <img src="assets/img/demo/office1.jpg" alt="" class="img-fluid">
                       </div>
                       <div class="col-sm-8">
-                        <p>Пользователь был зарегистрирован на сайте.</p>
+                        <p>Пользователь был зарегистрирован на сайте {{ user.date_joined }}.</p>
                       </div>
                     </div>
                   </div>

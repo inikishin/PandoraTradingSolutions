@@ -1,0 +1,15 @@
+{% extends "account/ms_account_forms.html" %}
+
+{% block title %} Регистрация нового пользователя {% endblock %}
+
+{% block form %}
+<div class="card-header">
+    <h3 class="card-title">Регистрация нового пользователя завершена</h3>
+</div>
+<div class="card-body card-body-big">
+
+    <h1>Добро пожаловать, {{ new_user.first_name }}!</h1>
+    <p>Ваш аккаунт был успешно создан. Теперь вы можете <a href="{% url 'login' %}">войти</a>.</p>
+
+</div>
+{% endblock %}
