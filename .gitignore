@@ -5,3 +5,4 @@
 /pandoratradingsolution/marketDictionary/migrations/
 /pandoratradingsolution/pandoratradingsolution/settings.py
 /.idea/
+/pandoratradingsolution/logs/api.log

@@ -59,6 +59,10 @@ def coming(request):
 def search(request):
     results = api_google.search(request.GET['q'])
 
+    logging.config.dictConfig(settings.dictLogConfig)
+    logger = logging.getLogger("google_api")
+    logger.info('IP:{0}|Search_text:{1}'.format(request.META.get('REMOTE_ADDR'), request.GET['q']))
+
     if results['searchInformation']['totalResults'] == '0':
         context = {'q': results['queries']['request'][0]['searchTerms'],
                    'total_results': results['searchInformation']['totalResults'],
