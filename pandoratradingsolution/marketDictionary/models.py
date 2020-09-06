@@ -10,7 +10,7 @@ class Market(models.Model):
 
 class Ticker(models.Model):
     short_name = models.CharField(max_length=20)
-    ticker_name = models.CharField(max_length=20)
+    ticker_name = models.CharField(max_length=20, null=False, default=None)
     full_name = models.CharField(max_length=300)
     market = models.ForeignKey(Market, on_delete=models.CASCADE)
     site = models.CharField(max_length=300)
