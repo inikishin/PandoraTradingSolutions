@@ -35,7 +35,7 @@ urlpatterns = [
     path('contact/', views.EContactsView.as_view(), name='contact'),
     path('about/', views.about, name='about'),
     path('coming/', views.coming, name='coming'),
-    path('search/', views.search, name='search')
+    path('search/', views.search, name='search'),
 ]
 
 if settings.DEBUG:
