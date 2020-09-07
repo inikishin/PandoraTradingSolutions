@@ -1,0 +1,290 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block meta %} 
+
+  <meta name="description" content="{{ article.meta_description }}">
+  <meta name="keywords" content="{{ article.meta_keywords }}">
+
+{% endblock %}
+
+{% block content %}
+      <div class="container">
+        <div class="row">
+
+
+          <div class="col-lg-8">
+            <div class="card animated fadeInLeftTiny animation-delay-5">
+              <div class="card-body card-body-big">
+                <h1 class="no-mt"> {{ article.title }} </h1>
+                <div class="mb-4">
+                  <img src="{{ article.author.avatar.url }}" width='40px' height='40px' alt="{{ article.author }}" class="rounded-circle mr-1">
+                  by <a href="javascript:void(0)"> {{ article.author }} </a> in <a href="javascript:void(0)" class="ms-tag ms-tag-info">Design</a>
+                  <span class="ml-1 d-none d-sm-inline"><i class="zmdi zmdi-time mr-05 color-info"></i> <span class="color-medium-dark"> {{ article.date_pub }} </span></span>
+                  <span class="ml-1"><i class="zmdi zmdi-comments color-royal mr-05"></i> 25</span>
+                </div>
+
+                <p> {{ article.content }} </p>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4">
+
+
+            <div class="card animated fadeInUp animation-delay-7">
+              <div class="ms-hero-bg-info ms-hero-img-mountain">
+                <h3 class="color-white index-1 text-center no-m pt-4">{{ article.author.user.username }}</h3>
+                <div class="color-medium index-1 text-center np-m">@{{ article.author.user.email }}</div>
+                <img src="{{ article.author.avatar.url }}" style='object-fit: cover;' alt="avatar" class="img-avatar-circle" />
+              </div>
+              <div class="card-body pt-4 text-center">
+                <h3 class="color-primary">About me</h3>
+                <p>{{ article.author.bio }}</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-google"><i class="zmdi zmdi-google"></i></a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook"><i class="zmdi zmdi-facebook"></i></a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><i class="zmdi zmdi-twitter"></i></a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram"><i class="zmdi zmdi-instagram"></i></a>
+              </div>
+            </div>
+
+
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-header">
+                <h3 class="card-title"><i class="zmdi zmdi-apps"></i> Navigation</h3>
+              </div>
+              <div class="card-tabs">
+                <ul class="nav nav-tabs nav-tabs-transparent indicator-primary nav-tabs-full nav-tabs-4" role="tablist">
+                  <li class="nav-item"><a href="#favorite" aria-controls="favorite" role="tab" data-toggle="tab" class="nav-link withoutripple active"><i class="no-mr zmdi zmdi-star"></i></a></li>
+                  <li class="nav-item"><a href="#categories" aria-controls="categories" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="no-mr zmdi zmdi-folder"></i></a></li>
+                  <li class="nav-item"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="no-mr zmdi zmdi-time"></i></a></li>
+                  <li class="nav-item"><a href="#tags" aria-controls="tags" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="no-mr zmdi zmdi-tag-more"></i></a></li>
+                </ul>
+              </div>
+              <div class="tab-content">
+
+
+
+                <div role="tabpanel" class="tab-pane fade active show" id="favorite">
+                  <div class="card-body">
+                    <div class="ms-media-list">
+                      <div class="media mb-2">
+                        <div class="media-left media-middle">
+                          <a href="#">
+                            <img class="d-flex mr-3 media-object media-object-circle" src="assets/img/demo/p75.jpg" alt="...">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <a href="javascript:void(0)" class="media-heading">Lorem ipsum dolor sit amet in consectetur adipisicing</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> August 18, 2016</span>
+                            <span><i class="zmdi zmdi-folder-outline color-success mr-05"></i> <a href="javascript:void(0)">Design</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media mb-2">
+                        <div class="media-left media-middle">
+                          <a href="#">
+                            <img class="d-flex mr-3 media-object media-object-circle" src="assets/img/demo/p75.jpg" alt="...">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <a href="javascript:void(0)" class="media-heading">Nemo enim ipsam voluptatem quia voluptas sit aspernatur</a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> August 18, 2016</span>
+                            <span><i class="zmdi zmdi-folder-outline color-danger mr-05"></i> <a href="javascript:void(0)">Productivity</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media">
+                        <div class="media-left media-middle">
+                          <a href="#">
+                            <img class="d-flex mr-3 media-object media-object-circle" src="assets/img/demo/p75.jpg" alt="...">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <a href="javascript:void(0)" class="media-heading">inventore veritatis et vitae quasi architecto beatae </a>
+                          <div class="media-footer text-small">
+                            <span class="mr-1"><i class="zmdi zmdi-time color-info mr-05"></i> August 18, 2016</span>
+                            <span><i class="zmdi zmdi-folder-outline color-royal-light mr-05"></i> <a href="javascript:void(0)">Resources</a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div role="tabpanel" class="tab-pane fade" id="categories">
+                  <div class="list-group">
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class=" color-info zmdi zmdi-cocktail"></i>Design <span class="ml-auto badge-pill badge-pill-info">25</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class=" color-warning zmdi zmdi-collection-image"></i> Graphics <span class="ml-auto badge-pill badge-pill-warning">14</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class=" color-danger zmdi zmdi-case-check"></i> Productivity <span class="ml-auto badge-pill badge-pill-danger">7</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class=" color-royal zmdi zmdi-folder-star-alt"></i>Resources <span class="ml-auto badge-pill badge-pill-royal">67</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class=" color-success zmdi zmdi-play-circle-outline"></i>Multimedia <span class="ml-auto badge-pill badge-pill-success">32</span></a>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="archives">
+                  <div class="list-group">
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class="zmdi zmdi-calendar"></i> January 2016 <span class="ml-auto badge-pill">25</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class="zmdi zmdi-calendar"></i> February 2016 <span class="ml-auto badge-pill">14</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class="zmdi zmdi-calendar"></i> March 2016 <span class="ml-auto badge-pill">9</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class="zmdi zmdi-calendar"></i> April 2016 <span class="ml-auto badge-pill">12</span></a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action withripple"><i class="zmdi zmdi-calendar"></i> June 2016 <span class="ml-auto badge-pill">65</span></a>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tags">
+                  <div class="card-body overflow-hidden text-center">
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Design</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Productivity</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Web</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Resources</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Multimedia</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">HTML5</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">CSS3</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Javascript</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Jquery</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Bootstrap</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Angular</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Gulp</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Atom</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Fonts</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Pictures</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Developers</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Code</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">SASS</a>
+                    <a href="javascript:void(0)" class="ms-tag ms-tag-primary">Less</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-success animated fadeInUp animation-delay-7">
+              <div class="card-header">
+                <h3 class="card-title"><i class="zmdi zmdi-play-circle-outline"></i> Feature Video</h3>
+              </div>
+              <div class="js-player" data-plyr-provider="vimeo" data-plyr-embed-id="94747106"></div>
+            </div>
+
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-header">
+                <h3 class="card-title"><i class="zmdi zmdi-widgets"></i> Text Widget</h3>
+              </div>
+              <div class="card-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ipsam non eaque est architecto doloribus, labore nesciunt laudantium, ex id ea, cum facilis similique tenetur fugit nemo id minima possimus.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row wow materialUp animation-delay-8">
+          <div class="col-md-12">
+            <h2 class="color-primary right-line">Comments</h2>
+            <ul class="ms-timeline">
+              <li class="ms-timeline-item wow materialUp">
+                <div class="ms-timeline-date">
+                  <time class="timeline-time" datetime=""><span>Ana Morgan</span></time>
+                  <i class="ms-timeline-point bg-primary"></i>
+                  <img src="assets/img/demo/avatar6.jpg" class="ms-timeline-point-img">
+                </div>
+                <div class="card card-primary">
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias cum quod ab iste libero quasi! Nemo similique nobis voluptate rem sequi dolores, incidunt quia eius totam maiores inventore commodi?</p>
+                    <p>Laborum quae similique quo eveniet esse maxime tempora facere facilis, dignissimos, dolor maiores dicta harum. Neque eligendi qui blanditiis eveniet laudantium, alias non voluptates est, minima, nihil modi! Voluptas qui obcaecati dignissimos explicabo unde culpa odit totam animi praesentium laborum? Sit quis eaque optio. Earum.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="ms-timeline-item wow materialUp">
+                <div class="ms-timeline-date">
+                  <time class="timeline-time" datetime=""><span>Andrew Ryan</span></time>
+                  <i class="ms-timeline-point bg-primary"></i>
+                  <img src="assets/img/demo/avatar2.jpg" class="ms-timeline-point-img">
+                </div>
+                <div class="card card-primary">
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis mollitia nobis adipisci a voluptatem dolore laudantium commodi similique doloremque culpa hic rem quam aspernatur nemo officia, expedita sed modi est?</p>
+                    <p>Voluptate consequatur possimus minus aliquam odit molestiae reprehenderit nobis voluptates dignissimos. Quo dignissimos, eligendi quia quas voluptates dolorum nemo qui vero. Labore, nesciunt voluptatem dolorem reiciendis obcaecati natus laborum nisi?</p>
+                    <p>Iure adipisci aliquid ut qui nam? Itaque, impedit hic quisquam accusantium totam magnam animi porro, illum, maxime vitae aliquam dicta voluptatem fugiat in pariatur iure expedita nesciunt et aperiam! Incidunt.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="ms-timeline-item wow materialUp">
+                <div class="ms-timeline-date">
+                  <time class="timeline-time" datetime=""><span>Mark Jobs</span></time>
+                  <i class="ms-timeline-point bg-primary"></i>
+                  <img src="assets/img/demo/avatar3.jpg" class="ms-timeline-point-img">
+                </div>
+                <div class="card card-primary">
+                  <div class="card-body">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro quia et qui sit! Quo eveniet accusamus amet necessitatibus rerum minus ipsam assumenda repellendus culpa est.</p>
+                    <p>Nobis facilis, sapiente ipsam doloremque, aliquid id qui iure autem officia adipisci pariatur sed repellendus numquam placeat libero, deleniti earum omnis ipsa accusantium. Corporis, earum.</p>
+                    <p>Dolore quas tempore alias saepe quia! Similique sunt laudantium est recusandae. Itaque eaque sapiente vel, illum aspernatur recusandae impedit explicabo nobis consequatur voluptatibus numquam sunt!</p>
+                    <p>Obcaecati ipsa distinctio facere, blanditiis culpa perspiciatis aut saepe nesciunt? Ut, quasi mollitia nam cupiditate enim, dolorum aliquid tempora quas quis eius quidem rem tempore?</p>
+                  </div>
+                </div>
+              </li>
+              <li class="ms-timeline-item wow materialUp">
+                <div class="ms-timeline-date">
+                  <time class="timeline-time" datetime=""><span>Sara Parker</span></time>
+                  <i class="ms-timeline-point bg-primary"></i>
+                  <img src="assets/img/demo/avatar4.jpg" class="ms-timeline-point-img">
+                </div>
+                <div class="card card-primary">
+                  <div class="card-body">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque quis adipisci saepe perspiciatis, dolorem corrupti, voluptatibus a, cupiditate quod quos nihil. Adipisci quae nam quos maiores? Voluptatibus ducimus reprehenderit odio. Totam officia sint doloremque hic quidem placeat suscipit ut dicta!</p>
+                    <p>Excepturi, vel labore error, dignissimos sapiente aperiam culpa quam beatae dolorem ea inventore libero officiis adipisci eaque nostrum nihil. Numquam assumenda, nemo pariatur reiciendis nam, illum quo earum delectus eaque omnis consequatur fugiat quis fugit itaque necessitatibus rem unde labore.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary animated fadeInUp animation-delay-7">
+              <div class="card-body">
+                <h2 class="color-primary text-center">Leave a comment</h2>
+                <form class="form-horizontal">
+                  <fieldset class="container">
+                    <div class="form-group row">
+                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Name</label>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" id="inputName" placeholder="Name">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Email</label>
+                      <div class="col-lg-9">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="textArea" class="col-lg-2 control-label">Comment</label>
+                      <div class="col-lg-9">
+                        <textarea class="form-control" rows="6" id="textArea" placeholder="Your comment..."></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row justify-content-end">
+                      <div class="col-lg-10">
+                        <button type="submit" class="btn btn-raised btn-primary">Send Comment</button>
+                        <button type="button" class="btn btn-danger">Cancel</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- container -->
+  
+
+  {% endblock%}
