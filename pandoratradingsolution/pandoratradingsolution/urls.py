@@ -31,12 +31,11 @@ urlpatterns = [
     path('dailyanalysis/', include('dailyAnalysis.urls')),
     path('predictions/', include('predictions.urls')),
     path('accounts/', include('account.urls')),
-    path('article/', include('article.urls', namespace='article')),
     path('admin/', admin.site.urls, name='admin'),
     path('contact/', views.EContactsView.as_view(), name='contact'),
     path('about/', views.about, name='about'),
     path('coming/', views.coming, name='coming'),
-    path('search/', views.search, name='search'),
+    path('search/', views.search, name='search')
 ]
 
 if settings.DEBUG:
