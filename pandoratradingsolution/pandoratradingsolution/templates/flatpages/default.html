@@ -12,7 +12,22 @@
     <div class="card-body card-body-big">
       <h1 class="no-mt">{{ flatpage.title }}</h1>
       <div class="mb-4">
-        <a href="{% url 'how-to-use' %}" class="ms-tag ms-tag-info">Стратегии</a>
+        <div class="mb-4">
+            {% if flatpage.article.author.avatar.url %}
+            <img src="{{ flatpage.article.author.avatar.url }}" width="45px" height="45px" alt=" {{ flatpage.article.author.user.username }} " class="rounded-circle mr-1"> by <a href="javascript:void(0)"> {{ flatpage.article.author.user.username }} </a> in <a href="javascript:void(0)" class="ms-tag ms-tag-info">Design</a>
+            {% else %}
+            <img src=" {% static 'pandoratradingsolution/no_ava.jpeg' %} " width="45px" height="45px" alt=" {{ flatpage.article.author.user.username }} " class="rounded-circle mr-1"> by
+            <a href="javascript:void(0)">
+                {% if flatpage.article.author.user.username %}
+                    {{ flatpage.article.author.user.username }}
+                {% else %}
+                    admin
+                {% endif %}
+            </a> in <a href="javascript:void(0)" class="ms-tag ms-tag-info">Design</a>
+            {% endif %}
+            <span class="ml-1 d-none d-sm-inline"><i class="zmdi zmdi-time mr-05 color-info"></i> <span class="color-medium-dark"> {{ flatpage.article.date_pub }} </span></span>
+            <span class="ml-1"><i class="zmdi zmdi-comments color-royal mr-05"></i> 25</span>
+        </div>
       </div>
 
       {{ flatpage.content|markdown }}

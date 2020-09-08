@@ -26,10 +26,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <meta name="theme-color" content="#333">
-      {% block meta %}  {% endblock %}
       <title>{% block title %}{% endblock %}</title>
       <meta name="description" content="{% block description %}{% endblock %}">
       <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+      <meta name="description" content="{{ flatpage.article.meta_description }}">
+      <meta name="keywords" content="{{ flatpage.article.meta_keywords }}">
       <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
@@ -126,7 +127,8 @@
             </ul>
           </div>
           <a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a>
-        </div> <!-- container -->
+        </div> <!-- container -->э
+
       </nav>
 
         {% block content %}
@@ -261,6 +263,7 @@
             </ul>
           </li>
         </ul>
+
         <div class="ms-slidebar-social ms-slidebar-block">
           <h4 class="ms-slidebar-block-title">Social Links</h4>
           <div class="ms-slidebar-social">

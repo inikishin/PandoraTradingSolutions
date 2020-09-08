@@ -37,14 +37,19 @@
         </div>
       </div>
     </div>
+
     <div class="bg-full-page bg-primary back-fixed">
       <div class="mw-500 absolute-center">
         <div class="card color-dark animated zoomInDown animation-delay-5">
           <div class="card-body">
             <h1 class="color-primary">Login</h1>
+
+
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <fieldset>
+
+                  
                     <div class="form-group label-floating">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
@@ -56,7 +61,9 @@
                           {% endfor %}
                         {% endif %}
                       </div>
-                    </div>
+                    </div>  
+
+
                     <div class="form-group label-floating">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
@@ -86,6 +93,8 @@
                     </div>
                   </fieldset>
             </form>
+
+
             <div class="text-center">
               <h3 class="color-dark">Login with</h3>
               <a href="{% url 'coming' %}" class="wave-effect-light btn btn-raised btn-facebook"><i class="zmdi zmdi-facebook"></i> Facebook</a>

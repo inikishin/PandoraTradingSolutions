@@ -10,9 +10,14 @@
 
     <h1>Изменение данных пользователя</h1>
     <p>Вы можете изменить свои данные используя следующую форму:</p>
-    <form action="." method="post" enctype="multipart/form-data">
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
+
+    <form action="." method="post" enctype="multipart/form-data" class='profileEdit'>
+        <!-- {{ user_form.as_p }} -->
+      <!--   {{ profile_form.as_p }} -->
+        {% for field in user_form %}
+        <div>{{field}}</div>
+        {% endfor %}
+          {{ profile_form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Сохранить изменения"></p>
     </form>

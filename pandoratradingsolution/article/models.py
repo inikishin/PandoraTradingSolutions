@@ -14,9 +14,6 @@ class Article(FlatPage):
     date_pub = models.DateTimeField(null=True, blank=True)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, default='admin')
 
-    def get_absolute_url(self):
-    	return reverse('article:blog_post', args=[self.slug])
-
     @receiver(post_save, sender=User) 
     def create_or_update_user_profile(sender, instance, created, **kwargs):
     	if created:
