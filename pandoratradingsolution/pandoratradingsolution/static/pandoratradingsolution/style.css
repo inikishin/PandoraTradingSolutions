@@ -129,11 +129,8 @@ table tbody tr a:visited {color: #001145; text-decoration: none;}
     color: #001145; line-height: 20px;
 }
 
-.profileEdit label{
-    font-size: 12px;
-    line-height: 1.07143;
-    font-weight: 400;
-    margin: 16px 0 0;
+.userFormEdit input-group{
+    padding: 15px;
 }
 
 /* auth system */

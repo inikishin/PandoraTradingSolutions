@@ -29,13 +29,13 @@
       <title>{% block title %}{% endblock %}</title>
       <meta name="description" content="{% block description %}{% endblock %}">
       <meta name="keywords" content="{% block keywords %}{% endblock %}" />
-      <meta name="description" content="{{ flatpage.article.meta_description }}">
-      <meta name="keywords" content="{{ flatpage.article.meta_keywords }}">
+      {% block meta %} {% endblock %}
       <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
       <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/plugins.min.css" %}">
       <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/style.indigo-800.min.css" %}">
+
       <!--[if lt IE 9]>
           <script src="{% static "pandoratradingsolution/assets/js/html5shiv.min.js" %}"></script>
           <script src="{% static "pandoratradingsolution/assets/js/respond.min.js" %}"></script>
@@ -127,7 +127,7 @@
             </ul>
           </div>
           <a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a>
-        </div> <!-- container -->э
+        </div> <!-- container -->
 
       </nav>
 
