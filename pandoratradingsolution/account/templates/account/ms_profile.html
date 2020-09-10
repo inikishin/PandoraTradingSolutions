@@ -20,7 +20,11 @@
               <div class="ms-hero-bg-primary ms-hero-img-coffee">
                 <h3 class="color-white index-1 text-center no-m pt-4">{{ user.first_name }} {{ user.last_name }}</h3>
                 <div class="color-medium index-1 text-center np-m">@{{ user.username }}</div>
+                {% if user.profile.avatar.url %}
+                <img src=" {{ user.profile.avatar.url }} " alt="avatar" class="img-avatar-circle">
+                {% else %}
                 <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+                {% endif %}
               </div>
               <div class="card-body pt-4 text-center">
                 <h3 class="color-primary">Bio</h3>
