@@ -10,13 +10,90 @@
     <h1>Изменение данных пользователя</h1>
     <p>Вы можете изменить свои данные используя следующую форму:</p>
 
-    <form action="." method="post" enctype="multipart/form-data">
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        {% csrf_token %}
-        <div class="col-lg-3">
-            <input type="submit" class='btn btn-raised btn-primary btn-block' value="Сохранить изменения">
-        </div>
+    <form method="post" enctype="multipart/form-data">
+        <fieldset>
+<!--            {{ user_form.as_p }}-->
+<!--            {{ profile_form.as_p }}-->
+
+
+
+
+            <div class="row form-group">
+                <label for="{{ user_form.first_name.id_for_label }}" class="col-md-2 control-label">Имя  пользователя</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="{{ user_form.first_name.id_for_label }}" value="{{ user.first_name }}" name="{{ user_form.first_name.name }}" placeholder="Имя  пользователя" title="{{ form.username.help_text }}">
+                  {% for error in user_form.first_name.errors %}
+                    <p class="color-danger">{{ error }}</p>
+                  {% endfor %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="{{ user_form.last_name.id_for_label }}" class="col-md-2 control-label">Фамилия пользователя </label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="{{ user_form.last_name.id_for_label }}" value="{{ user.last_name }}" name="{{ user_form.last_name.name }}" placeholder="Фамилия пользователя" title="{{ form.last_name.help_text }}">
+                  {% for error in user_form.last_name.errors %}
+                    <p class="color-danger">{{ error }}</p>
+                  {% endfor %}
+                </div>
+            </div>
+
+            <!--<div class="row form-group">-->
+<!--                <label for="{{ profile_form.birth_date.id_for_label }}" class="col-md-2 control-label">Дата рождения</label>-->
+<!--                <div class="col-md-9">-->
+<!--                    <input type="text" class="form-control" id="{{ profile_form.birth_date.id_for_label }}" value="{{ user.profile.birth_date }}" name="{{ profile_form.birth_date.name }}"  placeholder="mm/dd/yy" title="{{ profile_form.birth_date.help_text }}">-->
+<!--                    {% for error in profile_form.birth_date.errors %}-->
+<!--                        <p class="color-danger">{{ error }}</p>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="row form-group">-->
+<!--                <label for="{{ user_form.email.id_for_label }}" class="col-md-2 control-label">Email </label>-->
+<!--                <div class="col-md-9">-->
+<!--                  <input type="text" class="form-control" id="{{ user_form.email.id_for_label }}" value="{{ user.email }}" name="{{ user_form.email.name }}" placeholder="Email" title="{{ form.email.help_text }}">-->
+<!--                  {% for error in user_form.email.errors %}-->
+<!--                    <p class="color-danger">{{ error }}</p>-->
+<!--                  {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="row form-group">
+                <label for="{{ profile_form.sex.id_for_label }}" class="col-md-2 control-label">Sex </label>
+                <div class="col-md-9">
+                    <textarea id="{{ profile_form.sex.id_for_label }}" rows="4" class="form-control" name="{{ profile_form.sex.name }}" placeholder="Sex" title="{{ profile_form.sex.help_text }}">
+                        {{ user.profile.sex }}
+                    </textarea>
+                  {% for error in profile_form.sex.errors %}
+                    <p class="color-danger">{{ error }}</p>
+                  {% endfor %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="{{ profile_form.bio.id_for_label }}" class="col-md-2 control-label">Bio </label>
+                <div class="col-md-9">
+                    <textarea id="{{ profile_form.bio.id_for_label }}" rows="4" class="form-control" name="{{ profile_form.bio.name }}" placeholder="Bio" title="{{ profile_form.bio.help_text }}">
+                        {{ user.profile.bio }}
+                    </textarea>
+                  {% for error in profile_form.bio.errors %}
+                    <p class="color-danger">{{ error }}</p>
+                  {% endfor %}
+                </div>
+            </div>
+
+
+
+            <div class="col-md-9 mb-2 mt-2">
+                <h4> Изменить аватар </h4>
+                <input type="file" id="{{ profile_form.avatar.auto_id }}" name="{{ profile_form.avatar.name }}" />
+            </div>
+
+            {% csrf_token %}
+            <div class="col-lg-3 mt-2">
+                <input type="submit" class='btn btn-raised btn-primary btn-block' value="Сохранить изменения">
+            </div>
+        </fieldset>
     </form>
 
 </div>

@@ -83,7 +83,11 @@
                 <div class="ms-timeline-date">
                   <time class="timeline-time" datetime="">2020 <span>Июль</span></time>
                   <i class="ms-timeline-point bg-royal"></i>
-                  <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+                  {% if user.profile.avatar.url %}
+                    <img src="{{ user.profile.avatar.url }}" alt="avatar" class="img-avatar-circle">
+                  {% else %}
+                    <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+                  {% endif %}
                 </div>
                 <div class="card card-royal">
                   <div class="card-header">

@@ -3,6 +3,10 @@ from .forms import SignUpForm
 from .models import Profile
 from .forms import UserEditForm, ProfileEditForm
 
+# from django.template.defaultfilters import filesizeformat
+# from django.utils.translation import ugettext_lazy as _
+# from django.conf import settings
+
 def profile_view(request):
     return render(request, 'account/ms_profile.html')
 
@@ -24,14 +28,21 @@ def signup(request):
         form = SignUpForm()
         return render(request, 'account/ms_signup.html', {'form': form})
 
-def edit(request):
+def edit(request, *args, **kwargs):
+
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
+            # img_upload = profile_form.cleaned_data['avatar']
+            # print(type(img_upload))
+            # if img_upload._.size > settings.MAX_UPLOAD_SIZE:
+            #     return redirect('profile')
             user_form.save()
             profile_form.save()
+
         return redirect('profile')
+
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
