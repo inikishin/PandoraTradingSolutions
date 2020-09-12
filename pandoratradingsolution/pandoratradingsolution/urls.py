@@ -19,11 +19,19 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
 
 from . import views
+from .sitemaps import PostSitemap, StaticViewSitemap, TickerSitemap
 
 handler404 = 'pandoratradingsolution.views.handler404'
 handler500 = 'pandoratradingsolution.views.handler500'
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'da': PostSitemap,
+    'md': TickerSitemap,
+}
 
 urlpatterns = [
     path('', views.mainpage, name='mainpage'),
@@ -36,6 +44,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('coming/', views.coming, name='coming'),
     path('search/', views.search, name='search'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 if settings.DEBUG:

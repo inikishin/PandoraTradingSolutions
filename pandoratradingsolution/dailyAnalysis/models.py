@@ -35,3 +35,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.ticker.short_name + '_' + str(self.date_analysis)
+
+    def get_absolute_url(self):
+        return "/dailyAnalysis/%i/" % self.id
