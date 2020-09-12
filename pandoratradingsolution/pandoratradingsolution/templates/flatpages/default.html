@@ -2,13 +2,10 @@
 
 {% load blog_tags %}
 {% load static %}
-Gjy
-{% block title %} {{ flatpage.title }} {% endblock %}
 
-{% block meta %}
-    <meta name="description" content="{{ flatpage.article.meta_description }}">
-    <meta name="keywords" content="{{ flatpage.article.meta_keywords }}">
-{% endblock %}
+{% block title %} {{ flatpage.title }} {% endblock %}
+{% block description %}{{ flatpage.flatpageext.meta_description }}{% endblock %}
+{% block keywords %}{{ flatpage.flatpageext.meta_keywords }}{% endblock %}
 
 {% block post %}
 
@@ -18,27 +15,16 @@ Gjy
       <h1 class="no-mt">{{ flatpage.title }}</h1>
       <div class="mb-4">
         <div class="mb-4">
-            {% if flatpage.article.author.avatar.url %}
-            <img src="{{ flatpage.article.author.avatar.url }}" width="45px" height="45px" alt=" {{ flatpage.article.author.user.username }} " class="rounded-circle mr-1"> by
-            <a href="javascript:void(0)">
-                {% if flatpage.article.aguthor.user.username %}
-                    {{ flatpage.article.author.user.username }}
-                {% else %}
-                    admin
-                {% endif %}
-            </a> in <a href="{% url 'how-to-use' %}" class="ms-tag ms-tag-info">Стратегии</a>
+            {% if flatpage.flatpageext.author.avatar %}
+            <img src="{{ flatpage.flatpageext.author.avatar.url }}" width="45px" height="45px" alt=" {{ flatpage.flatpageext.author.user.username }} " class="rounded-circle mr-1">
             {% else %}
-            <img src=" {% static 'pandoratradingsolution/no_ava.jpeg' %} " width="45px" height="45px" alt=" {{ flatpage.article.author.user.username }} " class="rounded-circle mr-1"> by
-            <a href="javascript:void(0)">
-                {% if flatpage.article.aguthor.user.username %}
-                    {{ flatpage.article.author.user.username }}
-                {% else %}
-                    admin
-                {% endif %}
-            </a> in <a href="{% url 'how-to-use' %}" class="ms-tag ms-tag-info">Стратегии</a>
+            <img src=" {% static 'pandoratradingsolution/no_ava.jpeg' %} " width="45px" height="45px" alt=" {{ flatpage.flatpageext.author.user.username }} " class="rounded-circle mr-1">
             {% endif %}
-            {% if flatpage.article.date_pub %}
-            <span class="ml-1 d-none d-sm-inline"><i class="zmdi zmdi-time mr-05 color-info"></i> <span class="color-medium-dark"> {{ flatpage.article.date_pub }} </span></span>
+            by <a href="#">{{ flatpage.flatpageext.author.user.username }}</a>
+            in <a href="{% url 'how-to-use' %}" class="ms-tag ms-tag-info">Стратегии</a>
+
+            {% if flatpage.flatpageext.date_pub %}
+            <span class="ml-1 d-none d-sm-inline"><i class="zmdi zmdi-time mr-05 color-info"></i> <span class="color-medium-dark"> {{ flatpage.flatpageext.date_pub }} </span></span>
             {% endif %}
         </div>
       </div>
