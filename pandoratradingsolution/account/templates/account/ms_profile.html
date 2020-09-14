@@ -20,14 +20,14 @@
               <div class="ms-hero-bg-primary ms-hero-img-coffee">
                 <h3 class="color-white index-1 text-center no-m pt-4">{{ user.first_name }} {{ user.last_name }}</h3>
                 <div class="color-medium index-1 text-center np-m">@{{ user.username }}</div>
-                {% if user.profile.avatar.url %}
+                {% if user.profile.avatar %}
                 <img src=" {{ user.profile.avatar.url }} " alt="avatar" class="img-avatar-circle">
                 {% else %}
                 <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
                 {% endif %}
               </div>
               <div class="card-body pt-4 text-center">
-                <h3 class="color-primary">Bio</h3>
+                <h3 class="color-primary">О себе</h3>
                 <p>{{ user.profile.bio }}</p>
                 <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook"><i class="zmdi zmdi-facebook"></i></a>
                 <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><i class="zmdi zmdi-twitter"></i></a>
@@ -36,9 +36,9 @@
             </div>
           </div>
           <div class="col-lg-12 col-md-12 order-md-3 order-lg-2">
-            <a href="{% url 'edit' %}" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Edit Profile</a>
+            <a href="{% url 'edit' %}" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Изменить профайл</a>
             <a href="{% url 'password_change' %}" class="btn btn-warning btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-edit"></i> Сменить пароль</a>
-            <a href="javascript:void(0)" class="btn btn-danger btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-delete"></i> Delete User</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-raised btn-block animated fadeInUp animation-delay-12"><i class="zmdi zmdi-delete"></i> Удалить пользователя</a>
           </div>
           <div class="col-lg-12 col-md-6 order-md-2 order-lg-3">
             <div class="card animated fadeInUp animation-delay-12">
@@ -81,7 +81,7 @@
             <ul class="ms-timeline">
               <li class="ms-timeline-item wow materialUp">
                 <div class="ms-timeline-date">
-                  <time class="timeline-time" datetime="">2020 <span>Июль</span></time>
+                  <time class="timeline-time" datetime="">{{ user.date_joined }}</time>
                   <i class="ms-timeline-point bg-royal"></i>
                   <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
                 </div>
