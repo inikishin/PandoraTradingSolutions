@@ -12,8 +12,8 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         items_list = ['mainpage', 'dailyAnalysis', 'predictions', 'contact', 'about', ]
-        items_list += ['how-to-use', 'how-to-use_elder', 'how-to-use_channel', 'how-to-use_divbar',
-                       'how-to-use_volatility', 'how-to-use_NR4ID', ]
+        items_list += ['how-to-use', 'how-to-use-elder', 'how-to-use-channel', 'how-to-use-divbar',
+                       'how-to-use-volatility', 'how-to-use-NR4ID', ]
         return items_list
 
     def location(self, item):
