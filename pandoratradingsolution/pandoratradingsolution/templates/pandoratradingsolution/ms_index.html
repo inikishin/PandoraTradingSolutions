@@ -1,53 +1,11 @@
+{% extends "pandoratradingsolution/ms_layout.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <!-- Yandex.Metrika counter -->
-        <script type="text/javascript" >
-           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-           m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+{% block title %} Главная - PandoraTradingSolution.ru{% endblock %}
+{% block description %}Мы предоставляем качественную аналитику и прогнозы торговых инструментов на многих международных финансовых рынках. {% endblock %}
+{% block keywords %}инвестирование, торговля, акции РФ, торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы, искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ{% endblock %}
 
-           ym(65002513, "init", {
-                clickmap:true,
-                trackLinks:true,
-                accurateTrackBounce:true
-           });
-        </script>
-        <noscript><div><img src="https://mc.yandex.ru/watch/65002513" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-        <!-- /Yandex.Metrika counter -->
-        <meta name="yandex-verification" content="fd8ca6854d52ddf1" />
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta name="theme-color" content="#333">
-        <title>Pandora Trading Solutions - Главная</title>
-        <meta name="description" content="Pandora Trading Solutions - инструмент успешного инвестора. Лучшая аналитика и прогнозы мировых финансовых рынков, основанные на предсказаниях искусственного интеллекта.">
-        <meta name="keywords" content="инвестирование, торговля, акции РФ, торговые сигналы, инвестиции, трейдинг, прогнозы, прогноз, искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ" />
-        <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
-        <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/plugins.min.css" %}">
-        <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/style.indigo-800.min.css" %}">
-        <!--[if lt IE 9]>
-            <script src="{% static "pandoratradingsolution/assets/js/html5shiv.min.js" %}"></script>
-            <script src="{% static "pandoratradingsolution/assets/js/respond.min.js" %}"></script>
-        <![endif]-->
-    </head>
-    <body>
-    <div id="ms-preload" class="ms-preload">
-      <div id="status">
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ms-site-container ms-nav-fixed">
+{% block body %}
       <nav class="navbar navbar-expand-md navbar-fixed ms-lead-navbar navbar-mode navbar-mode mb-0" id="navbar-lead">
         <div class="container container-full">
           <div class="navbar-header">
@@ -84,9 +42,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="btn-back-top">
-        <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
       </div>
       <div class="bg-light index-1 intro-full-next pt-6">
         <div class="container" id="intro-next">
@@ -287,79 +242,5 @@
             </div> <!-- container -->
           </div>
         </section>
-        <footer class="ms-footer">
-          <div class="container">
-            <p>Copyright &copy; pandoratradingsolutions.ru 2020</p>
-          </div>
-        </footer>
-        <div class="btn-back-top">
-          <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
-        </div>
       </div>
-    </div> <!-- ms-site-container -->
-
-    <div class="ms-slidebar sb-slidebar sb-left sb-style-overlay" id="ms-slidebar">
-      <div class="sb-slidebar-container">
-        <header class="ms-slidebar-header">
-          <div class="ms-slidebar-login">
-            {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}" class="withripple"><i class="zmdi zmdi-account"></i> {{ user.username }}</a>
-            <a href="{% url 'logout' %}" class="withripple"><i class="zmdi zmdi-run"></i> Выход</a>
-            {% else %}
-            <a href="{% url 'login' %}" class="withripple"><i class="zmdi zmdi-account"></i> Login</a>
-            <a href="{% url 'signup' %}" class="withripple"><i class="zmdi zmdi-account-add"></i> Register</a>
-            {% endif %}
-          </div>
-          <div class="ms-slidebar-title">
-
-            <div class="ms-slidebar-t">
-              <h3><span>Pandora</span> Trading Solutions</h3>
-            </div>
-          </div>
-        </header>
-        <ul class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
-          <li class="card" role="tab" id="sch1">
-            <a class="collapsed" role="button" data-toggle="collapse" href="#sc1" aria-expanded="false" aria-controls="sc1">
-              <i class="zmdi zmdi-home"></i> Карта сайта </a>
-            <ul id="sc1" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch1" data-parent="#slidebar-menu">
-              <li><a href="/">Главная</a></li>
-              <li><a href="{% url 'dailyAnalysis' %}">Аналитика</a></li>
-              <li><a href="{% url 'predictions' %}">Прогнозы</a></li>
-              <li><a href="{% url 'how-to-use' %}">Как пользоваться сайтом</a></li>
-              <li><a href="http://forum.pandoratradingsolutions.ru/index.php">Форум</a></li>
-            </ul>
-          </li>
-          <li class="card" role="tab" id="sch2">
-            <a class="collapsed" role="button" data-toggle="collapse" href="#sc2" aria-expanded="false" aria-controls="sc2">
-              <i class="zmdi zmdi-desktop-mac"></i> Стратегии </a>
-            <ul id="sc2" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch2" data-parent="#slidebar-menu">
-              <li><a href="{% url 'how-to-use_elder' %}">Стратегия экраны Элдера</a></li>
-              <li><a href="{% url 'how-to-use_channel' %}">Канальная стратегия</a></li>
-              <li><a href="{% url 'how-to-use_divbar' %}">Стратегия дивергентный бар</a></li>
-              <li><a href="{% url 'how-to-use_volatility' %}">Стратегия прорыв волатильности</a></li>
-              <li><a href="{% url 'how-to-use_NR4ID' %}">Стратегия NR4/ID</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="ms-slidebar-social ms-slidebar-block">
-          <h4 class="ms-slidebar-block-title">Social Links</h4>
-          <div class="ms-slidebar-social">
-            <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-facebook"><i class="zmdi zmdi-facebook"></i> <!-- <span class="badge-pill badge-pill-pink">12</span> -->
-              <div class="ripple-container"></div>
-            </a>
-            <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-google"><i class="zmdi zmdi-google"></i>
-              <div class="ripple-container"></div>
-            </a>
-            <a href="{% url 'coming' %}" class="btn-circle btn-circle-raised btn-instagram"><i class="zmdi zmdi-instagram"></i>
-              <div class="ripple-container"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="{% static "pandoratradingsolution/assets/js/plugins.min.js" %}"></script>
-    <script src="{% static "pandoratradingsolution/assets/js/app.min.js" %}"></script>
-    <script src="{% static "pandoratradingsolution/assets/js/lead-full.js" %}"></script>
-  </body>
-</html>
+{% endblock %}

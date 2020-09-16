@@ -56,9 +56,9 @@ urlpatterns += staticfiles_urlpatterns()
 # flatpages
 urlpatterns += [
     path('how-to-use/', views.flatpage, {'url': '/how-to-use/'}, name='how-to-use'), # страница о том как пользоваться сайтом
-    path('how-to-use_elder/', views.flatpage, {'url': '/how-to-use_elder/'}, name='how-to-use_elder'), # страница о том как пользоваться сайтом
-    path('how-to-use_channel/', views.flatpage, {'url': '/how-to-use_channel/'}, name='how-to-use_channel'), # страница о том как пользоваться сайтом
-    path('how-to-use_divbar/', views.flatpage, {'url': '/how-to-use_divbar/'}, name='how-to-use_divbar'), # страница о том как пользоваться сайтом
-    path('how-to-use_volatility/', views.flatpage, {'url': '/how-to-use_volatility/'}, name='how-to-use_volatility'), # страница о том как пользоваться сайтом
-    path('how-to-use_NR4ID/', views.flatpage, {'url': '/how-to-use_nr4id/'}, name='how-to-use_NR4ID'), # страница о том как пользоваться сайтом
+    path('how-to-use-elder/', views.flatpage, {'url': '/how-to-use-elder/'}, name='how-to-use-elder'), # страница о том как пользоваться сайтом
+    path('how-to-use-channel/', views.flatpage, {'url': '/how-to-use-channel/'}, name='how-to-use-channel'), # страница о том как пользоваться сайтом
+    path('how-to-use-divbar/', views.flatpage, {'url': '/how-to-use-divbar/'}, name='how-to-use-divbar'), # страница о том как пользоваться сайтом
+    path('how-to-use-volatility/', views.flatpage, {'url': '/how-to-use-volatility/'}, name='how-to-use-volatility'), # страница о том как пользоваться сайтом
+    path('how-to-use-NR4ID/', views.flatpage, {'url': '/how-to-use-nr4id/'}, name='how-to-use-NR4ID'), # страница о том как пользоваться сайтом
 ]
