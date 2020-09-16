@@ -17,7 +17,6 @@
         </script>
         <noscript><div><img src="https://mc.yandex.ru/watch/65002513" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
-
       <meta name="yandex-verification" content="fd8ca6854d52ddf1" />
 
       <meta charset="utf-8">
@@ -28,6 +27,14 @@
       <title>{% block title %}{% endblock %}</title>
       <meta name="description" content="{% block description %}{% endblock %}">
       <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+
+      <meta property="og:title" content="{% block og-title %}{% endblock %}" />
+      <meta property="og:type" content="website " />
+      <meta property="og:image" content="{% block og-image %}{% endblock %}" />
+      <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+      <meta property="og:description" content="{% block og-description %}{% endblock %}" />
+      <meta property="og:site_name" content="PandoraTradingSolutions" />
+
       <link rel="shortcut icon" href="{% static 'pandoratradingsolution/favicon.ico' %}">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="{% static 'pandoratradingsolution/assets/css/preload.min.css' %}">
