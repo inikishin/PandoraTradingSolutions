@@ -12,6 +12,16 @@
 <div class="col-lg-8">
   <div class="card animated fadeInLeftTiny animation-delay-5">
     <div class="card-body card-body-big">
+
+        <div xmlns:v="http://rdf.data-vocabulary.org/#">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-slash">
+              <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
+              <li class="breadcrumb-item active" typeof="v:Breadcrumb"><a href="{{ request.get_path }}" rel="v:url" property="v:title">{{ flatpage.title }}</a></li>
+          </ol>
+        </nav>
+      </div>
+
       <h1 class="no-mt">{{ flatpage.title }}</h1>
       <div class="mb-4">
         <div class="mb-4">
