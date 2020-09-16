@@ -21,9 +21,9 @@
                 <h3 class="color-white index-1 text-center no-m pt-4">{{ user.first_name }} {{ user.last_name }}</h3>
                 <div class="color-medium index-1 text-center np-m">@{{ user.username }}</div>
                 {% if user.profile.avatar %}
-                <img src=" {{ user.profile.avatar.url }} " alt="avatar" class="img-avatar-circle">
+                <img src="{{ user.profile.avatar.url }} " alt="avatar" class="img-avatar-circle">
                 {% else %}
-                <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+                <img src="{% static 'pandoratradingsolution/no_ava.jpeg' %}" alt="avatar" class="img-avatar-circle">
                 {% endif %}
               </div>
               <div class="card-body pt-4 text-center">
@@ -42,7 +42,7 @@
           </div>
           <div class="col-lg-12 col-md-6 order-md-2 order-lg-3">
             <div class="card animated fadeInUp animation-delay-12">
-              <img src="{% static "pandoratradingsolution/vertical_tagline_on_corporate.png" %}" alt="vertical_logo">
+              <img src="{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %}" alt="vertical_logo">
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
             </tr>
             <tr>
               <th><i class="zmdi zmdi-calendar mr-1 color-royal"></i> Зарегистрирован на сайте</th>
-              <td>{{ user.date_joined }}</td>
+              <td>{{ user.date_joined|date:'SHORT_DATE_FORMAT' }}</td>
             </tr>
           </table>
         </div>
@@ -81,9 +81,13 @@
             <ul class="ms-timeline">
               <li class="ms-timeline-item wow materialUp">
                 <div class="ms-timeline-date">
-                  <time class="timeline-time" datetime="">{{ user.date_joined }}</time>
+                  <time class="timeline-time" datetime="">{{ user.date_joined|date:'SHORT_DATE_FORMAT' }}</time>
                   <i class="ms-timeline-point bg-royal"></i>
-                  <img src="{% static "pandoratradingsolution/no_ava.jpeg" %}" alt="avatar" class="img-avatar-circle">
+                  {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar.url }} " alt="avatar" class="img-avatar-circle">
+                  {% else %}
+                    <img src="{% static 'pandoratradingsolution/no_ava.jpeg' %}" alt="avatar" class="img-avatar-circle">
+                  {% endif %}
                 </div>
                 <div class="card card-royal">
                   <div class="card-header">
@@ -95,7 +99,7 @@
                         <img src="assets/img/demo/office1.jpg" alt="" class="img-fluid">
                       </div>
                       <div class="col-sm-8">
-                        <p>Пользователь был зарегистрирован на сайте {{ user.date_joined }}.</p>
+                        <p>Пользователь был зарегистрирован на сайте {{ user.date_joined|date:'SHORT_DATE_FORMAT' }}.</p>
                       </div>
                     </div>
                   </div>

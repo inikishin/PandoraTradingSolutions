@@ -1,4 +1,7 @@
 {% extends "account/ms_account_forms.html" %}
+
+{% load l10n %}
+
 {% block title %} Изменение данных пользователя {% endblock %}
 
 {% block form %}
@@ -10,12 +13,96 @@
     <h1>Изменение данных пользователя</h1>
     <p>Вы можете изменить свои данные используя следующую форму:</p>
 
-    <form action="." method="post" enctype="multipart/form-data">
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="col-lg-3">
-            <input type="submit" class='btn btn-raised btn-primary btn-block' value="Сохранить изменения">
+        <fieldset>
+          <div class="row form-group">
+            <label for="{{ user_form.email.id_for_label }}" class="col-md-2 control-label">Email</label>
+            <div class="col-md-9">
+              <input type="email" class="form-control" id="{{ user_form.email.id_for_label }}" name="email" placeholder="Email" title="{{ user_form.email.help_text }}" value="{{ user_form.email.value }}">
+              {% for error in user_form.email.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ user_form.first_name.id_for_label }}" class="col-md-2 control-label">Имя</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ user_form.first_name.id_for_label }}" name="first_name" placeholder="Имя" title="{{ user_form.first_name.help_text }}" value="{{ user_form.first_name.value }}">
+              {% for error in user_form.first_name.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ user_form.last_name.id_for_label }}" class="col-md-2 control-label">Фамилия</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ user_form.last_name.id_for_label }}" name="last_name" placeholder="Фамилия" title="{{ user_form.last_name.help_text }}" value="{{ user_form.last_name.value }}">
+              {% for error in user_form.last_name.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ profile_form.sex.id_for_label }}" class="col-md-2 control-label">Пол</label>
+            <div class="col-md-9">
+              <select id="{{ profile_form.sex.id_for_label }}" name="sex" class="form-control selectpicker" title="{{ profile_form.sex.help_text }}" value="{{ profile_form.sex.value }}">
+                <option>Мужской</option>
+                <option>Женский</option>
+              </select>
+            </div>
+              {% for error in profile_form.sex.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+          </div>
+          <div class="row form-group">
+            <label for="{{ profile_form.birth_date.id_for_label }}" class="col-md-2 control-label">Дата рождения</label>
+            <div class="col-md-9">
+              <input id="datePicker" name="birth_date" type="text" class="form-control" placeholder="mm/dd/yy" title="{{ profile_form.birth_date.help_text }}" value="{{ profile_form.birth_date.value|date:'SHORT_DATE_FORMAT' }}">
+            </div>
+              {% for error in profile_form.birth_date.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+          </div>
+          <div class="row form-group">
+            <label for="{{ profile_form.location.id_for_label }}" class="col-md-2 control-label">Откуда</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ profile_form.location.id_for_label }}" name="location" placeholder="откуда" title="{{ profile_form.location.help_text }}" value="{{ profile_form.location.value }}">
+              {% for error in profile_form.location.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="{{ profile_form.bio.id_for_label }}" class="col-md-2 control-label">О себе</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="{{ profile_form.bio.id_for_label }}" name="bio" placeholder="о себе" title="{{ profile_form.bio.help_text }}" value="{{ profile_form.bio.value }}">
+              {% for error in profile_form.bio.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+
+          {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }} " alt="avatar" class="img-avatar-circle">
+          {% endif %}
+          <div class="form-group row justify-content-end">
+            <label for="{{ profile_form.avatar.id_for_label }}" class="col-lg-2 control-label">Аватар</label>
+            <div class="col-lg-10">
+                <input type="text" readonly="" class="form-control" placeholder="Обзор...">
+                <input type="file" id="{{ profile_form.avatar.id_for_label }}" name="avatar" multiple="" value="{{ profile_form.avatar.value }}">
+            </div>
+              {% for error in profile_form.avatar.errors %}
+                <p class="color-danger">{{ error }}</p>
+              {% endfor %}
+          </div>
+        </fieldset>
+
+        <div class="form-group row justify-content-end">
+            <div class="col-lg-10">
+                <button type="submit" class="btn btn-raised btn-primary">Сохранить изменения</button>
+                <button onclick="location.href = '{% url 'profile' %}';" class="btn btn-danger">Отмена изменений</button>
+            </div>
         </div>
     </form>
 
