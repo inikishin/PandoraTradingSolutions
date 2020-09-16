@@ -30,7 +30,7 @@
 
       <meta property="og:title" content="{% block og-title %}{% endblock %}" />
       <meta property="og:type" content="website " />
-      <meta property="og:image" content="{% block og-image %}{% endblock %}" />
+      <meta property="og:image" content="https://{{request.get_host}}{% block og-image %}{% endblock %}" />
       <meta property="og:url" content="{{ request.build_absolute_uri }}" />
       <meta property="og:description" content="{% block og-description %}{% endblock %}" />
       <meta property="og:site_name" content="PandoraTradingSolutions" />
