@@ -1,49 +1,40 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#333">
-    <title>404 Page not found</title>
-    <meta name="description" content="Pandora Trading Solutions - инструмент успешного инвестора. Лучшая аналитика и прогнозы мировых финансовых рынков, основанные на предсказаниях искусственного интеллекта.">
-    <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
-    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/plugins.min.css" %}">
-    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/style.indigo-800.min.css" %}">
-    <!--[if lt IE 9]>
-        <script src="{% static "pandoratradingsolution/assets/js/html5shiv.min.js" %}"></script>
-        <script src="{% static "pandoratradingsolution/assets/js/respond.min.js" %}"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div id="ms-preload" class="ms-preload">
-      <div id="status">
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-full-page bg-primary back-fixed">
-      <div class="mw-500 absolute-center">
-        <div class="card animated zoomInUp animation-delay-7 color-primary withripple">
-          <div class="card-body">
-            <div class="text-center color-dark">
-              <h1 class="color-primary text-big">Error 404</h1>
-              <h2>Page Not Found</h2>
-              <p class="lead lead-sm">We have not found what you are looking for.</p>
-              <a href="/" class="btn btn-primary btn-raised"><i class="zmdi zmdi-home"></i> Go Home</a>
+{% block title %} Раздел не найден {% endblock %}
+{% block description %} Раздел не найден {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card animated fadeInLeftTiny animation-delay-5">
+          <div class="card-body card-body-big">
+
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              Этого раздела на нашем сайте не существует.<br>
+              Попробуйте зайти на нашу <a href="/">главную</a>, там много интересного.
             </div>
+
+            <h1 class="no-mt">Ой, страничка не найдена...</h1>
+
+            <p>Запрашиваемая Вами страница не найдена, и у нас есть прекрасная догадка, почему!</p>
+            <ul>
+              <li>Если вы набрали URL напрямую, убедитесь, что написание является правильным.</li>
+              <li>Если вы нажали на ссылку, чтобы попасть сюда, ссылка устарела.</li>
+            </ul>
+            <p>Что делать? Не бойтесь, помощь рядом!</p>
+            <ul>
+              <li>Вернуться на <a href="/">Главную</a></li>
+              <li>Используйте строку поиска в верхней части страницы для поиска нужной информации.</li>
+              <li>Отправить письмо владельцу сайта через форму <a href="{% url 'contact' %}">Обратной связи</a></li>
+            </ul>
+
           </div>
         </div>
       </div>
     </div>
-    <script src="{% static "pandoratradingsolution/assets/js/plugins.min.js" %}"></script>
-    <script src="{% static "pandoratradingsolution/assets/js/app.min.js" %}"></script>
-  </body>
-</html>
+</div>
+
+{% endblock %}

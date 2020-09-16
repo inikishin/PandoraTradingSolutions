@@ -1,49 +1,34 @@
+{% extends "pandoratradingsolution/ms_base.html" %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#333">
-    <title>Material Style</title>
-    <meta name="description" content="Material Style Theme">
-    <link rel="shortcut icon" href="{% static "pandoratradingsolution/favicon.ico" %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/preload.min.css" %}">
-    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/plugins.min.css" %}">
-    <link rel="stylesheet" href="{% static "pandoratradingsolution/assets/css/style.indigo-800.min.css" %}">
-    <!--[if lt IE 9]>
-        <script src="{% static "pandoratradingsolution/assets/js/html5shiv.min.js" %}"></script>
-        <script src="{% static "pandoratradingsolution/assets/js/respond.min.js" %}"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div id="ms-preload" class="ms-preload">
-      <div id="status">
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-full-page bg-primary">
-      <div class="mw-500 absolute-center">
-        <div class="card animated zoomInUp animation-delay-7 color-primary withripple">
-          <div class="card-body">
-            <div class="text-center color-dark">
-              <h1 class="color-primary text-big">Error 500</h1>
-              <h2>Internal Server Error</h2>
-              <p class="lead lead-sm">Something has gone wrong we are trying to fix it.<br>Meanwhile you can go back to the homepage.</p>
-              <a href="/" class="btn btn-primary btn-raised"><i class="zmdi zmdi-home"></i> Go Home</a>
+{% block title %} Внутренняя ошибка на сервере {% endblock %}
+{% block description %} Внутренняя ошибка на сервере {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card animated fadeInLeftTiny animation-delay-5">
+          <div class="card-body card-body-big">
+
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              Возникла непредвиденная ошибка на сервере.<br>
+              Попробуйте зайти на нашу <a href="/">главную</a> страницу.
             </div>
+
+            <h1 class="no-mt">Ой, что-то пошло не так...</h1>
+
+            <p>На текущий момент возникла непредвиденная ошибка на сервере. Наши специалисты уже работают над ее исправлением. Сейчас вы можете:</p>
+            <ul>
+              <li>Вернуться на <a href="/">Главную</a></li>
+              <li>Отправить письмо владельцу сайта через форму <a href="{% url 'contact' %}">Обратной связи</a> с описанием ошибки.</li>
+            </ul>
+
           </div>
         </div>
       </div>
     </div>
-    <script src="{% static "pandoratradingsolution/assets/js/plugins.min.js" %}"></script>
-    <script src="{% static "pandoratradingsolution/assets/js/app.min.js" %}"></script>
-  </body>
-</html>
+</div>
+
+{% endblock %}
