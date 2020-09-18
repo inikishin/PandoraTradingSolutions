@@ -21,7 +21,7 @@
     <h3>Список публикаций ежедневного технического анализа</h3>
     {% if post_list %}
         {% for post in post_list %}
-            <a href="{% url 'detail' post.id %}">{{ post.header }}</a><br>
+            <a href="{% url 'detail' post.slug_url %}">{{ post.header }}</a><br>
         {% endfor %}
     {% else %}
         <div>Нет информации по аналитике, удовлетворяющих условиям отбора</div>

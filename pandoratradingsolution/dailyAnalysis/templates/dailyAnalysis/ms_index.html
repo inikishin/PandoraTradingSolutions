@@ -78,8 +78,8 @@
                     <tbody>
                         {% for post in page_obj %}
                         <tr>
-                            <td><p><a href="{% url 'detail' post.id %}"><i class="fa fa-line-chart color-info"></i> {{ post.ticker.ticker_name }} ({{ post.ticker }})</a></p></td>
-                            <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
+                            <td><p><a href="{% url 'detail' post.slug_url %}"><i class="fa fa-line-chart color-info"></i> {{ post.ticker.ticker_name }} ({{ post.ticker }})</a></p></td>
+                            <td><a href="{% url 'detail' post.slug_url %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
                             <td>
                                 {% if post.sig_elder != 0 %}
                                 <div class="row col-xs-4 {{ post.sig_elder|price_color }}" title="Вероятность сигнала: {{ post.sig_elder_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_elder|price_color }}"><i class="{{ post.sig_elder|icon_type }}"></i></span>{{ post.sig_elder|buysell_signal }}</div>

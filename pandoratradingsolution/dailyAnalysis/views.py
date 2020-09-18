@@ -36,13 +36,13 @@ def index(request):
     return render(request, 'dailyAnalysis/ms_index.html', context)
 
 
-def detail(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-
-    context = {'post': post}
-    context.update(pts_views.get_navbar_stat())
-
-    return render(request, 'dailyAnalysis/ms_detail.html', context)
+#def detail(request, post_id):
+#    post = get_object_or_404(Post, pk=post_id)
+#
+#    context = {'post': post}
+#    context.update(pts_views.get_navbar_stat())
+#
+#    return render(request, 'dailyAnalysis/ms_detail.html', context)
 
 def detail_slug(request, post_slug):
     post = get_object_or_404(Post, slug_url=post_slug)
@@ -53,7 +53,6 @@ def detail_slug(request, post_slug):
     return render(request, 'dailyAnalysis/ms_detail.html', context)
 
 # API
-
 
 from rest_framework.response import Response
 from rest_framework.views import APIView

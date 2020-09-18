@@ -6,6 +6,7 @@ app_name = "tickers"
 
 urlpatterns = [
     path('', views.index, name='marketDictionary'),
-    path('<int:ticker_id>/', views.detail, name='detail'),
+    #path('<int:ticker_id>/', views.detail, name='detail'),
+    path('<str:ticker_name>/', views.detail_slug, name='detail'),
     path('api/tickers/', views.TickerView.as_view()),
 ]
