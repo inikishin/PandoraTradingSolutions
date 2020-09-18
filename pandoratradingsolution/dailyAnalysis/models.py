@@ -21,7 +21,7 @@ class Post(models.Model):
     header = models.TextField()
     content = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='date_analysis')
-    slug_url = models.SlugField()
+    slug_url = models.SlugField(unique=True)
     created = models.DateTimeField(auto_now_add=True)
     sig_elder = models.IntegerField(default=0)
     sig_channel = models.IntegerField(default=0)
