@@ -23,7 +23,15 @@
       </header>
       <div class="container">
         <div class="row pricing-table-container">
-
+            <div xmlns:v="http://rdf.data-vocabulary.org/#">
+            <br>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-slash">
+                  <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
+                  <li class="breadcrumb-item" typeof="v:Breadcrumb">Прогнозы</li>
+              </ol>
+            </nav>
+          </div>
             {% if page_obj %}
 
             <div class="card card-primary table-responsive">

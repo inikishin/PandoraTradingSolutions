@@ -19,6 +19,7 @@
           </div>
         </div>
     </div>
+
     <div class="container">
         <div class="card card-hero card-primary animated fadeInUp animation-delay-7">
           <div class="card-header-100 bg-primary-dark">
@@ -40,6 +41,18 @@
               </div>
             </div>
           </div>
+
+      <div xmlns:v="http://rdf.data-vocabulary.org/#">
+        <br>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-slash">
+              <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
+              <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="{% url 'marketDictionary:marketDictionary' %}" rel="v:url" property="v:title">Инструменты</a></li>
+              <li class="breadcrumb-item active" typeof="v:Breadcrumb">{{ ticker.full_name }}</li>
+          </ol>
+        </nav>
+      </div>
+
           <div class="row">
             <div class="col-xl-4 col-12">
               <div class="card-body">
