@@ -18,7 +18,7 @@
           <ol class="breadcrumb breadcrumb-slash">
               <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
               <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="{% url 'dailyAnalysis' %}" rel="v:url" property="v:title">Аналитика</a></li>
-              <li class="breadcrumb-item active" typeof="v:Breadcrumb"><a href="{% url 'detail' post.id %}" rel="v:url" property="v:title">{{ post.header }}</a></li>
+              <li class="breadcrumb-item active" typeof="v:Breadcrumb">{{ post.header }}</li>
           </ol>
         </nav>
       </div>

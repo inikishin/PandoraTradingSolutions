@@ -23,7 +23,15 @@
       </header>
       <div class="container">
         <div class="row pricing-table-container">
-
+          <div xmlns:v="http://rdf.data-vocabulary.org/#">
+            <br>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-slash">
+                  <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
+                  <li class="breadcrumb-item" typeof="v:Breadcrumb">Аналитика</li>
+              </ol>
+            </nav>
+          </div>
             <div class="card card-primary" style="width:100%">
                 <div class="card-header">
                     <h3 class="card-title">Фильтр</h3>
@@ -60,6 +68,8 @@
 
             {% if page_obj %}
             <div class="card card-primary table-responsive" style="width:100%">
+
+
                 <div class="card-header">
                     <h3 class="card-title">Аналитика</h3>
                 </div>
