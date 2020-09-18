@@ -9,6 +9,7 @@ class PostSerializer(serializers.Serializer):
     header = serializers.CharField()
     content = serializers.CharField()
     slug = serializers.SlugField()
+    slug_url = serializers.SlugField()
     created = serializers.DateTimeField()
     sig_elder = serializers.IntegerField()
     sig_channel = serializers.IntegerField()
