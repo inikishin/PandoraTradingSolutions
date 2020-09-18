@@ -38,7 +38,7 @@
                             {% for ticker in page_obj %}
                                 <tr>
                                     <td>{{ ticker.market }}</td>
-                                    <td><a href="{% url 'marketDictionary:detail' ticker.id %}">{{ ticker.ticker_name }}</a></td>
+                                    <td><a href="{% url 'marketDictionary:detail' ticker.short_name %}">{{ ticker.ticker_name }}</a></td>
                                     <td>{{ ticker.short_name }}</td>
                                     <td><noindex><a href="http:\\{{ ticker.site }}" target="_blank" rel="nofollow">{{ ticker.site }}</a></noindex></td>
                                 </tr>

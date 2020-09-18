@@ -19,7 +19,7 @@
 {% if post_list %}
     <ul>
             {% for post in post_list %}
-                <li><a href="{% url 'detail' post.id %}">{{ post.header }}</a></li>
+                <li><a href="{% url 'detail' post.slug_url %}">{{ post.header }}</a></li>
             {% endfor %}
     </ul>
 {% else %}

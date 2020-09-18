@@ -48,13 +48,13 @@
         <tbody>
             {% for post in page_obj %}
             <tr>
-                <td><a href="{% url 'detail' post.id %}">{{ post.ticker }}</a></td>
-                <td><a href="{% url 'detail' post.id %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
-                <td><a href="{% url 'detail' post.id %}">{{ post.sig_elder|buysell_signal:post.sig_elder_proba }}</a></td>
-                <td><a href="{% url 'detail' post.id %}">{{ post.sig_channel|buysell_signal:post.sig_channel_proba }}</a></td>
-                <td><a href="{% url 'detail' post.id %}">{{ post.sig_DivBar|buysell_signal:post.sig_DivBar_proba }}</a></td>
-                <td><a href="{% url 'detail' post.id %}">{{ post.sig_NR4ID|signal:post.sig_NR4ID_proba }}</a></td>
-                <td><a href="{% url 'detail' post.id %}">{{ post.sig_breakVolatility|signal:post.sig_breakVolatility_proba }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.ticker }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.sig_elder|buysell_signal:post.sig_elder_proba }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.sig_channel|buysell_signal:post.sig_channel_proba }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.sig_DivBar|buysell_signal:post.sig_DivBar_proba }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.sig_NR4ID|signal:post.sig_NR4ID_proba }}</a></td>
+                <td><a href="{% url 'detail' post.slug_url %}">{{ post.sig_breakVolatility|signal:post.sig_breakVolatility_proba }}</a></td>
             </tr>
             {% endfor %}
         </tbody>

@@ -19,4 +19,4 @@ class Ticker(models.Model):
         return self.short_name
 
     def get_absolute_url(self):
-        return "/marketdictionary/%i/" % self.id
+        return "/marketdictionary/{0}/".format(self.short_name)
