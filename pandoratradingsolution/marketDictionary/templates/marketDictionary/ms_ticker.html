@@ -74,7 +74,7 @@
                   {% for p in post_list %}
                     <div class="media mb-3">
                       <div class="media-body">
-                        <h4 class="no-m"><a href="{% url 'detail' p.id %}">{{ p.header }}</a></h4>
+                        <h4 class="no-m"><a href="{% url 'detail' p.slug_url %}">{{ p.header }}</a></h4>
                         <p>{{ p.content|content_preview }}</p>
                       </div>
                     </div>
