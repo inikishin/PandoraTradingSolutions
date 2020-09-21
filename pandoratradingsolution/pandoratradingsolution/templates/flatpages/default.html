@@ -7,6 +7,10 @@
 {% block description %}{{ flatpage.flatpageext.meta_description }}{% endblock %}
 {% block keywords %}{{ flatpage.flatpageext.meta_keywords }}{% endblock %}
 
+{% block og-title %}{{ flatpage.title }}{% endblock %}
+{% block og-image %}{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %} {% endblock %}
+{% block og-description %}{{ flatpage.flatpageext.meta_description }}{% endblock %}
+
 {% block post %}
 
 <div class="col-lg-8">
