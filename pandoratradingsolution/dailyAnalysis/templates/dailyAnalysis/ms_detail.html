@@ -3,8 +3,8 @@
 {% load blog_tags %}
 {% load static %}
 
-{% block title %} {{ post.header }} {% endblock %}
-{% block description %}Технический анализ акций {{ post.ticker.ticker_name }}. Торговые сигналы основанные на предсказаниях искусственного интеллекта.{% endblock %}
+{% block title %} Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }} основанная на работе искусственного интеллекта {% endblock %}
+{% block description %}Точный технический анализ акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}. Торговые сигналы основанные на предсказаниях искусственного интеллекта.{% endblock %}
 {% block keywords %}инвестирование, торговля, акции РФ, {{ post.ticker.ticker_name }}, {{ post.ticker.short_name }}, торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы, искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ{% endblock %}
 
 {% block post %}
