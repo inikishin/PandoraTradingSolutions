@@ -46,16 +46,24 @@
             </div>
           </div>
 
-      <div xmlns:v="http://rdf.data-vocabulary.org/#">
-        <br>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb breadcrumb-slash">
-              <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
-              <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="{% url 'marketDictionary:marketDictionary' %}" rel="v:url" property="v:title">Инструменты</a></li>
-              <li class="breadcrumb-item active" typeof="v:Breadcrumb">{{ ticker.full_name }}</li>
-          </ol>
-        </nav>
-      </div>
+          <p>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'marketDictionary:marketDictionary' %}" itemprop="item"><span itemprop="name">Инструменты</span></a>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">{{ ticker.full_name }}</span>
+                        <meta itemprop="position" content="3" />
+                    </li>
+                </ol>
+              </nav>
+          </p>
 
           <div class="row">
             <div class="col-xl-4 col-12">

@@ -23,14 +23,19 @@
       </header>
       <div class="container">
 
-        <div xmlns:v="http://rdf.data-vocabulary.org/#">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb breadcrumb-slash">
-                  <li class="breadcrumb-item" typeof="v:Breadcrumb"><a href="/" rel="v:url" property="v:title">Главная</a></li>
-                  <li class="breadcrumb-item" typeof="v:Breadcrumb">Аналитика</li>
-              </ol>
-            </nav>
-        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+              <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+                  <meta itemprop="position" content="1" />
+              </li>
+              <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <span itemprop="name">Аналитика</span>
+                  <meta itemprop="position" content="2" />
+              </li>
+          </ol>
+        </nav>
+
         <div class="row pricing-table-container">
             <div class="card card-primary" style="width:100%">
                 <div class="card-header">
