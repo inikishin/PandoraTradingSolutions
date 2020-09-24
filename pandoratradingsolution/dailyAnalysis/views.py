@@ -11,7 +11,6 @@ def index(request):
     filter_post_date = request.GET.get('post_date', '')
     filter_post_ticker = request.GET.get('post_ticker', '')
     filter_post_sig_only = request.GET.get('post_sig_only', '')
-    print('GET: post_date: ' + filter_post_date + ' / filter_post_ticker: ' + filter_post_ticker)
 
     post_list = Post.objects.order_by('-date_analysis')
     if filter_post_sig_only != '':
@@ -34,15 +33,6 @@ def index(request):
                'page_obj': page_obj}
 
     return render(request, 'dailyAnalysis/ms_index.html', context)
-
-
-#def detail(request, post_id):
-#    post = get_object_or_404(Post, pk=post_id)
-#
-#    context = {'post': post}
-#    context.update(pts_views.get_navbar_stat())
-#
-#    return render(request, 'dailyAnalysis/ms_detail.html', context)
 
 def detail_slug(request, post_slug):
     post = get_object_or_404(Post, slug_url=post_slug)
