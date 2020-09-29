@@ -95,7 +95,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="tags">
                   <div class="card-body overflow-hidden text-center">
                     {% for t in ticker_list %}
-                      <a href="{% url 'marketDictionary:detail' t.id %}" class="ms-tag ms-tag-primary">{{ t }}</a>
+                      <a href="{% url 'marketDictionary:detail' t.short_name %}" class="ms-tag ms-tag-primary">{{ t }}</a>
                     {% endfor %}
                   </div>
                 </div>
