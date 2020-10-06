@@ -13,118 +13,211 @@
 
 {% block content %}
 
-      <header class="ms-hero-page ms-hero-bg-info ms-hero-img-airplane mb-4">
-        <div class="container">
-          <div class="text-center">
-            <h1 class="color-warning mb-4 animated fadeInDown animation-delay-4">Таблица прогнозов</h1>
-            <p class="lead lead-xl mw-800 center-block color-medium mb-2 animated fadeInDown animation-delay-4"> Текущие прогнозы цен <span class="colorStar">по торговым инструментам</span>. <br> Используй <span class="colorStar animation-delay-10">торговые возможности</span> по максимуму. </p>
-          </div>
-        </div>
-      </header>
-      <div class="container">
-        <p class="row pricing-table-container">
+<header class="ms-hero-page ms-hero-bg-info ms-hero-img-airplane mb-4">
+<div class="container">
+  <div class="text-center">
+    <h1 class="color-warning mb-4 animated fadeInDown animation-delay-4">Таблица прогнозов</h1>
+    <p class="lead lead-xl mw-800 center-block color-medium mb-2 animated fadeInDown animation-delay-4"> Текущие прогнозы цен <span class="colorStar">по торговым инструментам</span>. <br> Используй <span class="colorStar animation-delay-10">торговые возможности</span> по максимуму. </p>
+  </div>
+</div>
+</header>
+<div class="container">
+    <div class="row pricing-table-container">
 
-            <p>
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
-                      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                          <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
-                          <meta itemprop="position" content="1" />
-                      </li>
-                      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                          <span itemprop="name">Прогнозы</span>
-                          <meta itemprop="position" content="2" />
-                      </li>
-                  </ol>
-                </nav>
-            </p>
-          
-            {% if page_obj %}
-
-            <div class="card card-primary table-responsive">
-                    <div class="card-header table-responsive">
-                        <h3 class="card-title">Прогнозы</h3>
-                    </div>
-                    <table class="table-sm table-striped table-hover" style="width:100%">
-                        <thead>
-                            <tr class="">
-                                <td><center><b>Инструмент</b></center></td>
-                                {% if user.is_authenticated %}
-                                    <td><center><b>1w</b></center></td>
-                                    <td><center><b>2w</b></center></td>
-                                {% endif %}
-                                <td><center><b>1m</b></center></td>
-                                <td><center><b>3m</b></center></td>
-                                <td><center><b>6m</b></center></td>
-                                <td><center><b>1y</b></center></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for prediction in page_obj %}
-                            <tr>
-                                <td class="color-primary"><i class="fa fa-line-chart color-info"></i> {{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</td>
-                                {% if user.is_authenticated %}
-                                    <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}</div><br>
-                                        <div class="row col-xs-4 {{ prediction.1w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1w.prctChange|price_color }}"><i class="{{ prediction.1w.prctChange|icon_type }}"></i></span>{{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}</div><br>
-                                        <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1w.probability|predictionproba}}</div></td>
-                                    <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}</div><br>
-                                        <div class="row col-xs-4 {{ prediction.2w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.2w.prctChange|price_color }}"><i class="{{ prediction.2w.prctChange|icon_type }}"></i></span>{{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}</div><br>
-                                        <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.2w.probability|predictionproba}}</div></td>
-                                {% endif %}
-                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d-m-Y" }}</div><br>
-                                    <div class="row col-xs-4 {{ prediction.1m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1m.prctChange|price_color }}"><i class="{{ prediction.1m.prctChange|icon_type }}"></i></span>{{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}</div><br>
-                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1m.probability|predictionproba}}</div></td>
-                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d-m-Y" }}</div><br>
-                                    <div class="row col-xs-4 {{ prediction.3m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.3m.prctChange|price_color }}"><i class="{{ prediction.3m.prctChange|icon_type }}"></i></span>{{ prediction.3m.predictprice|predictionprice:prediction.3m.prctChange }}</div><br>
-                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.3m.probability|predictionproba}}</div></td>
-                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d-m-Y" }}</div><br>
-                                    <div class="row col-xs-4 {{ prediction.6m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.6m.prctChange|price_color }}"><i class="{{ prediction.6m.prctChange|icon_type }}"></i></span>{{ prediction.6m.predictprice|predictionprice:prediction.6m.prctChange }}</div><br>
-                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.6m.probability|predictionproba}}</div></td>
-                                <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d-m-Y" }}</div><br>
-                                    <div class="row col-xs-4 {{ prediction.1y.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1y.prctChange|price_color }}"><i class="{{ prediction.1y.prctChange|icon_type }}"></i></span>{{ prediction.1y.predictprice|predictionprice:prediction.1y.prctChange }}</div><br>
-                                    <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1y.probability|predictionproba}}</div></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
-
-            <!--
-            <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; первая</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
-                    {% endif %}
-
-                    <span class="current">
-                        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
-                    </span>
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">следующая</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
-                    {% endif %}
-                </span>
-            </div> -->
-
-            <nav aria-label="...">
-                <ul class="pager pager-flat d-flex justify-content-between">
-                    {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">«</span> предыдущая</a></li>
-                    {% endif %}
-                    {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">следующая <span aria-hidden="true">»</span></a></li>
-                    {% endif %}
-                </ul>
+        <p>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+                      <meta itemprop="position" content="1" />
+                  </li>
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <span itemprop="name">Прогнозы</span>
+                      <meta itemprop="position" content="2" />
+                  </li>
+              </ol>
             </nav>
-            {% else %}
-                <p>Нет прогнозов, удовлетворяющих условиям отбора</p>
-            {% endif %}
+        </p>
 
-        </div> <!-- row -->
-      </div> <!-- container -->
+        {% if page_obj %}
 
+        <div class="card card-primary table-responsive">
+            <div class="card-header table-responsive">
+                <h3 class="card-title">Прогнозы</h3>
+            </div>
+            <table class="table-sm table-striped table-hover" style="width:100%">
+                <thead>
+                    <tr class="">
+                        <td><center><b>Инструмент</b></center></td>
+                        {% if user.is_authenticated %}
+                            <td><center><b>1w</b></center></td>
+                            <td><center><b>2w</b></center></td>
+                        {% endif %}
+                        <td><center><b>1m</b></center></td>
+                        <td><center><b>3m</b></center></td>
+                        <td><center><b>6m</b></center></td>
+                        <td><center><b>1y</b></center></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prediction in page_obj %}
+                    <tr>
+                        <td class="color-primary"><i class="fa fa-line-chart color-info"></i> {{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</td>
+                        {% if user.is_authenticated %}
+                            <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}</div><br>
+                                <div class="row col-xs-4 {{ prediction.1w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1w.prctChange|price_color }}"><i class="{{ prediction.1w.prctChange|icon_type }}"></i></span>{{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}</div><br>
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1w.probability|predictionproba}}</div></td>
+                            <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}</div><br>
+                                <div class="row col-xs-4 {{ prediction.2w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.2w.prctChange|price_color }}"><i class="{{ prediction.2w.prctChange|icon_type }}"></i></span>{{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}</div><br>
+                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.2w.probability|predictionproba}}</div></td>
+                        {% endif %}
+                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d-m-Y" }}</div><br>
+                            <div class="row col-xs-4 {{ prediction.1m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1m.prctChange|price_color }}"><i class="{{ prediction.1m.prctChange|icon_type }}"></i></span>{{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}</div><br>
+                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1m.probability|predictionproba}}</div></td>
+                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d-m-Y" }}</div><br>
+                            <div class="row col-xs-4 {{ prediction.3m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.3m.prctChange|price_color }}"><i class="{{ prediction.3m.prctChange|icon_type }}"></i></span>{{ prediction.3m.predictprice|predictionprice:prediction.3m.prctChange }}</div><br>
+                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.3m.probability|predictionproba}}</div></td>
+                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d-m-Y" }}</div><br>
+                            <div class="row col-xs-4 {{ prediction.6m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.6m.prctChange|price_color }}"><i class="{{ prediction.6m.prctChange|icon_type }}"></i></span>{{ prediction.6m.predictprice|predictionprice:prediction.6m.prctChange }}</div><br>
+                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.6m.probability|predictionproba}}</div></td>
+                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d-m-Y" }}</div><br>
+                            <div class="row col-xs-4 {{ prediction.1y.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1y.prctChange|price_color }}"><i class="{{ prediction.1y.prctChange|icon_type }}"></i></span>{{ prediction.1y.predictprice|predictionprice:prediction.1y.prctChange }}</div><br>
+                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1y.probability|predictionproba}}</div></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <nav aria-label="...">
+            <ul class="pager pager-flat d-flex justify-content-between">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">«</span> предыдущая</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">следующая <span aria-hidden="true">»</span></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% else %}
+            <p>Нет прогнозов, удовлетворяющих условиям отбора</p>
+        {% endif %}
+
+    </div> <!-- row -->
+</div> <!-- container -->
+
+<div class="container mt-6">
+    <div class="row">
+        <div class="card col-lg-12">
+            <div class="card-body-big">
+
+                <h2 class="color-primary right-line">Прогнозы рынка акций </h2>
+
+                <div class="pts-landing-text-block">
+                    <p class="dropcaps">
+                        Прогноз цен акций строится на предыдущей отчетности компании и потенциале фирмы. Необходимо
+                        учесть все факторы и выстроить возможное движение графиков в среднесрочной перспективе. На этой
+                        странице вы найдете прогноз акций на сегодня.
+                    </p>
+                    <h3 class="color-primary">Прогноз акций ММВБ 2020</h3>
+                    <p>
+                        Достоверный прогноз по акциям на год дать достаточно тяжело. Динамика ценных бумаг компании
+                        зависит от:
+                    </p>
+
+                    <ul>
+                        <li>Финансовой отчетности;</li>
+                        <li>Новых разработок;</li>
+                        <li>Текущей деятельности;</li>
+                        <li>Лоббирования своих интересов;</li>
+                        <li>Внешней и внутренней политики.</li>
+                    </ul>
+                    <p>
+                        Учитываться все эти факторы можно, но вовремя реагировать на любое изменение стоимости
+                        затруднительно. Поэтому прогноз курса акций примерный. Проценты, указанные в колонках - ориентир
+                        на изменение стоимости, а не конечный показатель.
+                    </p>
+                    <p>
+                        Прогнозы по акциям на год - это просто очередной инструмент для инвестора. Данные не
+                        предназначены для торговли и совершения трейдерских сделок. Лучшие аналитики обрабатывают их,
+                        но не могут дать стопроцентной гарантии на то, что все будет развиваться так, как предсказано.
+                    </p>
+                    <h3 class="color-primary">Какая информация в прогнозе</h3>
+                    <p>
+                        Прогноз по российским акциям содержит мало текстовых данных. Только примерное движение цены на
+                        год. Сегодня можно посмотреть, как должна меняться стоимость активов, если такая же тенденция
+                        сохранится на следующий год.
+                    </p>
+                    <p>
+                        В каждой колонке есть вероятность указанной цены. На MOEX предсказанная цена никогда не будет
+                        стопроцентной. Чем выше вероятность - тем реальнее указанная цена. Это необходимо учитывать при
+                        балансировке рисков.
+                    </p>
+                    <p>
+                        По некоторым позициям не хватает данных и можно сделать только краткосрочный прогноз. Такие
+                        позиции выделены отдельно. Инвестор самостоятельно может найти информацию, но не рекомендуется
+                        делать поспешных выводов: все зависит от череды случайностей.
+                    </p>
+
+                    <h3 class="color-primary">Как работать с прогнозами</h3>
+                    <p>
+                        Прогноз рынка ММВБ предоставляет основную информацию по тому, как будет увеличиваться или
+                        уменьшаться стоимость ценных бумаг в течение 1, 3, 6 и 12 месяцев. Чем меньше срок, тем более
+                        точно получается предсказывать движение.
+                    </p>
+                    <p>
+                        Прогноз цен акций - это не аксиома, которой нужно следовать. Инвестор должен принимать решение
+                        исходя из уровня рисков, и своей собственной торговой стратегии. Только в этом случае можно
+                        рассчитывать на высокую доходность вложений при минимальных потерях.
+                    </p>
+                    <p>
+                        Инвестор может полагаться на наш прогноз курса акций, но фундаментальные правила вложений не
+                        стоит забывать. Вкладывать только в то, что соответствует собранному портфелю и решает
+                        определенную задачу. Гнаться за высоким уровнем прибыли, даже если свежая аналитика говорит о
+                        том, что эти ценные бумаги - лучшее вложение.
+                    </p>
+                    <h3 class="color-primary">Возможные риски</h3>
+                    <p>
+                        Российский фондовый рынок считается рискованным. Ценные бумаги на MOEX обладают высокой
+                        волатильностью, при высоком расхождении между справедливой стоимостью активов и рыночной
+                        стоимостью.
+                    </p>
+                    <p>
+                        Прогноз рынка ММВБ строится на объективных показателях, но невозможно учесть все факторы.
+                        Внешняя политика сейчас слишком сильно привязана к MOEX, поэтому все может поменяться в любой
+                        момент. Одно неверное слово или действие в сторону Европейских партнеров - и рынок держит
+                        очередную волну санкций.
+                    </p>
+                    <p>
+                        Мы стараемся предоставлять свежие данные, но это не всегда получается. Примерная стоимость и
+                        динамика движения, которая все еще может измениться. Заходите на страницу как можно чаще, чтобы
+                        вовремя успевать реагировать на изменчивый Российский фондовый рынок.
+                    </p>
+                    <p>
+                        Из этого строится долгосрочный прогноз по российским акциям. Если волна кризиса пройдет с
+                        минимальными потерями - показатели будут выше. Если нет - показатели будут на таком уровне, если
+                        внешняя политика не нанесет очередной удар по отечественным инвестициям.
+                    </p>
+
+                    <h3 class="color-primary">Прогноз акций на год: основные советы</h3>
+                    <p>
+                        Прогноз акций на сегодня обновляется несколько раз в месяц. Данные актуализируются. Если будет
+                        какое-то событие, которое сильно повлияет на фондовый рынок, сотрудники скорректируют данные.
+                    </p>
+                    <p>
+                        На MOEX, свежая аналитика не всегда отражает реальное положение дел. Инвестиционные ожидания в
+                        России ниже реальных показателей экономики. Под влиянием внешнеполитических факторов и запретов,
+                        можно говорить, что большинство активов недооценены.
+                    </p>
+                    <p>
+                        Рекомендуется строить самостоятельный прогноз курса акций на основе всех данных. Для этого есть
+                        дополнительные вкладки: торговые сигналы, аналитика, форум. Собрать всю информацию в одном месте,
+                        проанализировать её и сделать вывод - так должен работать инвестор.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

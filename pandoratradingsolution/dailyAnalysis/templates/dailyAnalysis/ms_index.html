@@ -13,68 +13,64 @@
 
 {% block content %}
 
-      <header class="ms-hero-page ms-hero-bg-info ms-hero-img-airplane mb-4">
-        <div class="container">
-          <div class="text-center">
-            <h1 class="color-warning mb-4 animated fadeInDown animation-delay-4">Аналитика</h1>
-            <p class="lead lead-xl mw-800 center-block color-medium mb-2 animated fadeInDown animation-delay-4"> Лучшая аналитическая информация <span class="colorStar">по торговым инструментам</span>. <br> Используй <span class="colorStar animation-delay-10">торговые возможности</span> по максимуму. </p>
-          </div>
-        </div>
-      </header>
-      <div class="container">
-
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
-              <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
-                  <meta itemprop="position" content="1" />
-              </li>
-              <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <span itemprop="name">Аналитика</span>
-                  <meta itemprop="position" content="2" />
-              </li>
-          </ol>
-        </nav>
-
-        <div class="row pricing-table-container">
-            <div class="card card-primary" style="width:100%">
-                <div class="card-header">
-                    <h3 class="card-title">Фильтр</h3>
-                </div>
-                <form action="/dailyanalysis/" method="get">
-                    <div class="form-group row">
-                        <div class="form-group row w-25 center-block">
-                            <label for="post_date" class="col-lg-10 control-label">Дата:</label>
-                            <div class="col-lg-10">
-                                <input id="post_date" name="post_date" type="date" class="form-control" value="{{ post_date }}">
-                            </div>
-                        </div>
-                        <div class="form-group row w-25 center-block">
-                            <label for="post_ticker" autocomplete="false" class="col-lg-10 control-label">Тикер:</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="post_ticker" name="post_ticker" value="{{ post_ticker }}">
-                            </div>
-                        </div>
-                        <div class="w-25 d-flex justify-content-center align-items-center">
-                            <div class="col-lg-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="post_sig_only" value="True"> Есть сигнал
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-25 d-flex justify-content-center align-items-center">
-                            <button type="submit" class="btn btn-raised btn-primary">Найти</button>
+<header class="ms-hero-page ms-hero-bg-info ms-hero-img-airplane mb-4">
+<div class="container">
+  <div class="text-center">
+    <h1 class="color-warning mb-4 animated fadeInDown animation-delay-4">Аналитика</h1>
+    <p class="lead lead-xl mw-800 center-block color-medium mb-2 animated fadeInDown animation-delay-4"> Лучшая аналитическая информация <span class="colorStar">по торговым инструментам</span>. <br> Используй <span class="colorStar animation-delay-10">торговые возможности</span> по максимуму. </p>
+  </div>
+</div>
+</header>
+<div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+              <meta itemprop="position" content="1" />
+          </li>
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name">Аналитика</span>
+              <meta itemprop="position" content="2" />
+          </li>
+      </ol>
+    </nav>
+    <div class="row pricing-table-container">
+        <div class="card card-primary" style="width:100%">
+            <div class="card-header">
+                <h3 class="card-title">Фильтр</h3>
+            </div>
+            <form action="/dailyanalysis/" method="get">
+                <div class="form-group row">
+                    <div class="form-group row w-25 center-block">
+                        <label for="post_date" class="col-lg-10 control-label">Дата:</label>
+                        <div class="col-lg-10">
+                            <input id="post_date" name="post_date" type="date" class="form-control" value="{{ post_date }}">
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="form-group row w-25 center-block">
+                        <label for="post_ticker" autocomplete="false" class="col-lg-10 control-label">Тикер:</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="post_ticker" name="post_ticker" value="{{ post_ticker }}">
+                        </div>
+                    </div>
+                    <div class="w-25 d-flex justify-content-center align-items-center">
+                        <div class="col-lg-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="post_sig_only" value="True"> Есть сигнал
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-25 d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-raised btn-primary">Найти</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-            {% if page_obj %}
+        {% if page_obj %}
             <div class="card card-primary table-responsive" style="width:100%">
-
-
                 <div class="card-header">
                     <h3 class="card-title">Аналитика</h3>
                 </div>
@@ -146,8 +142,113 @@
                 </nav>
                 <br>
             </div>
-            {% else %}
-                <p>Нет публикаций, удовлетворяющих условиям отбора</p>
-            {% endif %}
+        {% else %}
+            <p>Нет публикаций, удовлетворяющих условиям отбора</p>
+        {% endif %}
+    </div>
+</div>
 
+<div class="container mt-6">
+    <div class="row">
+        <div class="card col-lg-12">
+            <div class="card-body-big">
+
+                <h2 class="color-primary right-line">Аналитика рынка акций </h2>
+
+                <div class="pts-landing-text-block">
+                    <p class="dropcaps">
+                        Аналитика акций - разбор движения цены. Что стоит за каждым колебанием: новая отчетность, новости о
+                        разработках, скандалы внутри компании. Технический анализ фондового рынка позволяет получать знания
+                        и прогнозы, исходя из графиков и показателей. Для инвестора - это возможность получать всю актуальную
+                        информацию в одном месте.
+                    </p>
+
+                    <h3 class="color-primary">Технический анализ акций ММВБ</h3>
+                    <p>
+                        Фондовый технический анализ - прогноз изменения цены ценных бумаг по графикам. За каждой покупкой и
+                        продажей стоят ожидания людей. Задача прогнозиста - понять, о чем думают биржевые игроки и сделать
+                        ставку на определенный исход.<br>
+
+                        Аналитика акций MOEX на сегодня - ежедневный доступ к движениям цены. Не нужно самостоятельно
+                        анализировать движение и помнить, как шел график в течение недели/месяца. Все данные в одном месте:
+                    </p>
+                    <ul>
+                        <li>Еженедельное движение графика;</li>
+                        <li>Дневные минимумы и максимумы;</li>
+                        <li>Торговые стратегии, которые принесут прибыль;</li>
+                        <li>Наглядные пособия по их использованию. </li>
+                    </ul>
+                    <p>
+                        <i>Предоставленная аналитика акций Российских компаний ежедневно редактируется. Данные актуализируются,
+                            перепроверяется опытными трейдерами и инвесторами, и только потом выкладывается.</i><br>
+
+                        Аналитика покупки акций - поиск момента входа в сделку. Для трейдеров - это возможность совершить
+                        покупку или зашортить актив. Для инвесторов - поиск потенциальной прибыли для долгосрочных вложений.
+                        Графики содержат слишком много сведений, чтобы ими пренебрегать.
+                    </p>
+
+                    <h3 class="color-primary">Какая информация доступна в аналитике акций</h3>
+                    <p>
+                        Аналитика акций на сегодня включает в себя дневной и недельный графики, а также популярные торговые
+                        стратегии, которые можно использовать. В каждой стратегии есть конкретный пример: как входить, где
+                        выставлять стоп-лоссы, и каким образом работать с графиком самостоятельно.<br>
+
+                        Наши прогнозы хорошо подходят для маржинальной торговли и ежедневного трейдинга. Актуальные данные
+                        обновляется каждый день: еженедельный и ежедневный прирост цены, количество сделок, обороты. Это
+                        позволяет видеть все потенциальные возможности.<br>
+
+                        Аналитика акций на сегодня - это сборник всех стратегий и данных для Российского рынка. На одной
+                        странице собраны вся информация для трейдинга, которая может пригодиться.
+                    </p>
+
+                    <h3 class="color-primary">Возможные риски</h3>
+                    <p>
+                        Мы предупреждаем всех участников о возможных рисках. Фондовых технический анализ - это про умение
+                        адаптироваться и искать возможности. Никаких гарантий, что каждое действие будет прибыльным. Умение
+                        адаптироваться очень важно.<br>
+
+                        Трейдер должен быть лучше других 60% игроков на бирже, и тогда он будет выходить в плюс. Не стоит
+                        забывать об этой математике.<br>
+
+                        Аналитика акций включает в себя возможные советы по сделкам и получению профита. Но у каждого
+                        трейдера своя стратегия, которая позволяет ему входить в сделки. Не стоит слепо следовать словам
+                        прогнозистов и опытных трейдеров. Необходимо самостоятельно работать со своим счетом.<br>
+
+                        Технический анализ акций ММВБ не дает стопроцентной гарантии по каждой сделке. Трейдеру самому
+                        придется балансировать риски и потенциальную доходность. Это один из важных навыков, но обучиться
+                        ему придется самостоятельно.<br>
+
+                        Лучший прогноз дает только информацию. Важно сбалансировать свою торговую стратегию таким образом,
+                        чтобы потенциальные потери всегда перекрывались более высокой прибылью. Нельзя по каждому контракту
+                        выходить в плюс. Особенно на MOEX, где рынок очень волатильный и движется в непредсказуемых
+                        направлениях.
+                    </p>
+
+                    <h3 class="color-primary">Как пользоваться онлайн аналитикой акций ММВБ</h3>
+                    <p>
+                        На странице представлена аналитика акций Российский компаний. Пользователь может использовать наши
+                        прогнозы и принимать решение исходя из полученных данных, или просто получать актуальные сведения и
+                        делать собственные выводы.<br>
+
+                        Сведения по дневным и недельным графикам подходит для трейдеров. Посмотреть на графике, куда сегодня
+                        будут двигаться ценные бумаги и провести несколько сделок с кредитным плечом, чтобы получить прибыль.
+                        Аналитика покупки акций поможет в этом.<br>
+
+                        Для инвесторов, которые хотят вкладывать на долгий срок, можно получить сборную информацию по каждой
+                        компании. Как двигался график, какие сделки раньше можно было заключить. Из этого делается вывод о
+                        платежеспособности компании в долгосрочной перспективе.<br>
+
+                        Для новичков есть и другие инструменты: торговые сигналы и форум. С помощью сигналов можно получить
+                        данные по входу в сделку: когда, сколько, какие прибыли и риски. На форуме можно задать свой вопрос,
+                        поделиться знаниями и работать в комьюнити людей, которые движутся к одной цели.<br>
+
+                        Аналитика акций ММВБ - инструмент, который поможет как начинающему, так и опытному инвестору принять
+                        решение. Только актуальная информация, которая обновляется каждый день. Лучшие аналитики обрабатывают
+                        данные и составляют прогнозы.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
