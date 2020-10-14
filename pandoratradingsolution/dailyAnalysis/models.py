@@ -1,3 +1,5 @@
+import re
+
 from django.db import models
 import marketDictionary.models as md
 from django.conf import settings
@@ -39,3 +41,57 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return "/dailyAnalysis/{0}/".format(self.slug_url)
+
+    def get_description_for_signal(self, signal=''):
+        if signal == 'weekly':
+            descr_indx = 0
+            img_str = 'weekly'
+        elif signal == 'daily':
+            descr_indx = 1
+            img_str = '_daily_'
+        elif signal == 'elder':
+            descr_indx = 2
+            img_str = 'elder'
+        elif signal == 'channel':
+            descr_indx = 3
+            img_str = 'channel'
+        elif signal == 'divbar':
+            descr_indx = 4
+            img_str = 'divbar'
+        elif signal == 'volatility':
+            descr_indx = 5
+            img_str = 'volatility'
+        else:
+            descr_indx = 0
+            img_str = 'weekly'
+
+        signal_descriptions = re.findall(r"###[\D\d][^\[!]+", self.content)  # регулярка для всех описаний
+        signal_descriptions_clear = []
+        for d in signal_descriptions:
+            if '###Содержание' not in d:
+                d = re.sub(r'###[\D\d]+\}', '', d)  # Сделать реплейс этих значений
+                d = re.sub(r'<[\D\d]+>', '', d)  # Сделать реплейс этих значений
+                signal_descriptions_clear.append(d)
+        sig_descr = signal_descriptions_clear[descr_indx].strip()
+
+        img_links = re.findall(r'\[[\D]+\]\([media]{5}[A-z0-9\/.\)-]+', self.content)  # регулярка для всех ссылок
+        img = ''
+        for l in img_links:
+            if img_str in l:
+                img = l.split('(media_url/')[1][:-1] # возвращаем без закрывающей скобки
+        return {'descr': sig_descr,
+                'img': img}
+
+    def get_overview(self):
+        if self.sig_elder > 0:
+            return self.get_description_for_signal(signal='elder')
+        elif self.sig_channel > 0:
+            return self.get_description_for_signal(signal='channel')
+        elif self.sig_DivBar > 0:
+            return self.get_description_for_signal(signal='divbar')
+        elif self.sig_NR4ID > 0:
+            return self.get_description_for_signal(signal='volatility')
+        elif self.sig_breakVolatility > 0:
+            return self.get_description_for_signal(signal='volatility')
+        else:
+            return self.get_description_for_signal(signal='daily')
