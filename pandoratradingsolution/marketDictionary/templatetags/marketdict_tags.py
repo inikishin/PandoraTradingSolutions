@@ -17,8 +17,7 @@ def round_num_format(n, digits):
 
 @register.filter(name='content_preview')
 def content_preview(text):
-    preview = text.split('\n')[1]
-    return preview[:100] + '...'
+    return text[:200] + '...'
 
 @register.filter(name='get_color_for_pred')
 def get_color_for_pred(perc_change):

@@ -79,7 +79,7 @@ class Post(models.Model):
         for l in img_links:
             if img_str in l:
                 img = l.split('(media_url/')[1][:-1] # возвращаем без закрывающей скобки
-        return {'descr': sig_descr,
+        return {'description': sig_descr,
                 'img': img}
 
     def get_overview(self):
