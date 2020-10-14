@@ -42,7 +42,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         return "/dailyAnalysis/{0}/".format(self.slug_url)
 
-    def get_description_for_signal(self, signal):
+    def get_description_for_signal(self, signal=''):
         if signal == 'weekly':
             descr_indx = 0
             img_str = 'weekly'
@@ -81,3 +81,17 @@ class Post(models.Model):
                 img = l.split('(media_url/')[1][:-1] # возвращаем без закрывающей скобки
         return {'descr': sig_descr,
                 'img': img}
+
+    def get_overview(self):
+        if self.sig_elder > 0:
+            return self.get_description_for_signal(signal='elder')
+        elif self.sig_channel > 0:
+            return self.get_description_for_signal(signal='channel')
+        elif self.sig_DivBar > 0:
+            return self.get_description_for_signal(signal='divbar')
+        elif self.sig_NR4ID > 0:
+            return self.get_description_for_signal(signal='volatility')
+        elif self.sig_breakVolatility > 0:
+            return self.get_description_for_signal(signal='volatility')
+        else:
+            return self.get_description_for_signal(signal='daily')
