@@ -100,7 +100,7 @@
                     <div class="media mb-3">
                       <div class="media-body">
                         <h4 class="no-m"><a href="{% url 'detail' p.slug_url %}">{{ p.header }}</a></h4>
-                        <p>{{ p.content|content_preview }}</p>
+                        <p>{{ p.get_overview.description|content_preview }}</p>
                       </div>
                     </div>
                   {% endfor %}
