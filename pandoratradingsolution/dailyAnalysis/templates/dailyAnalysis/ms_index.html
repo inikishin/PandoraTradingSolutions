@@ -1,6 +1,7 @@
 {% extends "pandoratradingsolution/ms_base.html" %}
 
 {% load blog_tags %}
+{% load marketdict_tags %}
 {% load static %}
 
 {% block title %}Технический анализ фондового рынка акций ММВБ (MOEX) российских компаний. Стоимость, котировки, советы по инвестированию.{% endblock %}
@@ -34,7 +35,7 @@
           </li>
       </ol>
     </nav>
-    <div class="row pricing-table-container">
+    <div class="row">
         <div class="ms-collapse w-100 no-margin" id="accordion-filter" role="tablist" aria-multiselectable="true">
             <div class="mb-0 card card-primary">
                 <div class="card-header" role="tab" id="headingFilter">
@@ -79,64 +80,33 @@
             </div>
         </div>
 
+
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
         {% if page_obj %}
-            <div class="card card-primary table-responsive" style="width:100%">
-                <div class="card-header">
-                    <h3 class="card-title">Аналитика</h3>
+            {% for post in page_obj %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="withripple zoom-img">
+                            <img src="{% get_media_prefix %}{{ post.get_overview.img }}" alt="article-img" class="img-fluid">
+                        </div>
+                        <div class="card-body text-center pts-da-card">
+                            <h4 class="color-success">{{ post.header }}</h4>
+                            <div class="pts-da-card-text" title="{{ post.get_overview.description }}">
+                                    {{ post.get_overview.description|content_preview }}
+                            </div>
+                            <a href="{% url 'detail' post.slug_url %}" class="btn btn-success btn-raised">
+                                <i class="zmdi zmdi-flower"></i> Читать далее
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <table class="table-sm table-striped table-hover" style="width:100%">
-                    <thead class="thead-dark">
-                        <tr>
-                            <td><center><b>Инструмент</center></b></td>
-                            <td><center><b>Дата</center></b></td>
-                            <td width="100px"><center><b>Три экрана Элдера</center></b></td>
-                            <td width="100px"><center><b>Канальная стратегия</center></b></td>
-                            <td width="100px"><center><b>Дивергентный бар</center></b></td>
-                            <td width="100px"><center><b>NR4ID</center></b></td>
-                            <td width="100px"><center><b>Прорыв волатильности</center></b></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for post in page_obj %}
-                        <tr>
-                            <td><p><a href="{% url 'detail' post.slug_url %}"><i class="fa fa-line-chart color-info"></i> {{ post.ticker.ticker_name }} ({{ post.ticker }})</a></p></td>
-                            <td><a href="{% url 'detail' post.slug_url %}">{{ post.date_analysis|date:"d-m-Y" }}</a></td>
-                            <td>
-                                {% if post.sig_elder != 0 %}
-                                <div class="row col-xs-4 {{ post.sig_elder|price_color }}" title="Вероятность сигнала: {{ post.sig_elder_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_elder|price_color }}"><i class="{{ post.sig_elder|icon_type }}"></i></span>{{ post.sig_elder|buysell_signal }}</div>
-<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_elder_proba}}</div></td>-->
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if post.sig_channel != 0 %}
-                                <div class="row col-xs-4 {{ post.sig_channel|price_color }}" title="Вероятность сигнала: {{ post.sig_channel_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_channel|price_color }}"><i class="{{ post.sig_channel|icon_type }}"></i></span>{{ post.sig_channel|buysell_signal }}</div>
-<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_channel_proba}}</div></td>-->
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if post.sig_DivBar != 0 %}
-                                <div class="row col-xs-4 {{ post.sig_DivBar|price_color }}" title="Вероятность сигнала: {{ post.sig_DivBar_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ post.sig_DivBar|price_color }}"><i class="{{ post.sig_DivBar|icon_type }}"></i></span>{{ post.sig_DivBar|buysell_signal }}</div>
-<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_DivBar_proba}}</div></td>-->
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if post.sig_NR4ID != 0 %}
-                                <div class="row col-xs-4 color-warning" title="Вероятность сигнала: {{ post.sig_NR4ID_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-warning"><i class="fa fa-arrow-right"></i></span>Signal</div>
-<!--                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_NR4ID_proba}}</div></td>-->
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if post.sig_breakVolatility != 0 %}
-                                <div class="row col-xs-4 color-warning" title="Вероятность сигнала: {{ post.sig_breakVolatility_proba|perc_format }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-warning"><i class="fa fa-arrow-right"></i></span>Signal</div>
-                                <!-- <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ post.sig_breakVolatility_proba}}</div></td> -->
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <br>
-                <nav aria-label="...">
+            {% endfor %}
+            <div class="col-md-12">
+                <nav aria-label="Page navigation">
                     <ul class="pager pager-flat d-flex justify-content-between">
                         {% if page_obj.has_previous %}
                             {% if page_obj.previous_page_number == 1 %}
@@ -150,7 +120,6 @@
                         {% endif %}
                     </ul>
                 </nav>
-                <br>
             </div>
         {% else %}
             <p>Нет публикаций, удовлетворяющих условиям отбора</p>
@@ -158,7 +127,7 @@
     </div>
 </div>
 
-<div class="container mt-6">
+<div class="container mt-3">
     <div class="row">
         <div class="card col-lg-12">
             <div class="card-body-big">

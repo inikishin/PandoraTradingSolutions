@@ -24,7 +24,7 @@ def index(request):
         else:
             post_list = post_list.filter(ticker__exact=-1)
 
-    paginator = Paginator(post_list, 25)
+    paginator = Paginator(post_list, 15)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

@@ -1,4 +1,13 @@
 .pts-landing-text-block {
-    height: 300px;
+    height: 500px;
     overflow-y: scroll;
+}
+
+.pts-da-card{
+    height: 320px;
+}
+
+.pts-da-card-text{
+    height: 160px;
+    overflow: hidden;
 }
