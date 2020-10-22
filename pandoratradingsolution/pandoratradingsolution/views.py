@@ -8,6 +8,7 @@ from django.contrib.flatpages.models import FlatPage
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import get_object_or_404
 from django.utils.safestring import mark_safe
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from pandoratradingsolution import settings
 from integrations import api_google
@@ -16,6 +17,7 @@ from .form import ContactForm
 import marketDictionary.models as md
 import predictions.models as post_model
 
+@xframe_options_exempt
 def mainpage(request):
     post_list = Post.objects.order_by('-date_analysis')[:30]
 
