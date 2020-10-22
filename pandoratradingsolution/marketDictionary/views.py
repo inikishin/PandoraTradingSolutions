@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 from .models import Ticker, Market
 from dailyAnalysis.models import Post
 from predictions.models import Prediction
 
-
+@xframe_options_exempt
 def index(request):
     ticker_list = Ticker.objects.order_by('short_name')
 
@@ -16,19 +18,7 @@ def index(request):
     context = {'page_obj': page_obj}
     return render(request, 'marketDictionary/ms_index.html', context)
 
-
-#def detail(request, ticker_id):
-#    ticker = get_object_or_404(Ticker, pk=ticker_id)
-#
-#    post_list = Post.objects.order_by('-date_analysis').filter(ticker__exact=ticker_id)
-#    prediction_ticker_list = Prediction.objects.filter(ticker__exact=ticker_id).order_by('-created')
-#
-#    return render(request, 'marketDictionary/ms_ticker.html', {'ticker': ticker,
-#                                                               'post_list': post_list[:3],
-#                                                               'prediction_ticker_list': prediction_ticker_list,
-#                                                               'post_count': len(post_list),
-#                                                               'prediction_count': len(prediction_ticker_list)})
-
+@xframe_options_exempt
 def detail_slug(request, ticker_name):
     ticker = get_object_or_404(Ticker, short_name=ticker_name.upper())
 

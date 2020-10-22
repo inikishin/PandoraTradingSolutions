@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 from .forms import SignUpForm
 from .models import Profile
 from .forms import UserEditForm, ProfileEditForm
 
+@xframe_options_exempt
 def profile_view(request):
     return render(request, 'account/ms_profile.html')
 

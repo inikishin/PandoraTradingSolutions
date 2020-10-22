@@ -2,10 +2,12 @@ from datetime import datetime
 
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from .models import Prediction, PredictionHorizon
 import marketDictionary.models as md
 
+@xframe_options_exempt
 def index(request):
     ticker_list = md.Ticker.objects.order_by('short_name')
     prediction_list = []

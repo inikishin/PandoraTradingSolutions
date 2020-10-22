@@ -2,11 +2,13 @@ from datetime import datetime
 
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from .models import Post
 from pandoratradingsolution import views as pts_views
 import marketDictionary.models as md
 
+@xframe_options_exempt
 def index(request):
     filter_post_date = request.GET.get('post_date', '')
     filter_post_ticker = request.GET.get('post_ticker', '')
@@ -34,6 +36,7 @@ def index(request):
 
     return render(request, 'dailyAnalysis/ms_index.html', context)
 
+@xframe_options_exempt
 def detail_slug(request, post_slug):
     post = get_object_or_404(Post, slug_url=post_slug)
 
