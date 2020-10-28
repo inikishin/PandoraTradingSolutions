@@ -40,7 +40,7 @@ class Post(models.Model):
         return self.ticker.short_name + '_' + str(self.date_analysis)
 
     def get_absolute_url(self):
-        return "/dailyAnalysis/{0}/".format(self.slug_url)
+        return "/dailyanalysis/{0}/".format(self.slug_url)
 
     def get_description_for_signal(self, signal=''):
         if signal == 'weekly':
