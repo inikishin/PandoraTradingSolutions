@@ -2,9 +2,30 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/pandoratradingsolution/logs" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (PandoraTradingSolutions)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/pandoratradingsolution/marketDictionary/templates" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/marketDictionary/templates/marketDictionary" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/dailyAnalysis/templates" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/dailyAnalysis/templates/admin" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/dailyAnalysis/templates/dailyAnalysis" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/account/templates" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/account/templates/account" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/account/templates/registration" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/pandoratradingsolution/templates" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/pandoratradingsolution/templates/flatpages" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/pandoratradingsolution/templates/pandoratradingsolution" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/predictions/templates" />
+        <option value="$MODULE_DIR$/pandoratradingsolution/predictions/templates/predictions" />
+      </list>
+    </option>
   </component>
 </module>

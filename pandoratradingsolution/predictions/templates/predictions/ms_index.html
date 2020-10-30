@@ -21,86 +21,185 @@
   </div>
 </div>
 </header>
-<div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
-          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
-              <meta itemprop="position" content="1" />
-          </li>
-          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <span itemprop="name">Прогнозы</span>
-              <meta itemprop="position" content="2" />
-          </li>
-      </ol>
-    </nav>
-    <div class="row pricing-table-container">
-        {% if page_obj %}
 
-        <div class="card card-primary table-responsive">
-            <div class="card-header table-responsive">
-                <h3 class="card-title">Прогнозы</h3>
-            </div>
-            <table class="table-sm table-striped table-hover" style="width:100%">
-                <thead>
-                    <tr class="">
-                        <td><center><b>Инструмент</b></center></td>
-                        {% if user.is_authenticated %}
-                            <td><center><b>1w</b></center></td>
-                            <td><center><b>2w</b></center></td>
-                        {% endif %}
-                        <td><center><b>1m</b></center></td>
-                        <td><center><b>3m</b></center></td>
-                        <td><center><b>6m</b></center></td>
-                        <td><center><b>1y</b></center></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for prediction in page_obj %}
-                    <tr>
-                        <td class="color-primary"><i class="fa fa-line-chart color-info"></i> {{ prediction.ticker.ticker_name }} ({{ prediction.ticker }})</td>
-                        {% if user.is_authenticated %}
-                            <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1w.created|predictiondate:prediction.1w.horizon.lag|date:"d-m-Y" }}</div><br>
-                                <div class="row col-xs-4 {{ prediction.1w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1w.prctChange|price_color }}"><i class="{{ prediction.1w.prctChange|icon_type }}"></i></span>{{ prediction.1w.predictprice|predictionprice:prediction.1w.prctChange }}</div><br>
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1w.probability|predictionproba}}</div></td>
-                            <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d-m-Y" }}</div><br>
-                                <div class="row col-xs-4 {{ prediction.2w.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.2w.prctChange|price_color }}"><i class="{{ prediction.2w.prctChange|icon_type }}"></i></span>{{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}</div><br>
-                                <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.2w.probability|predictionproba}}</div></td>
-                        {% endif %}
-                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d-m-Y" }}</div><br>
-                            <div class="row col-xs-4 {{ prediction.1m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1m.prctChange|price_color }}"><i class="{{ prediction.1m.prctChange|icon_type }}"></i></span>{{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}</div><br>
-                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1m.probability|predictionproba}}</div></td>
-                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d-m-Y" }}</div><br>
-                            <div class="row col-xs-4 {{ prediction.3m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.3m.prctChange|price_color }}"><i class="{{ prediction.3m.prctChange|icon_type }}"></i></span>{{ prediction.3m.predictprice|predictionprice:prediction.3m.prctChange }}</div><br>
-                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.3m.probability|predictionproba}}</div></td>
-                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d-m-Y" }}</div><br>
-                            <div class="row col-xs-4 {{ prediction.6m.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.6m.prctChange|price_color }}"><i class="{{ prediction.6m.prctChange|icon_type }}"></i></span>{{ prediction.6m.predictprice|predictionprice:prediction.6m.prctChange }}</div><br>
-                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.6m.probability|predictionproba}}</div></td>
-                        <td><div class="row col-xs-4 color-primary"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-primary"><i class="zmdi zmdi-calendar"></i></span>{{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d-m-Y" }}</div><br>
-                            <div class="row col-xs-4 {{ prediction.1y.prctChange|price_color }}"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse {{ prediction.1y.prctChange|price_color }}"><i class="{{ prediction.1y.prctChange|icon_type }}"></i></span>{{ prediction.1y.predictprice|predictionprice:prediction.1y.prctChange }}</div><br>
-                            <div class="row col-xs-4 color-info"><span class="mr-2 ms-icon-sm ms-icon-circle ms-icon-inverse color-info"><i class="zmdi zmdi-info"></i></span>{{ prediction.1y.probability|predictionproba}}</div></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-        <nav aria-label="...">
-            <ul class="pager pager-flat d-flex justify-content-between">
-                {% if page_obj.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">«</span> предыдущая</a></li>
-                {% endif %}
-                {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">следующая <span aria-hidden="true">»</span></a></li>
-                {% endif %}
-            </ul>
+    <div class="container">
+        <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+                      <meta itemprop="position" content="1" />
+                  </li>
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <span itemprop="name">Прогнозы</span>
+                      <meta itemprop="position" content="2" />
+                  </li>
+              </ol>
         </nav>
-        {% else %}
-            <p>Нет прогнозов, удовлетворяющих условиям отбора</p>
-        {% endif %}
 
-    </div> <!-- row -->
-</div> <!-- container -->
+        <div class="row">
+            <div class="card col-lg-12">
+                {% if page_obj %}
+                    <div class="row">
+                        <div class="col-sm-2"><h4 class="text-center"><b>Прогноз цены через</b></h4></div>
+                        <div class="col-sm-2"><h4 class="text-center"><b>2 недели</b></h4></div>
+                        <div class="col-sm-2"><h4 class="text-center"><b>1 месяц</b></h4></div>
+                        <div class="col-sm-2"><h4 class="text-center"><b>3 месяца</b></h4></div>
+                        <div class="col-sm-2"><h4 class="text-center"><b>6 месяцев</b></h4></div>
+                        <div class="col-sm-2"><h4 class="text-center"><b>1 год</b></h4></div>
+                    </div>
+                    {% for prediction in page_obj %}
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h3 class="text-center"><i class="fa fa-line-chart color-info"></i> <a href="{% url 'marketDictionary:detail' prediction.ticker.short_name %}">{{ prediction.ticker.short_name }}</a></h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="ms-collapse" id="accordion_w2_{{ prediction.ticker.short_name }}" role="tablist" aria-multiselectable="true">
+                                    <div class="mb-0 card {{ prediction.2w.prctChange|price_color }}">
+                                        <div class="card-header" role="tab" id="heading_w2_{{ prediction.ticker.short_name }}">
+                                            <h4 class="card-title">
+                                                <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion_w2_{{ prediction.ticker.short_name }}" href="#collapse_w2_{{ prediction.ticker.short_name }}" aria-expanded="false" aria-controls="collapse_w2_{{ prediction.ticker.short_name }}">
+                                                    <i class="{{ prediction.2w.prctChange|icon_type }}"></i>
+                                                    <span class="lead lead-lg">{{ prediction.2w.prctChange }}%</span>
+                                                    <span class="ml-auto badge badge-default">{{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d.m.Y" }}</span>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_w2_{{ prediction.ticker.short_name }}" class="card-collapse collapse" role="tabpanel" aria-labelledby="heading_w2_{{ prediction.ticker.short_name }}">
+                                            <div class="card-body">
+                                                <p class="text-small text-justify">
+                                                    {% if prediction.2w.predictprice == 0 %}
+                                                            Нет данных
+                                                    {% else %}
+                                                        К дате {{ prediction.2w.created|predictiondate:prediction.2w.horizon.lag|date:"d.m.Y" }}
+                                                        с вероятностью {{ prediction.2w.probability|predictionproba}}
+                                                        ожидаемое значение цены <b>{{ prediction.2w.predictprice|predictionprice:prediction.2w.prctChange }}</b>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="ms-collapse" id="accordion_m1_{{ prediction.ticker.short_name }}" role="tablist" aria-multiselectable="true">
+                                    <div class="mb-0 card {{ prediction.1m.prctChange|price_color }}">
+                                        <div class="card-header" role="tab" id="heading_m1_{{ prediction.ticker.short_name }}">
+                                            <h4 class="card-title">
+                                                <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion_m1_{{ prediction.ticker.short_name }}" href="#collapse_m1_{{ prediction.ticker.short_name }}" aria-expanded="false" aria-controls="collapse_m1_{{ prediction.ticker.short_name }}">
+                                                    <i class="{{ prediction.1m.prctChange|icon_type }}"></i>
+                                                    <span class="lead lead-lg">{{ prediction.1m.prctChange }}%</span>
+                                                    <span class="ml-auto badge badge-default">{{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d.m.Y" }}</span>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_m1_{{ prediction.ticker.short_name }}" class="card-collapse collapse" role="tabpanel" aria-labelledby="heading_m1_{{ prediction.ticker.short_name }}">
+                                            <div class="card-body">
+                                                <p class="text-small text-justify">
+                                                    {% if prediction.1m.predictprice == 0 %}
+                                                            Нет данных
+                                                    {% else %}
+                                                        К дате {{ prediction.1m.created|predictiondate:prediction.1m.horizon.lag|date:"d.m.Y" }}
+                                                        с вероятностью {{ prediction.1m.probability|predictionproba}}
+                                                        ожидаемое значение цены <b>{{ prediction.1m.predictprice|predictionprice:prediction.1m.prctChange }}</b>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="ms-collapse" id="accordion_m3_{{ prediction.ticker.short_name }}" role="tablist" aria-multiselectable="true">
+                                    <div class="mb-0 card {{ prediction.3m.prctChange|price_color }}">
+                                        <div class="card-header" role="tab" id="heading_m3_{{ prediction.ticker.short_name }}">
+                                            <h4 class="card-title">
+                                                <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion_m3_{{ prediction.ticker.short_name }}" href="#collapse_m3_{{ prediction.ticker.short_name }}" aria-expanded="false" aria-controls="collapse_m3_{{ prediction.ticker.short_name }}">
+                                                    <i class="{{ prediction.3m.prctChange|icon_type }}"></i>
+                                                    <span class="lead lead-lg">{{ prediction.3m.prctChange }}%</span>
+                                                    <span class="ml-auto badge badge-default">{{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d.m.Y" }}</span>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_m3_{{ prediction.ticker.short_name }}" class="card-collapse collapse" role="tabpanel" aria-labelledby="heading_m3_{{ prediction.ticker.short_name }}">
+                                            <div class="card-body">
+                                                <p class="text-small text-justify">
+                                                    {% if prediction.3m.predictprice == 0 %}
+                                                        Нет данных
+                                                    {% else %}
+                                                        К дате {{ prediction.3m.created|predictiondate:prediction.3m.horizon.lag|date:"d.m.Y" }}
+                                                        с вероятностью {{ prediction.3m.probability|predictionproba}}
+                                                        ожидаемое значение цены <b>{{ prediction.3m.predictprice|predictionprice:prediction.3m.prctChange }}</b>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="ms-collapse" id="accordion_m6_{{ prediction.ticker.short_name }}" role="tablist" aria-multiselectable="true">
+                                    <div class="mb-0 card {{ prediction.6m.prctChange|price_color }}">
+                                        <div class="card-header" role="tab" id="heading_m6_{{ prediction.ticker.short_name }}">
+                                            <h4 class="card-title">
+                                                <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion_m6_{{ prediction.ticker.short_name }}" href="#collapse_m6_{{ prediction.ticker.short_name }}" aria-expanded="false" aria-controls="collapse_m6_{{ prediction.ticker.short_name }}">
+                                                    <i class="{{ prediction.6m.prctChange|icon_type }}"></i>
+                                                    <span class="lead lead-lg">{{ prediction.6m.prctChange }}%</span>
+                                                    <span class="ml-auto badge badge-default">{{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d.m.Y" }}</span>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_m6_{{ prediction.ticker.short_name }}" class="card-collapse collapse" role="tabpanel" aria-labelledby="heading_m6_{{ prediction.ticker.short_name }}">
+                                            <div class="card-body">
+                                                <p class="text-small text-justify">
+                                                    {% if prediction.6m.predictprice == 0 %}
+                                                            Нет данных
+                                                    {% else %}
+                                                        К дате {{ prediction.6m.created|predictiondate:prediction.6m.horizon.lag|date:"d.m.Y" }}
+                                                        с вероятностью {{ prediction.6m.probability|predictionproba}}
+                                                        ожидаемое значение цены <b>{{ prediction.6m.predictprice|predictionprice:prediction.6m.prctChange }}</b>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="ms-collapse" id="accordion_1y_{{ prediction.ticker.short_name }}" role="tablist" aria-multiselectable="true">
+                                    <div class="mb-0 card {{ prediction.1y.prctChange|price_color }}">
+                                        <div class="card-header" role="tab" id="heading_1y_{{ prediction.ticker.short_name }}">
+                                            <h4 class="card-title">
+                                                <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion_1y_{{ prediction.ticker.short_name }}" href="#collapse_1y_{{ prediction.ticker.short_name }}" aria-expanded="false" aria-controls="collapse_1y_{{ prediction.ticker.short_name }}">
+                                                    <i class="{{ prediction.1y.prctChange|icon_type }}"></i>
+                                                    <span class="lead lead-lg">{{ prediction.1y.prctChange }}%</span>
+                                                    <span class="ml-auto badge badge-default">{{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d.m.Y" }}</span>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_1y_{{ prediction.ticker.short_name }}" class="card-collapse collapse" role="tabpanel" aria-labelledby="heading_1y_{{ prediction.ticker.short_name }}">
+                                            <div class="card-body">
+                                                <p class="text-small text-justify">
+                                                    {% if prediction.1y.predictprice == 0 %}
+                                                            Нет данных
+                                                    {% else %}
+                                                        К дате {{ prediction.1y.created|predictiondate:prediction.1y.horizon.lag|date:"d.m.Y" }}
+                                                        с вероятностью {{ prediction.1y.probability|predictionproba}}
+                                                        ожидаемое значение цены <b>{{ prediction.1y.predictprice|predictionprice:prediction.1y.prctChange }}</b>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Нет прогнозов, удовлетворяющих условиям отбора</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
 <div class="container mt-6">
     <div class="row">
