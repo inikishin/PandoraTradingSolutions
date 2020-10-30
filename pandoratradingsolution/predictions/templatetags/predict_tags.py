@@ -33,11 +33,11 @@ def predictionproba_format(text):
 @register.filter(name='price_color')
 def price_color_format(price_change):
     if price_change > 0:
-        col = 'color-success'
+        col = 'card-success'
     elif price_change < 0:
-        col = 'color-danger'
+        col = 'card-danger'
     else:
-        col = 'color-primary'
+        col = ''
     return col
 
 @register.filter(name='icon_type')
