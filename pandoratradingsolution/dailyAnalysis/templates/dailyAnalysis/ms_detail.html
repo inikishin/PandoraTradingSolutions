@@ -3,36 +3,43 @@
 {% load blog_tags %}
 {% load static %}
 
-{% block title %} Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }} основанная на работе искусственного интеллекта - Pandora Trading Solutions {% endblock %}
-{% block description %}Качественный технический анализ акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}. Торговые сигналы основанные на предсказаниях искусственного интеллекта. Узнайте подробнее!{% endblock %}
-{% block keywords %}инвестирование, торговля, акции РФ, {{ post.ticker.ticker_name }}, {{ post.ticker.short_name }}, торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы, искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ{% endblock %}
+{% block title %} Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }})
+за {{ post.date_analysis|date:'d.m.Y' }} основанная на работе искусственного интеллекта - Pandora Trading Solutions {% endblock %}
+
+{% block description %}Качественный технический анализ акций компании {{ post.ticker.ticker_name }}
+({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}. Торговые сигналы основанные на предсказаниях
+искусственного интеллекта. Узнайте подробнее!{% endblock %}
+
+{% block keywords %}инвестирование, торговля, акции РФ, {{ post.ticker.ticker_name }}, {{ post.ticker.short_name }},
+торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы, искусственный интеллект, биржа, фондовый рынок, анализ,
+аналитика, технический анализ{% endblock %}
 
 {% block og-title %}Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }} основанная на работе искусственного интеллекта{% endblock %}
 {% block og-image %}{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %}{% endblock %}
 {% block og-description %}Качественный технический анализ акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}. Торговые сигналы основанные на предсказаниях искусственного интеллекта.{% endblock %}
 
 {% block post %}
-
 <div class="col-lg-8">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+            <meta itemprop="position" content="1" />
+        </li>
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{% url 'dailyAnalysis' %}" itemprop="item"><span itemprop="name">Аналитика</span></a>
+            <meta itemprop="position" content="2" />
+        </li>
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}</span>
+            <meta itemprop="position" content="3" />
+        </li>
+    </ol>
+  </nav>
+
   <div class="card animated fadeInLeftTiny animation-delay-5">
     <div class="card-body card-body-big">
-
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
-                <meta itemprop="position" content="1" />
-            </li>
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a href="{% url 'dailyAnalysis' %}" itemprop="item"><span itemprop="name">Аналитика</span></a>
-                <meta itemprop="position" content="2" />
-            </li>
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}</span>
-                <meta itemprop="position" content="3" />
-            </li>
-        </ol>
-      </nav>
 
       <h1 class="no-mt">Ежедневная аналитика акций компании {{ post.ticker.ticker_name }} ({{ post.ticker.short_name }}) за {{ post.date_analysis|date:'d.m.Y' }}</h1>
       <div class="mb-4">

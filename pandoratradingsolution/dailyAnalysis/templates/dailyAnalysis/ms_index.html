@@ -4,13 +4,18 @@
 {% load marketdict_tags %}
 {% load static %}
 
-{% block title %}Технический анализ фондового рынка акций ММВБ (MOEX) российских компаний. Стоимость, котировки, советы по инвестированию  - Pandora Trading Solutions {% endblock %}
-{% block description %}Обзор стоимости и котировок акций российский компаний на фондовом рынке ММВБ. Качественная техническая аналитика рынка на основе работы искусственного интеллекта. Узнайте подробнее!{% endblock %}
-{% block keywords %}инвестирование, торговля, акции РФ, торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы, искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ{% endblock %}
+{% block title %}Технический анализ фондового рынка акций ММВБ (MOEX) российских компаний. Стоимость, котировки, советы
+по инвестированию  - Pandora Trading Solutions {% endblock %}
+{% block description %}Обзор стоимости и котировок акций российский компаний на фондовом рынке ММВБ. Качественная
+техническая аналитика рынка на основе работы искусственного интеллекта. Узнайте подробнее!{% endblock %}
+{% block keywords %}инвестирование, торговля, акции РФ, торговые сигналы, инвестиции, трейдинг, прогноз, прогнозы,
+искусственный интеллект, биржа, фондовый рынок, анализ, аналитика, технический анализ{% endblock %}
 
-{% block og-title %}Технический анализ фондового рынка акций ММВБ (MOEX) российских компаний. Стоимость, котировки, советы по инвестированию{% endblock %}
+{% block og-title %}Технический анализ фондового рынка акций ММВБ (MOEX) российских компаний. Стоимость, котировки,
+советы по инвестированию{% endblock %}
 {% block og-image %}{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %} {% endblock %}
-{% block og-description %}Обзор стоимости и котировок акций российский компаний на фондовом рынке ММВБ. Качественная техническая аналитика рынка на основе работы искусственного интеллекта.{% endblock %}
+{% block og-description %}Обзор стоимости и котировок акций российский компаний на фондовом рынке ММВБ. Качественная
+техническая аналитика рынка на основе работы искусственного интеллекта.{% endblock %}
 
 {% block content %}
 
@@ -91,15 +96,15 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="withripple zoom-img">
-                            <img src="{% get_media_prefix %}{{ post.get_overview.img }}" alt="article-img" class="img-fluid">
+                            <a href="{% url 'detail' post.slug_url %}"><img src="{% get_media_prefix %}{{ post.get_overview.img }}" alt="article-img {{ post.ticker.short_name }} - {{ post.date_analysis|date:'yy-m-d' }}" class="img-fluid"></a>
                         </div>
                         <div class="card-body text-center pts-da-card">
-                            <h4 class="color-success">{{ post.header }}</h4>
+                            <h4 class="color-success"><a href="{% url 'detail' post.slug_url %}">{{ post.header }}</a></h4>
                             <div class="pts-da-card-text" title="{{ post.get_overview.description }}">
                                     {{ post.get_overview.description|content_preview }}
                             </div>
                             <a href="{% url 'detail' post.slug_url %}" class="btn btn-success btn-raised">
-                                <i class="zmdi zmdi-flower"></i> Читать далее
+                                <i class="zmdi zmdi-file-text"></i> Читать далее
                             </a>
                         </div>
                     </div>
@@ -122,11 +127,19 @@
                 </nav>
             </div>
         {% else %}
-            <p>Нет публикаций, удовлетворяющих условиям отбора</p>
+            <div class="container mt-1">
+                <div class="row">
+                    <div class="col-md-12">
+                        Нет публикаций, удовлетворяющих условиям отбора. Попробуйте изменить условия
+                        отбора в фильтре.
+                    </div>
+                </div>
+            </div>
         {% endif %}
     </div>
 </div>
 
+{% if page_obj.number == 1 %}
 <div class="container mt-3">
     <div class="row">
         <div class="card col-lg-12">
@@ -230,4 +243,5 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}
