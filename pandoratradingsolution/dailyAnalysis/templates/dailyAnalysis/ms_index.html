@@ -100,8 +100,8 @@
                             </div>
                             <div class="card-body text-center pts-da-card">
                                 <h4 class="color-success"><a href="{% url 'detail' post.slug_url %}">{{ post.header }}</a></h4>
-                                <div class="pts-da-card-text" title="{{ post.get_overview.description }}">
-                                        {{ post.get_overview.description|content_preview }}
+                                <div class="text-truncate pts-da-card-text" style="white-space: normal;" title="{{ post.get_overview.description }}">
+                                        {{ post.get_overview.description }}
                                 </div>
                                 <a href="{% url 'detail' post.slug_url %}" class="btn btn-success btn-raised">
                                     <i class="zmdi zmdi-file-text"></i> Читать далее
