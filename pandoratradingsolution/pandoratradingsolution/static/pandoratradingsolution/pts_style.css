@@ -9,5 +9,5 @@
 
 .pts-da-card-text{
     height: 160px;
-    overflow: hidden;
+    white-space: normal;
 }
