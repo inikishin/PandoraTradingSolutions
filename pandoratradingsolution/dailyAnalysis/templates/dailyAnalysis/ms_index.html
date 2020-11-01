@@ -94,7 +94,7 @@
         {% if page_obj %}
                 {% for post in page_obj %}
                     <div class="col-md-4">
-                        <div class="card h-95">
+                        <div class="card">
                             <div class="withripple zoom-img">
                                 <a href="{% url 'detail' post.slug_url %}"><img src="{% get_media_prefix %}{{ post.get_overview.img }}" alt="article-img {{ post.ticker.short_name }} - {{ post.date_analysis|date:'yy-m-d' }}" class="img-fluid"></a>
                             </div>
