@@ -40,12 +40,12 @@
             <div class="card col-lg-12">
                 {% if page_obj %}
                     <div class="row">
-                        <div class="col-sm-2"><h4 class="text-center"><b>Прогноз цены через</b></h4></div>
-                        <div class="col-sm-2"><h4 class="text-center"><b>2 недели</b></h4></div>
-                        <div class="col-sm-2"><h4 class="text-center"><b>1 месяц</b></h4></div>
-                        <div class="col-sm-2"><h4 class="text-center"><b>3 месяца</b></h4></div>
-                        <div class="col-sm-2"><h4 class="text-center"><b>6 месяцев</b></h4></div>
-                        <div class="col-sm-2"><h4 class="text-center"><b>1 год</b></h4></div>
+                        <div class="col-sm-2"><h4 class="text-center"><b>Прогноз цены</b></h4></div>
+                        <div class="col-sm-2 d-none d-sm-block"><h4 class="text-center"><b>через 2 недели</b></h4></div>
+                        <div class="col-sm-2 d-none d-sm-block"><h4 class="text-center"><b>через 1 месяц</b></h4></div>
+                        <div class="col-sm-2 d-none d-sm-block"><h4 class="text-center"><b>через 3 месяца</b></h4></div>
+                        <div class="col-sm-2 d-none d-sm-block"><h4 class="text-center"><b>через 6 месяцев</b></h4></div>
+                        <div class="col-sm-2 d-none d-sm-block"><h4 class="text-center"><b>через 1 год</b></h4></div>
                     </div>
                     {% for prediction in page_obj %}
                         <div class="row">
