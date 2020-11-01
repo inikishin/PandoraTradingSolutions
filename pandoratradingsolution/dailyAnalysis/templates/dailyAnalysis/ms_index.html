@@ -92,10 +92,9 @@
 <div class="container mt-3">
     <div class="row">
         {% if page_obj %}
-            <div class="card-group">
                 {% for post in page_obj %}
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="card h-95">
                             <div class="withripple zoom-img">
                                 <a href="{% url 'detail' post.slug_url %}"><img src="{% get_media_prefix %}{{ post.get_overview.img }}" alt="article-img {{ post.ticker.short_name }} - {{ post.date_analysis|date:'yy-m-d' }}" class="img-fluid"></a>
                             </div>
@@ -111,7 +110,6 @@
                         </div>
                     </div>
                 {% endfor %}
-            </div>
             <div class="col-md-12">
                 <nav aria-label="Page navigation">
                     <ul class="pager pager-flat d-flex justify-content-between">
