@@ -9,7 +9,7 @@ from pandoratradingsolution import views as pts_views
 import marketDictionary.models as md
 
 @xframe_options_exempt
-def index(request):
+def index(request, page_num=1):
     filter_post_date = request.GET.get('post_date', '')
     filter_post_ticker = request.GET.get('post_ticker', '')
     filter_post_sig_only = request.GET.get('post_sig_only', '')
@@ -27,8 +27,7 @@ def index(request):
             post_list = post_list.filter(ticker__exact=-1)
 
     paginator = Paginator(post_list, 15)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_obj = paginator.get_page(page_num)
 
     context = {'post_date': filter_post_date,
                'post_ticker': filter_post_ticker,
