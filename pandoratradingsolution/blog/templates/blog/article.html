@@ -1,0 +1,60 @@
+{% extends "pandoratradingsolution/ms_blog.html" %}
+
+{% load blog_tags %}
+{% load static %}
+
+{% block title %} {{ post.title }} {% endblock %}
+{% block description %}{{ post.description }}{% endblock %}
+
+{% block og-title %}{{ post.title }}{% endblock %}
+{% block og-image %}{% static post.image_url %} {% endblock %}
+{% block og-description %}{{ post.description }}{% endblock %}
+
+{% block post %}
+
+<div class="col-lg-8">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+              <meta itemprop="position" content="1" />
+          </li>
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="{% url 'blog_view' %}" itemprop="item"><span itemprop="name">Статьи</span></a>
+              <meta itemprop="position" content="2" />
+          </li>
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="{% url 'category_view' category.short_name %}" itemprop="item"><span itemprop="name">{{ category.full_name }}</span></a>
+              <meta itemprop="position" content="3" />
+          </li>
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name">{{ post.title }}</span>
+              <meta itemprop="position" content="4" />
+          </li>
+      </ol>
+    </nav>
+    <div class="card animated fadeInLeftTiny animation-delay-5">
+        <div class="card-body card-body-big">
+            <h1 class="no-mt">{{ post.title }}</h1>
+            <div class="mb-4">
+                <div class="mb-4">
+                    {% if post.author.avatar %}
+                        <img src="{{ post.author.avatar.url }}" width="45px" height="45px" alt=" {{ post.author.user.username }} " class="rounded-circle mr-1">
+                    {% else %}
+                        <img src="{% static 'pandoratradingsolution/no_ava.jpeg' %}" width="45px" height="45px" alt=" {{ post.author.user.username }} " class="rounded-circle mr-1">
+                    {% endif %}
+                    Автор: <a href="#">{{ post.author.username }}</a>
+                    в категории <a href="{% url 'category_view' post.category.short_name %}" class="ms-tag ms-tag-info">{{ post.category.full_name }}</a>
+
+                    {% if post.date_published %}
+                    <span class="ml-1 d-none d-sm-inline"><i class="zmdi zmdi-time mr-05 color-info"></i> <span class="color-medium-dark"> {{ post.date_published|date:'d-m-yy' }} </span></span>
+                    {% endif %}
+                </div>
+            </div>
+          {{ post.content|markdown }}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

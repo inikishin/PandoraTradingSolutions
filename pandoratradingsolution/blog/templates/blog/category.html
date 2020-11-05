@@ -1,0 +1,64 @@
+{% extends "pandoratradingsolution/ms_blog.html" %}
+
+{% load static %}
+{% load marketdict_tags %}
+
+{% block title %}Статьи по трейдингу  - Pandora Trading Solutions{% endblock %}
+{% block description %}Статьи по трейдингу. Узнайте подробнее!{% endblock %}
+
+{% block og-title %}Статьи по трейдингу  - Pandora Trading Solutions{% endblock %}
+{% block og-image %}{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %} {% endblock %}
+{% block og-description %}Статьи по трейдингу. Узнайте подробнее!{% endblock %}
+
+{% block post %}
+    <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-slash" itemscope itemtype="https://schema.org/BreadcrumbList">
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+                      <meta itemprop="position" content="1" />
+                  </li>
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a href="{% url 'blog_view' %}" itemprop="item"><span itemprop="name">Статьи</span></a>
+                      <meta itemprop="position" content="2" />
+                  </li>
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <span itemprop="name">{{ category.full_name }}</span>
+                      <meta itemprop="position" content="3" />
+                  </li>
+            </ol>
+        </nav>
+        {% for post in posts %}
+            <article class="card wow fadeInLeft animation-delay-5 mb-4">
+                <div class="card-body overflow-hidden overflow-hidden">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <img src="{% static post.image_url %}" alt="" class="img-fluid mb-4">
+                        </div>
+                        <div class="col-xl-6">
+                            <h3 class="no-mt"><a href="{% url 'post_view' post.category.short_name post.slug %}">{{ post.header }}</a></h3>
+                            <p class="mb-4">{{ post.content|content_preview }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            {% if post.author.avatar %}
+                                <img src="{{ post.author.avatar.url }}" width="45px" height="45px" alt=" {{ post.author.user.username }} " class="rounded-circle mr-1">
+                            {% else %}
+                                <img src="{% static 'pandoratradingsolution/no_ava.jpeg' %}" width="45px" height="45px" alt=" {{ post.author.user.username }} " class="rounded-circle mr-1">
+                            {% endif %}
+                            <a href="{% url 'profile' %}">{{ post.author.username }}</a>
+                            <a href="{% url 'category_view' post.category.short_name %}" class="ms-tag ms-tag-info">{{ post.category.full_name }}</a>
+                            {% if post.date_published %}
+                                <span class="ml-1 d-none d-sm-inline"><i class="zmdi zmdi-time mr-05 color-info"></i> <span class="color-medium-dark">{{ post.date_published|date:'d-m-yy' }}</span></span>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-4 text-right">
+                            <a href="{% url 'post_view' post.category.short_name post.slug %}" class="btn btn-primary btn-raised btn-block animate-icon">Читать далее <i class="ml-1 no-mr zmdi zmdi-long-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
