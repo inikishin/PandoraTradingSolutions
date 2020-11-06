@@ -96,14 +96,14 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card-body mt-1">
-                        <p>{{ ticker.seo_content }}</p>
+                        <p>{{ ticker.seo_content|markdown }}</p>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-lg-12 ml-2 mr-2">
-                    <h2 class="color-primary">Актуальные прогнозы цены на акции эмитента {{ ticker.ticker_name }}({{ ticker.short_name }})</h2>
+                    <h2 class="color-primary">Актуальные прогнозы цены на акции эмитента {{ ticker.ticker_name }} ({{ ticker.short_name }})</h2>
                     <p>С прогнозами по другим инструментам Российской фондовой биржи, вы можете ознакомиться
                         в соответствующем <a href="{% url 'predictions' %}">разделе</a>.</p>
                 </div>
@@ -287,7 +287,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card-body no-pt">
-                    <h2 class="color-primary">Аналитика эмитента {{ ticker.ticker_name }}({{ ticker.short_name }})</h2>
+                    <h2 class="color-primary">Аналитика эмитента {{ ticker.ticker_name }} ({{ ticker.short_name }})</h2>
                       {% for p in post_list %}
                           <article class="card wow fadeInLeft animation-delay-5 mb-2" style="visibility: visible; animation-name: fadeInLeft;">
                                 <div class="card-body overflow-hidden overflow-hidden">
