@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import Profile
 
 class Category(models.Model):
     short_name = models.CharField(max_length=20, unique=True)
@@ -21,4 +22,8 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.header
+
+    def get_author_profile(self):
+        profile = Profile.objects.get(user=self.author)
+        return profile

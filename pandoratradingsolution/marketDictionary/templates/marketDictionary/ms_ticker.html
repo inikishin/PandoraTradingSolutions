@@ -66,72 +66,44 @@
               </nav>
           </p>
 
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card-body">
-                <h2 class="color-primary no-mb">Информация об инструменте</h2>
-              </div>
-              <table class="table table-no-border table-striped">
-                <tr>
-                  <th> Название</th>
-                  <td>{{ ticker.ticker_name }}</td>
-                </tr>
-                <tr>
-                  <th> Идентификатор</th>
-                  <td>{{ ticker.short_name }}</td>
-                </tr>
-                <tr>
-                  <th> Полное название</th>
-                  <td>{{ ticker.full_name }}</td>
-                </tr>
-                <tr>
-                  <th> Рынок</th>
-                  <td>{{ ticker.market }}</td>
-                </tr>
-                <tr>
-                  <th> Website</th>
-                    <td><noindex><a href="http:\\{{ ticker.site }}" target="_blank" rel="nofollow">{{ ticker.site }}</a></noindex></td>
-                </tr>
-              </table>
+            <div class="row">
+                <div class="col-lg-4">
+                  <div class="card-body">
+                    <h2 class="color-primary no-mb">Информация об эмитенте</h2>
+                  </div>
+                  <table class="table table-no-border table-striped">
+                    <tr>
+                      <th> Название</th>
+                      <td>{{ ticker.ticker_name }}</td>
+                    </tr>
+                    <tr>
+                      <th> Идентификатор</th>
+                      <td>{{ ticker.short_name }}</td>
+                    </tr>
+                    <tr>
+                      <th> Полное название</th>
+                      <td>{{ ticker.full_name }}</td>
+                    </tr>
+                    <tr>
+                      <th> Рынок</th>
+                      <td>{{ ticker.market }}</td>
+                    </tr>
+                    <tr>
+                      <th> Website</th>
+                        <td><noindex><a href="http:\\{{ ticker.site }}" target="_blank" rel="nofollow">{{ ticker.site }}</a></noindex></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-body mt-1">
+                        <p>{{ ticker.seo_content }}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h2 class="color-primary">Последние публикации</h2>
-                  {% for p in post_list %}
-                      <article class="card wow fadeInLeft animation-delay-5 mb-2" style="visibility: visible; animation-name: fadeInLeft;">
-                            <div class="card-body overflow-hidden overflow-hidden">
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <a href="{% url 'detail' p.slug_url %}"><img src="{% get_media_prefix %}{{ p.get_overview.img }}" alt="article-img {{ p.ticker.short_name }} - {{ p.date_analysis|date:'yy-m-d' }}" class="img-fluid"></a>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <h4 class="no-m"><a href="{% url 'detail' p.slug_url %}">{{ p.header }}</a></h4>
-                                        <p>{{ p.get_overview.description|content_preview }}</p>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center justify-content-between">
-                                    <div class="cols-lg-8">
-                                        <a href="{% url 'dailyAnalysis' %}" class="ms-tag ms-tag-info">Аналитика</a>
-                                        <span class="ml-1 d-none d-sm-inline">
-                                            <i class="zmdi zmdi-time mr-05 color-info"> {{ p.date_analysis|date:'d-m-yy' }}</i>
-                                        </span>
-                                    </div>
-                                    <div class="cols-lg-4 text-right">
-                                        <a href="{% url 'detail' p.slug_url %}" class="btn btn-primary btn-raised btn-block animate-icon">
-                                            Читать далее <i class="ml-1 no-mr zmdi zmdi-long-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                      </article>
-                  {% endfor %}
-              </div>
-            </div>
-          </div>
             <hr>
             <div class="row">
                 <div class="col-lg-12 ml-2 mr-2">
-                    <h2 class="color-primary">Актуальные прогнозы</h2>
+                    <h2 class="color-primary">Актуальные прогнозы цены на акции эмитента {{ ticker.ticker_name }}({{ ticker.short_name }})</h2>
                     <p>С прогнозами по другим инструментам Российской фондовой биржи, вы можете ознакомиться
                         в соответствующем <a href="{% url 'predictions' %}">разделе</a>.</p>
                 </div>
@@ -307,6 +279,45 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{% static 'pandoratradingsolution/vertical_tagline_on_corporate.png' %}" alt="vertical_logo" class="img-fluid ml-2">
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-body no-pt">
+                    <h2 class="color-primary">Аналитика эмитента {{ ticker.ticker_name }}({{ ticker.short_name }})</h2>
+                      {% for p in post_list %}
+                          <article class="card wow fadeInLeft animation-delay-5 mb-2" style="visibility: visible; animation-name: fadeInLeft;">
+                                <div class="card-body overflow-hidden overflow-hidden">
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <a href="{% url 'detail' p.slug_url %}"><img src="{% get_media_prefix %}{{ p.get_overview.img }}" alt="article-img {{ p.ticker.short_name }} - {{ p.date_analysis|date:'yy-m-d' }}" class="img-fluid"></a>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <h4 class="no-m"><a href="{% url 'detail' p.slug_url %}">{{ p.header }}</a></h4>
+                                            <p>{{ p.get_overview.description|content_preview }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center justify-content-between">
+                                        <div class="cols-lg-8">
+                                            <a href="{% url 'dailyAnalysis' %}" class="ms-tag ms-tag-info">Аналитика</a>
+                                            <span class="ml-1 d-none d-sm-inline">
+                                                <i class="zmdi zmdi-time mr-05 color-info"> {{ p.date_analysis|date:'d-m-yy' }}</i>
+                                            </span>
+                                        </div>
+                                        <div class="cols-lg-4 text-right">
+                                            <a href="{% url 'detail' p.slug_url %}" class="btn btn-primary btn-raised btn-block animate-icon">
+                                                Читать далее <i class="ml-1 no-mr zmdi zmdi-long-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                          </article>
+                      {% endfor %}
+                  </div>
+                </div>
             </div>
         </div>
     </div> <!-- container -->
