@@ -67,7 +67,7 @@ def flatpage(request, url):
 
     context = {'flatpage': f}
     context.update(get_navbar_stat())
-    return render(request, 'flatpages/default.html', context=context)
+    return render(request, 'flatpages/article.html', context=context)
 
 class EContactsView(View):
     template_name = 'pandoratradingsolution/ms_contact.html'

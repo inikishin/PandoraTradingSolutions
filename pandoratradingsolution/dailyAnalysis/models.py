@@ -20,6 +20,8 @@ class Post(models.Model):
     analysis_type = models.ForeignKey(AnalysisType, on_delete=models.CASCADE)
     ticker = models.ForeignKey(md.Ticker, on_delete=models.CASCADE)
     date_analysis = models.DateField()
+    post_img = models.TextField()
+    post_description = models.TextField()
     header = models.TextField()
     content = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='date_analysis')

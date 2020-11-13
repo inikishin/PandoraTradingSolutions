@@ -45,6 +45,7 @@ urlpatterns = [
     path('coming/', views.coming, name='coming'),
     path('search/', views.search, name='search'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('blog/', include('blog.urls'))
 ]
 
 if settings.DEBUG:

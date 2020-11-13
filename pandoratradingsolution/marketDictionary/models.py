@@ -14,6 +14,7 @@ class Ticker(models.Model):
     full_name = models.CharField(max_length=300)
     market = models.ForeignKey(Market, on_delete=models.CASCADE)
     site = models.CharField(max_length=300)
+    seo_content = models.TextField()
 
     def __str__(self):
         return self.short_name

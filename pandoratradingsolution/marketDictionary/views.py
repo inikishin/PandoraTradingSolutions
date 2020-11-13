@@ -23,11 +23,25 @@ def detail_slug(request, ticker_name):
     ticker = get_object_or_404(Ticker, short_name=ticker_name.upper())
 
     post_list = Post.objects.order_by('-date_analysis').filter(ticker__exact=ticker.id)
-    prediction_ticker_list = Prediction.objects.filter(ticker__exact=ticker.id).order_by('-created')
+    #prediction_ticker_list = Prediction.objects.filter(ticker__exact=ticker.id).order_by('-created')
+
+    prediction_ticker_list = Prediction.objects.filter(ticker__exact=ticker.id).order_by('created')
+    ticker_prediction = {"ticker": ticker}
+    prediction_list = []
+    for p in prediction_ticker_list:
+        ticker_prediction.update({p.horizon.horizon_name: {
+                                                            'created': p.created,
+                                                            'horizon': p.horizon,
+                                                            'predictprice': p.predictprice,
+                                                            'prctChange': p.prctChange,
+                                                            'probability': p.probability
+                                                            }})
+
+    prediction_list.append(ticker_prediction)
 
     return render(request, 'marketDictionary/ms_ticker.html', {'ticker': ticker,
                                                                'post_list': post_list[:3],
-                                                               'prediction_ticker_list': prediction_ticker_list,
+                                                               'prediction_ticker_list': prediction_list,
                                                                'post_count': len(post_list),
                                                                'prediction_count': len(prediction_ticker_list)})
 # API
