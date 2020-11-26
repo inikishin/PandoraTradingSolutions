@@ -6,6 +6,8 @@ class PostSerializer(serializers.Serializer):
     analysis_type_id = serializers.IntegerField()
     ticker_id = serializers.IntegerField()
     date_analysis = serializers.DateField()
+    post_img = serializers.CharField()
+    post_description = serializers.CharField()
     header = serializers.CharField()
     content = serializers.CharField()
     slug = serializers.SlugField()
