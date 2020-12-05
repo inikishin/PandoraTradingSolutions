@@ -85,6 +85,10 @@ class Post(models.Model):
                 'img': img}
 
     def get_overview(self):
+        if self.post_description != '' and self.post_img != '':
+            return {'description': self.post_description,
+                    'img': 'dailyAnalysis/' + self.post_img}
+
         if self.sig_elder > 0:
             return self.get_description_for_signal(signal='elder')
         elif self.sig_channel > 0:
