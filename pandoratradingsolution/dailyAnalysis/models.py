@@ -89,6 +89,7 @@ class Post(models.Model):
             return {'description': self.post_description,
                     'img': 'dailyAnalysis/' + self.post_img}
 
+        # TODO: убрать весь код ниже и связанную функцию, после заполнения на сайте для всех статей post_img и post_description
         if self.sig_elder > 0:
             return self.get_description_for_signal(signal='elder')
         elif self.sig_channel > 0:
