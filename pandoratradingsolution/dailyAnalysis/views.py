@@ -14,7 +14,7 @@ def index(request, page_num=1):
     filter_post_ticker = request.GET.get('post_ticker', '')
     filter_post_sig_only = request.GET.get('post_sig_only', '')
 
-    post_list = Post.objects.order_by('-date_analysis').order_by('-sig_elder_proba').order_by('-sig_channel_proba').order_by('-sig_DivBar_proba').order_by('-sig_NR4ID_proba').order_by('-sig_breakVolatility_proba')
+    post_list = Post.objects.order_by('-date_analysis')
     if filter_post_sig_only != '':
         post_list = post_list.filter(sig_elder__in=[-1, 1]) | post_list.filter(sig_channel__in=[-1, 1]) | post_list.filter(sig_DivBar__in=[-1, 1]) | post_list.filter(sig_NR4ID__in=[-1, 1]) | post_list.filter(sig_breakVolatility__in=[-1, 1])
     if filter_post_date != '':
