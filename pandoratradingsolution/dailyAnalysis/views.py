@@ -29,6 +29,9 @@ def index(request, page_num=1):
     paginator = Paginator(post_list, 15)
     page_obj = paginator.get_page(page_num)
 
+    if not filter_post_date:
+        filter_post_date = datetime.now().strftime("%Y-%m-%d")
+
     context = {'post_date': filter_post_date,
                'post_ticker': filter_post_ticker,
                'page_obj': page_obj}
