@@ -17,6 +17,9 @@ from .form import ContactForm
 import marketDictionary.models as md
 import predictions.models as post_model
 
+from nfstt import nfsttbot
+
+
 @xframe_options_exempt
 def mainpage(request):
     post_list = Post.objects.order_by('-date_analysis')[:30]
@@ -98,6 +101,7 @@ class EContactsView(View):
 
             # и отправляем сообщение
             send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, settings.EMAIL_TARGET, fail_silently=False)
+            nfsttbot.send_notification(f"От: {form.cleaned_data['name']}({form.cleaned_data['email']})\n Тема: {form.cleaned_data['subject']}\n Сообщение: {form.cleaned_data['message']}")
             context = {'send_success': True}
 
         return render(request, template_name=self.template_name, context=context)
